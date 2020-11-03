@@ -25,7 +25,9 @@ public class InputManager : MonoBehaviour {
 
         if (IsPointerOverUI(touch)) return;
         
+        if(Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began) {
         Instantiate(DataHandler.Instance.furniture, crosshair.transform.position, crosshair.transform.rotation);
+        }
 
     }
 
@@ -47,15 +49,17 @@ public class InputManager : MonoBehaviour {
             crosshair.transform.eulerAngles = new Vector3(0, 0, 0);
         }
     }
-    void CrosshairCalculation2() {
-        List<ARRaycastHit> hits2 = new List<ARRaycastHit>();
-        raycastManager.Raycast(new Vector2(Screen.width / 2, Screen.height / 2), hits2, TrackableType.Planes);
 
-        if (hits2.Count > 0) {
-            //crosshair.SetActive(true);
-            crosshair.transform.position = hits2[0].pose.position;
-            crosshair.transform.rotation = hits2[0].pose.rotation;
+    // Need to try this...................................
+    //void CrosshairCalculation2() {
+    //    List<ARRaycastHit> hits2 = new List<ARRaycastHit>();
+    //    raycastManager.Raycast(new Vector2(Screen.width / 2, Screen.height / 2), hits2, TrackableType.Planes);
 
-        }
-    }
+    //    if (hits2.Count > 0) {
+    //        //crosshair.SetActive(true);
+    //        crosshair.transform.position = hits2[0].pose.position;
+    //        crosshair.transform.rotation = hits2[0].pose.rotation;
+
+    //    }
+    //}
 }
