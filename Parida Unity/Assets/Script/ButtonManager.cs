@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ButtonManager : MonoBehaviour {
     private Button btn;
     public GameObject Furniture;
+
     // Start is called before the first frame update
     void Start() {
         btn = GetComponent<Button>();
