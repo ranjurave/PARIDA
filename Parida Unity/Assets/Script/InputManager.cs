@@ -18,20 +18,23 @@ public class InputManager : MonoBehaviour {
         crosshair.SetActive(false);
         CanPlace = false;
     }
-    
+
     // Update is called once per frame
     void Update() {
         CrosshairCalculation();
         touch = Input.GetTouch(0);
+        IsPointerOverObject();
 
         if (Input.touchCount < 0 || touch.phase != TouchPhase.Began) return;
 
         if (IsPointerOverUI(touch)) return;
 
-        //if (IsPointerOverObject()) {  }
-
         if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began && CanPlace) {
-        Instantiate(DataHandler.Instance.furniture, crosshair.transform.position, crosshair.transform.rotation);
+            Instantiate(DataHandler.Instance.furniture, crosshair.transform.position, crosshair.transform.rotation);
+
+        }
+        if (Input.touchCount == 2 && Input.GetTouch(0).phase == TouchPhase.Began) {
+            //DoubleTouchObject(touch);
         }
 
     }
@@ -57,10 +60,31 @@ public class InputManager : MonoBehaviour {
         }
     }
 
-    //bool IsPointerOverObject() {
-    //    Vector3 origin = arCam.ViewportToScreenPoint(new Vector3(0.5f, 0.5f, 0));
-    //    Ray ray = arCam.ScreenPointToRay(origin);
-    //    //raycast
-    //    return true;
-    //}
+    
+    void DoubleTouchObject(Touch touch) {
+        Pose rPose;
+        Ray touchRay = Camera.main.ScreenPointToRay(touch.position);
+        RaycastHit hitObject;
+        if (Physics.Raycast(touchRay, out hitObject, 25.0f)) {
+            rPose.position = hitObject.rigidbody.position;
+            float altitude = rPose.position.y;
+            altitude += 10;
+            hitObject.rigidbody.MovePosition(new Vector3(rPose.position.x, altitude, rPose.position.z));
+        }
+    }
+
+    void IsPointerOverObject() {
+        Vector3 origin = arCam.ViewportToScreenPoint(new Vector3(0.5f, 0.5f, 0));
+        Ray pointingRay = arCam.ScreenPointToRay(origin);
+        RaycastHit objectHit;
+
+        if (Physics.Raycast(pointingRay, out objectHit)) {
+            if (objectHit.collider) {
+                crosshair.SetActive(false);
+            } else {
+                crosshair.SetActive(true);
+            }
+        }
+    }
+
 }
