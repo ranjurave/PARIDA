@@ -104,6 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2940818939922727624}
   - component: {fileID: 3033790836570392098}
+  - component: {fileID: 5979820926932402233}
   m_Layer: 0
   m_Name: Leather_Chair Variant 4
   m_TagString: Untagged
@@ -160,6 +161,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 2923513963479000588}
   m_Enabled: 1
+--- !u!65 &5979820926932402233
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2937649430991582158}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.39720482, y: 0.51799804, z: 0.41389903}
+  m_Center: {x: -0.0040335357, y: 0.21689042, z: -0.010466084}
 --- !u!1 &2937704520233243272
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.XR.ARSubsystems;
 
 public class InputManager : MonoBehaviour {
+
+    public GameObjectAdjust GOA;
+
     public Camera arCam;
     public ARRaycastManager raycastManager;
     private List<ARRaycastHit> hits = new List<ARRaycastHit>();
@@ -13,14 +16,18 @@ public class InputManager : MonoBehaviour {
     public GameObject crosshair;
     private bool CanPlace;
     private Pose pose;
-    private RaycastHit hitObject;
+    private RaycastHit objectHit;
+    private GameObject activeGameObject;
+    private string debugString;
 
     void Start() {
         CanPlace = false;
+        debugString = "default";
     }
 
     // Update is called once per frame
     void Update() {
+        
         crosshair.SetActive(CanPlace);
         CrosshairCalculation();
 
@@ -31,16 +38,20 @@ public class InputManager : MonoBehaviour {
         if (IsPointerOverUI(touch)) return;
 
         if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began && CanPlace) {
-            Instantiate(DataHandler.Instance.furniture, crosshair.transform.position, crosshair.transform.rotation);
-
+            debugString = "Touched";
+            activeGameObject = DataHandler.Instance.furniture;
+            //Following code not working!!!
+            //GOA.setGameObject = activeGameObject;
+            Instantiate(activeGameObject, crosshair.transform.position, crosshair.transform.rotation);
         }
         if (Input.touchCount == 2 && Input.GetTouch(0).phase == TouchPhase.Began) {
-            //DoubleTouchObject(touch);
+            DoubleTouchObject(touch);
         }
-
+        
     }
 
     bool IsPointerOverUI(Touch touch) {
+       
         PointerEventData eventData = new PointerEventData(EventSystem.current);
         eventData.position = new Vector2(touch.position.x, touch.position.y);
         List<RaycastResult> results = new List<RaycastResult>();
@@ -63,28 +74,33 @@ public class InputManager : MonoBehaviour {
 
 
     void DoubleTouchObject(Touch touch) {
-        Pose rPose;
-        Ray touchRay = Camera.main.ScreenPointToRay(touch.position);
+        activeGameObject.SetActive(false);
+        //Pose rPose;
+        //Ray touchRay = Camera.main.ScreenPointToRay(touch.position);
 
-        if (Physics.Raycast(touchRay, out hitObject, 25.0f)) {
-            rPose.position = hitObject.rigidbody.position;
-            float altitude = rPose.position.y;
-            altitude += 10;
-            hitObject.rigidbody.MovePosition(new Vector3(rPose.position.x, altitude, rPose.position.z));
-        }
+        //if (Physics.Raycast(touchRay, out objectHit, 25.0f)) {
+        //    rPose.position = objectHit.rigidbody.position;
+        //    float altitude = rPose.position.y;
+        //    altitude += 10;
+        //    objectHit.rigidbody.MovePosition(new Vector3(rPose.position.x, altitude, rPose.position.z));
+        //}
     }
 
     bool IsPointerOverObject() {
         Vector3 origin = arCam.ViewportToScreenPoint(new Vector3(0.5f, 0.5f, 0));
         Ray pointingRay = arCam.ScreenPointToRay(origin);
-        RaycastHit objectHit;
+        //RaycastHit objectHit;
 
         if (Physics.Raycast(pointingRay, out objectHit)) {
             if (objectHit.collider) {
+                activeGameObject = objectHit.collider.gameObject;
                 return false;
+            } else {
+                activeGameObject = null;
+                return true;
             }
-            return true;
         }
+        activeGameObject = null;
         return true;
     }
 
@@ -92,6 +108,7 @@ public class InputManager : MonoBehaviour {
         GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
         myRectStyle.fontSize = 25;
         myRectStyle.normal.textColor = Color.red;
-        GUI.Box(new Rect(new Vector2(100, 100), new Vector2(200, 200)), CanPlace.ToString()  , myRectStyle);
+        //activeGameObject = objectHit.collider.gameObject;
+        GUI.Box(new Rect(new Vector2(100, 100), new Vector2(200, 200)), activeGameObject.name  , myRectStyle);
     }
 }
