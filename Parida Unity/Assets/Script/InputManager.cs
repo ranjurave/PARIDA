@@ -14,26 +14,44 @@ public class InputManager : MonoBehaviour {
     private List<ARRaycastHit> hits = new List<ARRaycastHit>();
     private Touch touch;
     public GameObject crosshair;
-    private bool CanPlace;
+    public bool CanPlace;
     private Pose pose;
     private RaycastHit objectHit;
-    private GameObject activeGameObject;
+    public GameObject activeGameObject;
     private string debugString;
+    private Mesh transformPlanes;
+
+    public string testVar;
+
+    private static InputManager m_instance;
+    
+    public static InputManager Instance {
+        get { 
+            if (m_instance == null) {
+                m_instance = GameObject.FindObjectOfType<InputManager>();
+            }
+            return m_instance;
+        }
+    }
 
     void Start() {
         CanPlace = false;
         debugString = "default";
+        testVar = "this is test";
     }
 
     // Update is called once per frame
     void Update() {
-        
-        crosshair.SetActive(CanPlace);
-        CrosshairCalculation();
 
+        CrosshairCalculation();
+        crosshair.SetActive(CanPlace);
+
+
+        if (Input.touchCount == 0) return;
+        
         touch = Input.GetTouch(0);
 
-        if (Input.touchCount < 0 || touch.phase != TouchPhase.Began) return;
+        if (touch.phase != TouchPhase.Began) return;
 
         if (IsPointerOverUI(touch)) return;
 
@@ -42,7 +60,8 @@ public class InputManager : MonoBehaviour {
             activeGameObject = DataHandler.Instance.furniture;
             //Following code not working!!!
             //GOA.setGameObject = activeGameObject;
-            Instantiate(activeGameObject, crosshair.transform.position, crosshair.transform.rotation);
+            GameObject copy = Instantiate(activeGameObject, crosshair.transform.position, crosshair.transform.rotation);
+            copy.name = copy.name.Replace("(Clone)", "");
         }
         if (Input.touchCount == 2 && Input.GetTouch(0).phase == TouchPhase.Began) {
             DoubleTouchObject(touch);
@@ -64,7 +83,7 @@ public class InputManager : MonoBehaviour {
         Ray ray = arCam.ScreenPointToRay(origin);
 
         if (raycastManager.Raycast(ray, hits)) {
-            CanPlace = IsPointerOverObject();
+            CanPlace = !IsPointerOverObject();
             crosshair.SetActive(CanPlace);
             pose = hits[0].pose;
             crosshair.transform.position = pose.position;
@@ -92,16 +111,18 @@ public class InputManager : MonoBehaviour {
         //RaycastHit objectHit;
 
         if (Physics.Raycast(pointingRay, out objectHit)) {
-            if (objectHit.collider) {
+            if (objectHit.collider != null) {
                 activeGameObject = objectHit.collider.gameObject;
-                return false;
+                //transformPlanes = activeGameObject.GetComponent<Mesh>();
+                //transformPlanes
+                return true;
             } else {
                 activeGameObject = null;
-                return true;
+                return false;
             }
         }
         activeGameObject = null;
-        return true;
+        return false;
     }
 
     private void OnGUI() {
@@ -109,6 +130,6 @@ public class InputManager : MonoBehaviour {
         myRectStyle.fontSize = 25;
         myRectStyle.normal.textColor = Color.red;
         //activeGameObject = objectHit.collider.gameObject;
-        GUI.Box(new Rect(new Vector2(100, 100), new Vector2(200, 200)), activeGameObject.name  , myRectStyle);
+        GUI.Box(new Rect(new Vector2(100, 100), new Vector2(200, 200)), activeGameObject?.name, myRectStyle);
     }
 }

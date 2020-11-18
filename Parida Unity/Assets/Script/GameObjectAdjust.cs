@@ -1,35 +1,51 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 
 public class GameObjectAdjust : MonoBehaviour
 {
-    private Button btn;
-    public GameObject setGameObject;
-    private string debugString;
+    public Button DeleteButton;
+ 
     // Start is called before the first frame update
     void Start()
     {
-        debugString = "start";
-        btn = GetComponent<Button>();
+        m_prevActiveGameObject = null;
 
-        btn.onClick.AddListener(DeleteGameObject);
+        DeleteButton.onClick.AddListener(DeleteGameObject);
+        DeleteButton.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
+    private void Update()
+    {
+        GameObject activeObject = InputManager.Instance.activeGameObject;
+        if (activeObject != m_prevActiveGameObject) {
+            // selection changed
+            if (activeObject != null) {
+                Debug.LogFormat("New active object '{0}'", activeObject.name);
+                DeleteButton.gameObject.SetActive(true);
+                DeleteButton.GetComponentInChildren<Text>().text = "Delete\n" + activeObject.name;
+            } else {
+                Debug.LogFormat("No active object");
+                DeleteButton.gameObject.SetActive(false);
+            }
+            m_prevActiveGameObject = activeObject;
+        }
+    }
+
     void DeleteGameObject()
     {
-        debugString = "Button press" ;
-        setGameObject.SetActive(false);
+        GameObject activeObject = InputManager.Instance.activeGameObject;
+        Debug.LogFormat("Deleting '{0}'", activeObject.name); ;
+        GameObject.Destroy(activeObject);
     }
 
     private void OnGUI() {
         GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
         myRectStyle.fontSize = 25;
         myRectStyle.normal.textColor = Color.red;
-        //activeGameObject = objectHit.collider.gameObject;
-        GUI.Box(new Rect(new Vector2(100, 300), new Vector2(200, 200)), debugString, myRectStyle);
+        GUI.Box(new Rect(new Vector2(100, 300), new Vector2(200, 200)), InputManager.Instance.activeGameObject?.name, myRectStyle);
     }
+
+    private GameObject m_prevActiveGameObject;
 }
