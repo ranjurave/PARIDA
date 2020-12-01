@@ -105,6 +105,8 @@ GameObject:
   - component: {fileID: 2940818939922727624}
   - component: {fileID: 3033790836570392098}
   - component: {fileID: 5979820926932402233}
+  - component: {fileID: 4863165082911002450}
+  - component: {fileID: 5018046876409424420}
   m_Layer: 0
   m_Name: Leather_Chair Variant 4
   m_TagString: Untagged
@@ -174,6 +176,50 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.39720482, y: 0.51799804, z: 0.41389903}
   m_Center: {x: -0.0040335357, y: 0.21689042, z: -0.010466084}
+--- !u!114 &4863165082911002450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2937649430991582158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7c91b26689a054d88448aba6dfe424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Use:
+    Filter: 0
+    IgnoreStartedOverGui: 1
+    RequiredFingerCount: 2
+    RequiredMouseButtons: 0
+    RequiredSelectable: {fileID: 0}
+  Axis: {x: 0, y: -1, z: 0}
+  Space: 1
+  Sensitivity: 1
+--- !u!114 &5018046876409424420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2937649430991582158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eda371e5375f454490a86f21559ee38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Use:
+    Filter: 0
+    IgnoreStartedOverGui: 1
+    RequiredFingerCount: 1
+    RequiredMouseButtons: 0
+    RequiredSelectable: {fileID: 0}
+  Camera: {fileID: 0}
+  Sensitivity: 1
+  Dampening: -1
+  Inertia: 0
+  remainingTranslation: {x: 0, y: 0, z: 0}
 --- !u!1 &2937704520233243272
 GameObject:
   m_ObjectHideFlags: 0

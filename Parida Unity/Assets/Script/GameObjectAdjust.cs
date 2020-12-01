@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-
 public class GameObjectAdjust : MonoBehaviour
 {
     public Button DeleteButton;
- 
+    private GameObject m_prevActiveGameObject;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +20,7 @@ public class GameObjectAdjust : MonoBehaviour
     {
         GameObject activeObject = InputManager.Instance.activeGameObject;
         if (activeObject != m_prevActiveGameObject) {
-            // selection changed
+
             if (activeObject != null) {
                 Debug.LogFormat("New active object '{0}'", activeObject.name);
                 DeleteButton.gameObject.SetActive(true);
@@ -38,6 +38,7 @@ public class GameObjectAdjust : MonoBehaviour
         GameObject activeObject = InputManager.Instance.activeGameObject;
         Debug.LogFormat("Deleting '{0}'", activeObject.name); ;
         GameObject.Destroy(activeObject);
+        DeleteButton.gameObject.SetActive(false);
     }
 
     private void OnGUI() {
@@ -46,6 +47,4 @@ public class GameObjectAdjust : MonoBehaviour
         myRectStyle.normal.textColor = Color.red;
         GUI.Box(new Rect(new Vector2(100, 300), new Vector2(200, 200)), InputManager.Instance.activeGameObject?.name, myRectStyle);
     }
-
-    private GameObject m_prevActiveGameObject;
 }
