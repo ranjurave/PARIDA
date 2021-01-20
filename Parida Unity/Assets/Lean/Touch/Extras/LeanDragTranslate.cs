@@ -37,8 +37,8 @@ namespace Lean.Touch
 		[SerializeField]
 		private Vector3 remainingTranslation;
 
-		/// <summary>If you've set Use to ManuallyAddedFingers, then you can call this method to manually add a finger.</summary>
-		public void AddFinger(LeanFinger finger)
+        /// <summary>If you've set Use to ManuallyAddedFingers, then you can call this method to manually add a finger.</summary>
+        public void AddFinger(LeanFinger finger)
 		{
 			Use.AddFinger(finger);
 		}
@@ -77,17 +77,22 @@ namespace Lean.Touch
 
 			// Calculate the screenDelta value based on these fingers
 			var screenDelta = LeanGesture.GetScreenDelta(fingers);
-
-			if (screenDelta != Vector2.zero)
+            
+            if (screenDelta != Vector2.zero)
 			{
-				// Perform the translation
-				if (transform is RectTransform)
+                //Vector3 processed = new Vector3(screenDelta.x, Mathf.Clamp(screenDelta.y, 0f, 0f), screenDelta.y);
+                //screenDelta = new Vector3(screenDelta.x, Mathf.Clamp(screenDelta.y, 0f, 0f), screenDelta.y);
+
+                // Perform the translation
+                if (transform is RectTransform)
 				{
-					TranslateUI(screenDelta);
+                    //screenDelta = new Vector3(0f, 0f, screenDelta.x);
+                    TranslateUI(screenDelta);
 				}
 				else
 				{
-					Translate(screenDelta);
+                    //screenDelta = new Vector3(screenDelta.x, Mathf.Clamp(screenDelta.y, 0f, 0f), screenDelta.y);
+                    Translate(screenDelta);
 				}
 			}
 
@@ -143,8 +148,10 @@ namespace Lean.Touch
 
 		private void Translate(Vector2 screenDelta)
 		{
-			// Make sure the camera exists
-			var camera = LeanTouch.GetCamera(Camera, gameObject);
+            //screenDelta = new Vector3(screenDelta.x, 0f, screenDelta.y*10);
+
+            // Make sure the camera exists
+            var camera = LeanTouch.GetCamera(Camera, gameObject);
 
 			if (camera != null)
 			{

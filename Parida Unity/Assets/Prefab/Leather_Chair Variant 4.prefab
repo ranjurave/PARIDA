@@ -217,7 +217,7 @@ MonoBehaviour:
     RequiredSelectable: {fileID: 0}
   Camera: {fileID: 0}
   Sensitivity: 1
-  Dampening: -1
+  Dampening: 50
   Inertia: 0
   remainingTranslation: {x: 0, y: 0, z: 0}
 --- !u!1 &2937704520233243272

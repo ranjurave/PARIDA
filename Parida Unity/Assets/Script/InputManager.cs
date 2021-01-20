@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.EventSystems;
-using UnityEngine.XR.ARSubsystems;
 
 public class InputManager : MonoBehaviour {
     public Camera arCam;
