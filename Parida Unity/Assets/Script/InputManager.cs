@@ -11,10 +11,8 @@ public class InputManager : MonoBehaviour {
     private Touch touch;
     private bool CanPlace;
     private Pose pose;
-    private RaycastHit objectHit;
     public GameObject activeGameObject;
 
-    private string debugString;
     private static InputManager m_instance;
 
     public static InputManager Instance {
@@ -28,7 +26,6 @@ public class InputManager : MonoBehaviour {
 
     void Start() {
         CanPlace = false;
-        debugString = "default";
     }
 
     // Update is called once per frame
@@ -45,7 +42,6 @@ public class InputManager : MonoBehaviour {
         if (IsPointerOverUI(touch)) return;
 
         if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began && CanPlace) {
-            debugString = "Touched";
             activeGameObject = DataHandler.Instance.furniture;
             GameObject copy = Instantiate(activeGameObject, crosshair.transform.position, crosshair.transform.rotation);
             copy.name = copy.name.Replace("(Clone)", "");

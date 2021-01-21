@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class GameObjectAdjust : MonoBehaviour
+public class GameObjectDelete : MonoBehaviour
 {
     public Button DeleteButton;
     private GameObject m_prevActiveGameObject;

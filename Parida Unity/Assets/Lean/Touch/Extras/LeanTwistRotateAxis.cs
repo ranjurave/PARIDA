@@ -63,7 +63,8 @@ namespace Lean.Touch
 			var twistDegrees = LeanGesture.GetTwistDegrees(fingers) * Sensitivity;
 
 			// Perform rotation
-			transform.Rotate(Axis, twistDegrees, Space);
-		}
+            this.transform.Rotate(Axis, twistDegrees, Space);
+            //transform.Rotate(Axis, twistDegrees, Space);
+        }
 	}
 }
