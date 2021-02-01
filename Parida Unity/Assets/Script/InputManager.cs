@@ -12,6 +12,7 @@ public class InputManager : MonoBehaviour {
     private bool CanPlace;
     private Pose pose;
     public GameObject activeGameObject;
+    //private string test;
 
     private static InputManager m_instance;
 
@@ -32,7 +33,7 @@ public class InputManager : MonoBehaviour {
     void Update() {
         CrosshairCalculation();
         crosshair.SetActive(CanPlace);
-
+        
         if (Input.touchCount == 0) return;
         
         touch = Input.GetTouch(0);
@@ -45,7 +46,9 @@ public class InputManager : MonoBehaviour {
             activeGameObject = DataHandler.Instance.furniture;
             GameObject copy = Instantiate(activeGameObject, crosshair.transform.position, crosshair.transform.rotation);
             copy.name = copy.name.Replace("(Clone)", "");
-        }       
+        }
+
+
 
         if (CanPlace) {
             Vector3 loc;
@@ -81,9 +84,15 @@ public class InputManager : MonoBehaviour {
     bool IsPointerOverObject(Ray pointingRay) {
         RaycastHit objectHit;
 
+
+
         if (Physics.Raycast(pointingRay, out objectHit)) {
             if (objectHit.collider != null) {
                 activeGameObject = objectHit.collider.gameObject;
+                if (Input.touchCount == 1) {
+                    var hitPose = hits[0].pose;
+                    activeGameObject.transform.position = hitPose.position;
+                }
                 return true;
             } else {
                 activeGameObject = null;
