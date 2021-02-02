@@ -12,7 +12,8 @@ public class GameObjectDelete : MonoBehaviour
         m_prevActiveGameObject = null;
 
         DeleteButton.onClick.AddListener(DeleteGameObject);
-        DeleteButton.gameObject.SetActive(false);
+        //DeleteButton.gameObject.SetActive(false);
+        DeleteButton.interactable = false;
     }
 
     // Update is called once per frame
@@ -23,11 +24,13 @@ public class GameObjectDelete : MonoBehaviour
 
             if (activeObject != null) {
                 Debug.LogFormat("New active object '{0}'", activeObject.name);
-                DeleteButton.gameObject.SetActive(true);
+                //DeleteButton.gameObject.SetActive(true);
+                DeleteButton.interactable = true;
                 DeleteButton.GetComponentInChildren<Text>().text = "Delete\n" + activeObject.name;
             } else {
                 Debug.LogFormat("No active object");
-                DeleteButton.gameObject.SetActive(false);
+                //DeleteButton.gameObject.SetActive(false);
+                DeleteButton.interactable = false;
             }
             m_prevActiveGameObject = activeObject;
         }
@@ -38,7 +41,8 @@ public class GameObjectDelete : MonoBehaviour
         GameObject activeObject = InputManager.Instance.activeGameObject;
         Debug.LogFormat("Deleting '{0}'", activeObject.name); ;
         GameObject.Destroy(activeObject);
-        DeleteButton.gameObject.SetActive(false);
+        //DeleteButton.gameObject.SetActive(false);
+        DeleteButton.interactable = false;
     }
 
     private void OnGUI() {
