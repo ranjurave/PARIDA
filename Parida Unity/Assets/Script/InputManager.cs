@@ -7,16 +7,17 @@ public class InputManager : MonoBehaviour {
     public Camera arCam;
     public ARRaycastManager raycastManager;
     public GameObject crosshair;
+    private bool canGrabObject;
     private List<ARRaycastHit> hits = new List<ARRaycastHit>();
     private Touch touch;
     private bool CanPlace;
     private Pose pose;
     public GameObject activeGameObject;
-    private string test;
+    //private string test;
     private static InputManager m_instance;
 
     public static InputManager Instance {
-        get { 
+        get {
             if (m_instance == null) {
                 m_instance = GameObject.FindObjectOfType<InputManager>();
             }
@@ -26,7 +27,7 @@ public class InputManager : MonoBehaviour {
 
     void Start() {
         CanPlace = false;
-        test = "000000";
+        canGrabObject = false;
     }
 
     // Update is called once per frame
@@ -35,10 +36,10 @@ public class InputManager : MonoBehaviour {
         crosshair.SetActive(CanPlace);
 
         if (Input.touchCount == 0) {
-            test = "000000";
+            canGrabObject = true;
             return;
         }
-        
+
         touch = Input.GetTouch(0);
 
         if (IsPointerOverUI(touch)) return;
@@ -49,11 +50,9 @@ public class InputManager : MonoBehaviour {
             copy.name = copy.name.Replace("(Clone)", "");
         }
 
-        if(Input.touchCount == 2) {
-            test = "11111111";
+        if (Input.touchCount == 2) {
 
-            Vector3 touchPos = arCam.ViewportToScreenPoint(touch.position);
-            Ray ray = arCam.ScreenPointToRay(touch.position);
+            Ray ray = arCam.ScreenPointToRay(touch.position);   
 
             if (raycastManager.Raycast(ray, hits)) {
                 pose = hits[0].pose;
@@ -62,7 +61,7 @@ public class InputManager : MonoBehaviour {
                 float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
                 angle += 180;
 
-                test = angle + " \n" + pose.position;
+                //test = angle + " \n" + pose.position;
 
                 Vector3 rot = activeGameObject.transform.localEulerAngles;
                 activeGameObject.transform.localEulerAngles = new Vector3(rot.x, angle, rot.z);
@@ -71,7 +70,7 @@ public class InputManager : MonoBehaviour {
     }
 
     bool IsPointerOverUI(Touch touch) {
-       
+
         PointerEventData eventData = new PointerEventData(EventSystem.current);
         eventData.position = new Vector2(touch.position.x, touch.position.y);
         List<RaycastResult> results = new List<RaycastResult>();
@@ -97,10 +96,13 @@ public class InputManager : MonoBehaviour {
 
         if (Physics.Raycast(pointingRay, out objectHit)) {
             if (objectHit.collider != null) {
-                activeGameObject = objectHit.collider.gameObject;
+                if (canGrabObject) {
+                    activeGameObject = objectHit.collider.gameObject;
+                    canGrabObject = false;
+                }
                 if (Input.touchCount == 1) {
                     var hitPose = hits[0].pose;
-                    activeGameObject.transform.position = hitPose.position;
+                        activeGameObject.transform.position = hitPose.position;
                 }
                 return true;
             } else {
@@ -116,6 +118,6 @@ public class InputManager : MonoBehaviour {
         GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
         myRectStyle.fontSize = 25;
         myRectStyle.normal.textColor = Color.red;
-        GUI.Box(new Rect(new Vector2(100, 100), new Vector2(200, 200)), test, myRectStyle);
+        GUI.Box(new Rect(new Vector2(100, 100), new Vector2(200, 200)), canGrabObject.ToString(), myRectStyle);
     }
 }
