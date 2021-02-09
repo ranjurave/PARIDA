@@ -13,7 +13,8 @@ public class InputManager : MonoBehaviour {
     private bool CanPlace;
     private Pose pose;
     public GameObject activeGameObject;
-    //private string test;
+    public GameObject selectedGameObject;
+    private string test;
     private static InputManager m_instance;
 
     public static InputManager Instance {
@@ -28,6 +29,7 @@ public class InputManager : MonoBehaviour {
     void Start() {
         CanPlace = false;
         canGrabObject = false;
+        activeGameObject = selectedGameObject;
     }
 
     // Update is called once per frame
@@ -45,7 +47,8 @@ public class InputManager : MonoBehaviour {
         if (IsPointerOverUI(touch)) return;
 
         if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began && CanPlace) {
-            activeGameObject = DataHandler.Instance.furniture;
+            //activeGameObject = DataHandler.Instance.furniture;
+            //activeGameObject = selectedGameObject;
             GameObject copy = Instantiate(activeGameObject, crosshair.transform.position, crosshair.transform.rotation);
             copy.name = copy.name.Replace("(Clone)", "");
         }
@@ -79,6 +82,7 @@ public class InputManager : MonoBehaviour {
     }
 
     void CrosshairCalculation() {
+        test = "crosssss";
         Vector3 origin = arCam.ViewportToScreenPoint(new Vector3(0.5f, 0.5f, 0));
         Ray ray = arCam.ScreenPointToRay(origin);
 
@@ -92,6 +96,7 @@ public class InputManager : MonoBehaviour {
     }
 
     bool IsPointerOverObject(Ray pointingRay) {
+        test = "over object";
         RaycastHit objectHit;
 
         if (Physics.Raycast(pointingRay, out objectHit)) {
@@ -102,15 +107,15 @@ public class InputManager : MonoBehaviour {
                 }
                 if (Input.touchCount == 1) {
                     var hitPose = hits[0].pose;
-                        activeGameObject.transform.position = hitPose.position;
+                    activeGameObject.transform.position = hitPose.position;
                 }
                 return true;
             } else {
-                activeGameObject = null;
+                //activeGameObject = null;
                 return false;
             }
         }
-        activeGameObject = null;
+        //activeGameObject = null;
         return false;
     }
 
@@ -118,6 +123,6 @@ public class InputManager : MonoBehaviour {
         GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
         myRectStyle.fontSize = 25;
         myRectStyle.normal.textColor = Color.red;
-        GUI.Box(new Rect(new Vector2(100, 100), new Vector2(200, 200)), canGrabObject.ToString(), myRectStyle);
+        GUI.Box(new Rect(new Vector2(100, 100), new Vector2(200, 200)), activeGameObject.name, myRectStyle);
     }
 }

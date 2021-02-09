@@ -39,9 +39,9 @@ public class GameObjectDelete : MonoBehaviour
     void DeleteGameObject()
     {
         GameObject activeObject = InputManager.Instance.activeGameObject;
-        Debug.LogFormat("Deleting '{0}'", activeObject.name); ;
+        Debug.LogFormat("Deleting '{0}'", activeObject.name); 
         GameObject.Destroy(activeObject);
-        //DeleteButton.gameObject.SetActive(false);
+        InputManager.Instance.activeGameObject = InputManager.Instance.selectedGameObject;
         DeleteButton.interactable = false;
     }
 
