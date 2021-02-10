@@ -12,7 +12,6 @@ public class GameObjectDelete : MonoBehaviour
         m_prevActiveGameObject = null;
 
         DeleteButton.onClick.AddListener(DeleteGameObject);
-        //DeleteButton.gameObject.SetActive(false);
         DeleteButton.interactable = false;
     }
 

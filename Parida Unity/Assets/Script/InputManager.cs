@@ -14,26 +14,31 @@ public class InputManager : MonoBehaviour {
     private Pose pose;
     public GameObject activeGameObject;
     public GameObject selectedGameObject;
-    private string test;
     private static InputManager m_instance;
 
+    // Property with setter and getter
     public static InputManager Instance {
         get {
             if (m_instance == null) {
                 m_instance = GameObject.FindObjectOfType<InputManager>();
             }
+        
             return m_instance;
+        }
+        set {
+            m_instance = value;
         }
     }
 
+    // Start is called before the first frame update
     void Start() {
         CanPlace = false;
         canGrabObject = false;
-        activeGameObject = selectedGameObject;
     }
 
     // Update is called once per frame
     void Update() {
+
         CrosshairCalculation();
         crosshair.SetActive(CanPlace);
 
@@ -46,13 +51,15 @@ public class InputManager : MonoBehaviour {
 
         if (IsPointerOverUI(touch)) return;
 
+        // On one finger touch
+        //**************************
         if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began && CanPlace) {
-            //activeGameObject = DataHandler.Instance.furniture;
-            //activeGameObject = selectedGameObject;
-            GameObject copy = Instantiate(activeGameObject, crosshair.transform.position, crosshair.transform.rotation);
+            GameObject copy = Instantiate(selectedGameObject, crosshair.transform.position, crosshair.transform.rotation);
             copy.name = copy.name.Replace("(Clone)", "");
         }
 
+        // On two finger touch
+        //*************************
         if (Input.touchCount == 2) {
 
             Ray ray = arCam.ScreenPointToRay(touch.position);   
@@ -64,13 +71,15 @@ public class InputManager : MonoBehaviour {
                 float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
                 angle += 180;
 
-                //test = angle + " \n" + pose.position;
-
                 Vector3 rot = activeGameObject.transform.localEulerAngles;
                 activeGameObject.transform.localEulerAngles = new Vector3(rot.x, angle, rot.z);
             }
         }
     }
+
+    //********************
+    // Methods
+    //********************
 
     bool IsPointerOverUI(Touch touch) {
 
@@ -82,7 +91,6 @@ public class InputManager : MonoBehaviour {
     }
 
     void CrosshairCalculation() {
-        test = "crosssss";
         Vector3 origin = arCam.ViewportToScreenPoint(new Vector3(0.5f, 0.5f, 0));
         Ray ray = arCam.ScreenPointToRay(origin);
 
@@ -96,7 +104,6 @@ public class InputManager : MonoBehaviour {
     }
 
     bool IsPointerOverObject(Ray pointingRay) {
-        test = "over object";
         RaycastHit objectHit;
 
         if (Physics.Raycast(pointingRay, out objectHit)) {
@@ -111,11 +118,9 @@ public class InputManager : MonoBehaviour {
                 }
                 return true;
             } else {
-                //activeGameObject = null;
                 return false;
             }
         }
-        //activeGameObject = null;
         return false;
     }
 
@@ -123,6 +128,6 @@ public class InputManager : MonoBehaviour {
         GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
         myRectStyle.fontSize = 25;
         myRectStyle.normal.textColor = Color.red;
-        GUI.Box(new Rect(new Vector2(100, 100), new Vector2(200, 200)), activeGameObject.name, myRectStyle);
+        GUI.Box(new Rect(new Vector2(100, 100), new Vector2(200, 200)), selectedGameObject.name, myRectStyle);
     }
 }
