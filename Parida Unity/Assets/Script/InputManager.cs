@@ -117,13 +117,15 @@ public class InputManager : MonoBehaviour {
                     activeGameObject.transform.position = hitPose.position;
                 }
                 return true;
-            } else {
+            } else
                 return false;
-            }
         }
         return false;
     }
 
+    //********************
+    // for debugging
+    //********************
     private void OnGUI() {
         GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
         myRectStyle.fontSize = 25;

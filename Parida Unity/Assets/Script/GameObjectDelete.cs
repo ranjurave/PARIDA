@@ -16,19 +16,18 @@ public class GameObjectDelete : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
-    {
+    private void Update() {
         GameObject activeObject = InputManager.Instance.activeGameObject;
+        if (activeObject==null) {
+            DeleteButton.interactable = false;
+        }
         if (activeObject != m_prevActiveGameObject) {
-
             if (activeObject != null) {
                 Debug.LogFormat("New active object '{0}'", activeObject.name);
-                //DeleteButton.gameObject.SetActive(true);
                 DeleteButton.interactable = true;
                 DeleteButton.GetComponentInChildren<Text>().text = "Delete\n" + activeObject.name;
             } else {
                 Debug.LogFormat("No active object");
-                //DeleteButton.gameObject.SetActive(false);
                 DeleteButton.interactable = false;
             }
             m_prevActiveGameObject = activeObject;
@@ -40,7 +39,7 @@ public class GameObjectDelete : MonoBehaviour
         GameObject activeObject = InputManager.Instance.activeGameObject;
         Debug.LogFormat("Deleting '{0}'", activeObject.name); 
         GameObject.Destroy(activeObject);
-        InputManager.Instance.activeGameObject = InputManager.Instance.selectedGameObject;
+        //InputManager.Instance.activeGameObject = InputManager.Instance.selectedGameObject;
         DeleteButton.interactable = false;
     }
 
