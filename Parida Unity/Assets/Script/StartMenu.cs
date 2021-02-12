@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StyleSelect : MonoBehaviour
+public class StartMenu : MonoBehaviour
 {
-public void StyleSelection() {
-        SceneManager.LoadScene("StyleSelection");
+    public void RoomSelect() {
+        SceneManager.LoadScene("PARIDA");
     }
 }
