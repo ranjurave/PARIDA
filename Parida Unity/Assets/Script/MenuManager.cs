@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 using System;
 
 public class MenuManager : MonoBehaviour {
-    public bool debug;
-    private Button btn;
+    //public bool debug;
+    //private Button btn;
     public GameObject selectedFocus;
-    public GameObject RootPanel;
+    private GameObject previousPanel;
+    private GameObject curentPanel;
+    public GameObject onScreenUI;
     public GameObject roomSelection;
     public GameObject styleSelection;
     public GameObject focusObjectSelection;
@@ -18,44 +20,44 @@ public class MenuManager : MonoBehaviour {
     void Start() {
         roomSelection.SetActive(true);
         styleSelection.SetActive(false);
-        focusObjectSelection.SetActive(false);
         focusObjectTypeSelection.SetActive(false);
-        btn = GetComponent<Button>();
-        btn.onClick.AddListener(OpenApp);
+        focusObjectSelection.SetActive(false);
+        //btn = GetComponent<Button>();
+        //btn.onClick.AddListener(OpenApp);
     }
 
-    public void OpenApp() {
-        InputManager.Instance.selectedGameObject = selectedFocus;
-        RootPanel.SetActive(false);
+    //public void OpenApp() {
+    //    rootPanel.SetActive(false);
+    //}
 
+    public void StyleSelection() {
+        previousPanel = roomSelection;
+        curentPanel = styleSelection;
+        previousPanel.SetActive(false);
+        curentPanel.SetActive(true);
     }
-    public void TestMethod() {
-        InputManager.Instance.selectedGameObject = selectedFocus;
-        roomSelection.SetActive(false);
-        styleSelection.SetActive(true);
+    public void FocusObjectTypeSelection() {
+        previousPanel = curentPanel;
+        curentPanel = focusObjectTypeSelection;
+        previousPanel.SetActive(false);
+        curentPanel.SetActive(true);
     }
-    //public void OpenApp() {
-    //    InputManager.Instance.selectedGameObject = selectedFocus;
-    //    RootPanel.SetActive(false);
-    //}
-    //public void OpenApp() {
-    //    InputManager.Instance.selectedGameObject = selectedFocus;
-    //    RootPanel.SetActive(false);
-    //}
-    //public void OpenApp() {
-    //    InputManager.Instance.selectedGameObject = selectedFocus;
-    //    RootPanel.SetActive(false);
-    //}
-    //public void OpenApp() {
-    //    InputManager.Instance.selectedGameObject = selectedFocus;
-    //    RootPanel.SetActive(false);
-    //}
-    //public void OpenApp() {
-    //    InputManager.Instance.selectedGameObject = selectedFocus;
-    //    RootPanel.SetActive(false);
-    //}
-    //public void OpenApp() {
-    //    InputManager.Instance.selectedGameObject = selectedFocus;
-    //    RootPanel.SetActive(false);
-    //}
+    public void FocusObjectSelection() {
+        previousPanel = curentPanel;
+        curentPanel = focusObjectSelection;
+        previousPanel.SetActive(false);
+        curentPanel.SetActive(true);
+    }
+    public void ObjectSelected() {
+        previousPanel = curentPanel;
+        curentPanel = onScreenUI;
+        previousPanel.SetActive(false);
+        curentPanel.SetActive(true);
+    }
+    public void BackButton() {
+        previousPanel = onScreenUI;
+        curentPanel = previousPanel;
+        previousPanel.SetActive(false);
+        curentPanel.SetActive(true);
+    }
 }

@@ -204,7 +204,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1004842588}
-        m_MethodName: RoomSelect
+        m_MethodName: StartApplication
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -344,6 +344,7 @@ GameObject:
   - component: {fileID: 338991721}
   - component: {fileID: 338991723}
   - component: {fileID: 338991722}
+  - component: {fileID: 338991724}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -488,6 +489,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 338991720}
   m_CullTransparentMesh: 0
+--- !u!114 &338991724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338991720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f21a2a673b8e3774a8c2377a9bdb7578, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &456792389
 GameObject:
   m_ObjectHideFlags: 0

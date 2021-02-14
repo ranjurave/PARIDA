@@ -5,18 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: a91bcf0c4e8d7dc41a43cc7e4764e1bf
-  - enabled: 0
-    path: Assets/Scenes/RoomSelection.unity
-    guid: b3e7c6f65ff9f29458fc174752c26351
-  - enabled: 0
-    path: Assets/Scenes/StyleSelection.unity
-    guid: c5241a4973f838144a76e0088a053464
-  - enabled: 0
-    path: Assets/Scenes/FocusSelection.unity
-    guid: 0cbd610e1ff5f3649b333e98d079b647
   - enabled: 1
     path: Assets/Scenes/PARIDA.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab

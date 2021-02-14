@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour
 {
-    public void RoomSelect() {
+    public void StartApplication() {
         SceneManager.LoadScene("PARIDA");
     }
 }
