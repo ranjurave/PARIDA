@@ -6,11 +6,10 @@ using UnityEngine.SceneManagement;
 using System;
 
 public class MenuManager : MonoBehaviour {
-    //public bool debug;
-    //private Button btn;
     public GameObject selectedFocus;
     private GameObject previousPanel;
     private GameObject curentPanel;
+    private GameObject tempPanel;
     public GameObject onScreenUI;
     public GameObject roomSelection;
     public GameObject styleSelection;
@@ -22,13 +21,7 @@ public class MenuManager : MonoBehaviour {
         styleSelection.SetActive(false);
         focusObjectTypeSelection.SetActive(false);
         focusObjectSelection.SetActive(false);
-        //btn = GetComponent<Button>();
-        //btn.onClick.AddListener(OpenApp);
     }
-
-    //public void OpenApp() {
-    //    rootPanel.SetActive(false);
-    //}
 
     public void StyleSelection() {
         previousPanel = roomSelection;
@@ -55,8 +48,9 @@ public class MenuManager : MonoBehaviour {
         curentPanel.SetActive(true);
     }
     public void BackButton() {
-        previousPanel = onScreenUI;
+        tempPanel = curentPanel;
         curentPanel = previousPanel;
+        previousPanel = tempPanel;
         previousPanel.SetActive(false);
         curentPanel.SetActive(true);
     }

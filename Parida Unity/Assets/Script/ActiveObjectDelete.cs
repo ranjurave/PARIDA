@@ -3,8 +3,7 @@ using UnityEngine.UI;
 
 public class ActiveObjectDelete : MonoBehaviour {
     public Button deleteButton;
-    private string buttonText;
-
+    
     // Start is called before the first frame update
     void Start() {
         deleteButton.onClick.AddListener(DeleteGameObject);
