@@ -3,7 +3,8 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.EventSystems;
 
-public class InputManager : MonoBehaviour {
+public class InputManager : MonoBehaviour
+{
     public Camera arCam;
     public ARRaycastManager raycastManager;
     public GameObject crosshair;
@@ -12,96 +13,116 @@ public class InputManager : MonoBehaviour {
     private bool canGrabObject;
     private bool canPlaceObject;
     private Pose pose;
+    //private GameObject previousActiveGameObject;
     public GameObject activeGameObject;
     public GameObject selectedGameObject;
     private static InputManager m_instance;
 
     // Property with setter and getter
-    public static InputManager Instance {
-        get {
-            if (m_instance == null) {
+    public static InputManager Instance
+    {
+        get
+        {
+            if (m_instance == null)
+            {
                 m_instance = GameObject.FindObjectOfType<InputManager>();
             }
-        
+
             return m_instance;
         }
-        set {
+        set
+        {
             m_instance = value;
         }
     }
 
     // Start is called before the first frame update
-    void Start() {
+    void Start()
+    {
         canPlaceObject = false;
         canGrabObject = false;
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
+
 
         CrosshairCalculation();
         crosshair.SetActive(canPlaceObject);
 
-        if (Input.touchCount == 0) {
+        if (Input.touchCount == 0)
+        {
             canGrabObject = true;
             return;
         }
 
         touch = Input.GetTouch(0);
 
-        if (IsPointerOverUI(touch)) return;
+        //if (IsPointerOverUI(touch)) return;
 
         // On one finger touch
         //**************************
-        if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began && canPlaceObject) {
-            GameObject copy = Instantiate(selectedGameObject, crosshair.transform.position, crosshair.transform.rotation);
-            copy.name = copy.name.Replace("(Clone)", "");
-        }
-
-        // On two finger touch
-        //*************************
-        if (Input.touchCount == 2) {
-
-            Ray ray = arCam.ScreenPointToRay(touch.position);   
-
-            if (raycastManager.Raycast(ray, hits)) {
-                pose = hits[0].pose;
-                Vector3 magnitude = pose.position - activeGameObject.transform.position;
-                Vector3 direction = magnitude.normalized;
-                float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-                angle += 180;
-
-                Vector3 rot = activeGameObject.transform.localEulerAngles;
-                activeGameObject.transform.localEulerAngles = new Vector3(rot.x, angle, rot.z);
+        if (Input.touchCount == 1) {
+            if (IsPointerOverUI(touch)) {
+                return;
+            }
+            else {
+                if (Input.GetTouch(0).phase == TouchPhase.Began && canPlaceObject) {
+                    GameObject copy = Instantiate(selectedGameObject, crosshair.transform.position, crosshair.transform.rotation);
+                    copy.name = copy.name.Replace("(Clone)", "");
+                }
             }
         }
+        // On two finger touch
+        //*************************
+        if (Input.touchCount == 2)
+            {
+
+                Ray ray = arCam.ScreenPointToRay(touch.position);
+
+                if (raycastManager.Raycast(ray, hits))
+                {
+                    pose = hits[0].pose;
+                    Vector3 magnitude = pose.position - activeGameObject.transform.position;
+                    Vector3 direction = magnitude.normalized;
+                    float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+                    angle += 180;
+
+                    Vector3 rot = activeGameObject.transform.localEulerAngles;
+                    activeGameObject.transform.localEulerAngles = new Vector3(rot.x, angle, rot.z);
+                }
+            }
     }
 
-    //********************
-    // Methods
-    //********************
+        //********************
+        // Methods
+        //********************
 
-    bool IsPointerOverUI(Touch touch) {
+        bool IsPointerOverUI(Touch touch)
+        {
 
-        PointerEventData eventData = new PointerEventData(EventSystem.current);
-        eventData.position = new Vector2(touch.position.x, touch.position.y);
-        List<RaycastResult> results = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(eventData, results);
-        return results.Count > 0;
-    }
-
-    void CrosshairCalculation() {
-        Vector3 origin = arCam.ViewportToScreenPoint(new Vector3(0.5f, 0.5f, 0));
-        Ray ray = arCam.ScreenPointToRay(origin);
-
-        if (raycastManager.Raycast(ray, hits)) {
-            canPlaceObject = !IsPointerOverObject(ray);
-            crosshair.SetActive(canPlaceObject);
-            pose = hits[0].pose;
-            crosshair.transform.position = pose.position;
-            crosshair.transform.eulerAngles = new Vector3(0, 0, 0);
+            PointerEventData eventData = new PointerEventData(EventSystem.current);
+            eventData.position = new Vector2(touch.position.x, touch.position.y);
+            List<RaycastResult> results = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(eventData, results);
+            return results.Count > 0;
         }
-    }
+
+        void CrosshairCalculation()
+        {
+            Vector3 origin = arCam.ViewportToScreenPoint(new Vector3(0.5f, 0.5f, 0));
+            Ray ray = arCam.ScreenPointToRay(origin);
+
+            if (raycastManager.Raycast(ray, hits))
+            {
+                canPlaceObject = !IsPointerOverObject(ray);
+                crosshair.SetActive(canPlaceObject);
+                pose = hits[0].pose;
+                crosshair.transform.position = pose.position;
+                crosshair.transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+        }
 
     bool IsPointerOverObject(Ray pointingRay) {
         RaycastHit objectHit;
@@ -110,17 +131,23 @@ public class InputManager : MonoBehaviour {
             if (objectHit.collider != null) {
                 if (canGrabObject) {
                     activeGameObject = objectHit.collider.gameObject;
+                    //previousActiveGameObject = activeGameObject;
+                    //activeGameObject.transform.GetChild(7).gameObject.SetActive(true);
                     canGrabObject = false;
                 }
-                if (Input.touchCount == 1 ) {
+
+                if (Input.touchCount == 1) {
                     var hitPose = hits[0].pose;
                     activeGameObject.transform.position = hitPose.position;
                 }
                 return true;
-            } else
+            }
+            else
                 return false;
-        } else {
+        }
+        else {
             activeGameObject = null;
+            //previousActiveGameObject.transform.GetChild(7).gameObject.SetActive(false);
         }
         return false;
     }
@@ -128,10 +155,11 @@ public class InputManager : MonoBehaviour {
     //********************
     // for debugging
     //********************
-    private void OnGUI() {
-        GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
-        myRectStyle.fontSize = 25;
-        myRectStyle.normal.textColor = Color.red;
-        GUI.Box(new Rect(new Vector2(100, 100), new Vector2(200, 200)), activeGameObject.name, myRectStyle);
+    private void OnGUI()
+        {
+            GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
+            myRectStyle.fontSize = 25;
+            myRectStyle.normal.textColor = Color.red;
+            GUI.Box(new Rect(new Vector2(100, 100), new Vector2(200, 200)), activeGameObject.name, myRectStyle);
+        }
     }
-}
