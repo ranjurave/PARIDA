@@ -8,26 +8,26 @@ public class ObjectToSpawn : MonoBehaviour {
     public MenuManager mm;
     public GameObject selectedObject;
     public Button btn;
-    private string debug;
+    //private string debug;
 
     // Start is called before the first frame update
     void Start() {
         btn.onClick.AddListener(AssignObject);
-        debug = "00000000000";
+        //debug = "00000000000";
     }
 
     void AssignObject() {
         InputManager.Instance.selectedGameObject = selectedObject;
         //ipManager.selectedGameObject = selectedObject;
-        debug = "IIIIIIIII";
+        //debug = "IIIIIIIII";
         mm.ObjectSelected();
     }
 
-    private void OnGUI()
-    {
-        GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
-        myRectStyle.fontSize = 25;
-        myRectStyle.normal.textColor = Color.red;
-        GUI.Box(new Rect(new Vector2(100, 500), new Vector2(200, 200)), debug, myRectStyle);
-    }
+    //private void OnGUI()
+    //{
+    //    GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
+    //    myRectStyle.fontSize = 25;
+    //    myRectStyle.normal.textColor = Color.red;
+    //    GUI.Box(new Rect(new Vector2(100, 500), new Vector2(200, 200)), debug, myRectStyle);
+    //}
 }

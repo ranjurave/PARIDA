@@ -3,8 +3,7 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.EventSystems;
 
-public class InputManager : MonoBehaviour
-{
+public class InputManager : MonoBehaviour {
     public Camera arCam;
     public ARRaycastManager raycastManager;
     public GameObject crosshair;
@@ -13,53 +12,53 @@ public class InputManager : MonoBehaviour
     private bool canGrabObject;
     private bool canPlaceObject;
     private Pose pose;
-    //private GameObject previousActiveGameObject;
+    private GameObject previousActiveGameObject;
     public GameObject activeGameObject;
     public GameObject selectedGameObject;
     private static InputManager m_instance;
+    public Material highlitedMaterial;
+
+    private string active;
+    private string prev;
 
     // Property with setter and getter
-    public static InputManager Instance
-    {
-        get
-        {
-            if (m_instance == null)
-            {
+    public static InputManager Instance {
+        get {
+            if (m_instance == null) {
                 m_instance = GameObject.FindObjectOfType<InputManager>();
             }
 
             return m_instance;
         }
-        set
-        {
+        set {
             m_instance = value;
         }
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         canPlaceObject = false;
         canGrabObject = false;
+        previousActiveGameObject = null;
+        activeGameObject = null;
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
 
-
+        
         CrosshairCalculation();
         crosshair.SetActive(canPlaceObject);
 
-        if (Input.touchCount == 0)
-        {
+
+        if (Input.touchCount == 0) {
             canGrabObject = true;
             return;
         }
 
         touch = Input.GetTouch(0);
 
-        //if (IsPointerOverUI(touch)) return;
+        if (IsPointerOverUI(touch)) return;
 
         // On one finger touch
         //**************************
@@ -76,64 +75,72 @@ public class InputManager : MonoBehaviour
         }
         // On two finger touch
         //*************************
-        if (Input.touchCount == 2)
-            {
+        if (Input.touchCount == 2) {
 
-                Ray ray = arCam.ScreenPointToRay(touch.position);
+            Ray ray = arCam.ScreenPointToRay(touch.position);
 
-                if (raycastManager.Raycast(ray, hits))
-                {
-                    pose = hits[0].pose;
-                    Vector3 magnitude = pose.position - activeGameObject.transform.position;
-                    Vector3 direction = magnitude.normalized;
-                    float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-                    angle += 180;
+            if (raycastManager.Raycast(ray, hits)) {
+                pose = hits[0].pose;
+                Vector3 magnitude = pose.position - activeGameObject.transform.position;
+                Vector3 direction = magnitude.normalized;
+                float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+                angle += 180;
 
-                    Vector3 rot = activeGameObject.transform.localEulerAngles;
-                    activeGameObject.transform.localEulerAngles = new Vector3(rot.x, angle, rot.z);
-                }
+                Vector3 rot = activeGameObject.transform.localEulerAngles;
+                activeGameObject.transform.localEulerAngles = new Vector3(rot.x, angle, rot.z);
             }
+        }
+
+
     }
 
-        //********************
-        // Methods
-        //********************
+    //********************
+    // Methods
+    //********************
 
-        bool IsPointerOverUI(Touch touch)
-        {
+    bool IsPointerOverUI(Touch touch) {
 
-            PointerEventData eventData = new PointerEventData(EventSystem.current);
-            eventData.position = new Vector2(touch.position.x, touch.position.y);
-            List<RaycastResult> results = new List<RaycastResult>();
-            EventSystem.current.RaycastAll(eventData, results);
-            return results.Count > 0;
+        PointerEventData eventData = new PointerEventData(EventSystem.current);
+        eventData.position = new Vector2(touch.position.x, touch.position.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, results);
+        return results.Count > 0;
+    }
+
+    void CrosshairCalculation() {
+        Vector3 origin = arCam.ViewportToScreenPoint(new Vector3(0.5f, 0.5f, 0));
+        Ray ray = arCam.ScreenPointToRay(origin);
+
+        if (raycastManager.Raycast(ray, hits)) {
+
+
+            canPlaceObject = !IsPointerOverObject(ray);
+            crosshair.SetActive(canPlaceObject);
+            pose = hits[0].pose;
+            crosshair.transform.position = pose.position;
+            crosshair.transform.eulerAngles = new Vector3(0, 0, 0);
         }
-
-        void CrosshairCalculation()
-        {
-            Vector3 origin = arCam.ViewportToScreenPoint(new Vector3(0.5f, 0.5f, 0));
-            Ray ray = arCam.ScreenPointToRay(origin);
-
-            if (raycastManager.Raycast(ray, hits))
-            {
-                canPlaceObject = !IsPointerOverObject(ray);
-                crosshair.SetActive(canPlaceObject);
-                pose = hits[0].pose;
-                crosshair.transform.position = pose.position;
-                crosshair.transform.eulerAngles = new Vector3(0, 0, 0);
-            }
-        }
+    }
 
     bool IsPointerOverObject(Ray pointingRay) {
         RaycastHit objectHit;
-
         if (Physics.Raycast(pointingRay, out objectHit)) {
             if (objectHit.collider != null) {
                 if (canGrabObject) {
-                    activeGameObject = objectHit.collider.gameObject;
-                    //previousActiveGameObject = activeGameObject;
-                    //activeGameObject.transform.GetChild(7).gameObject.SetActive(true);
-                    canGrabObject = false;
+                    if (previousActiveGameObject != objectHit.collider.gameObject) {
+                        if (previousActiveGameObject != null) {
+                            previousActiveGameObject.transform.GetChild(0).gameObject.SetActive(false);
+                        }
+                        previousActiveGameObject = activeGameObject;
+                        activeGameObject = objectHit.collider.gameObject;
+                        activeGameObject.transform.GetChild(0).gameObject.SetActive(true);
+                        canGrabObject = false;
+                        prev = "Prev : " + previousActiveGameObject.name;
+                        active = "Active : " + activeGameObject.name;
+                    }
+                    else {
+                        previousActiveGameObject.transform.GetChild(0).gameObject.SetActive(true);
+                    }
                 }
 
                 if (Input.touchCount == 1) {
@@ -146,8 +153,10 @@ public class InputManager : MonoBehaviour
                 return false;
         }
         else {
-            activeGameObject = null;
-            //previousActiveGameObject.transform.GetChild(7).gameObject.SetActive(false);
+            if (activeGameObject != null) {
+                activeGameObject.transform.GetChild(0).gameObject.SetActive(false);
+                activeGameObject = null;
+            }
         }
         return false;
     }
@@ -155,11 +164,11 @@ public class InputManager : MonoBehaviour
     //********************
     // for debugging
     //********************
-    private void OnGUI()
-        {
-            GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
-            myRectStyle.fontSize = 25;
-            myRectStyle.normal.textColor = Color.red;
-            GUI.Box(new Rect(new Vector2(100, 100), new Vector2(200, 200)), activeGameObject.name, myRectStyle);
-        }
+    private void OnGUI() {
+        GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
+        myRectStyle.fontSize = 25;
+        myRectStyle.normal.textColor = Color.red;
+        GUI.Box(new Rect(new Vector2(100, 100), new Vector2(200, 200)), active , myRectStyle);
+        GUI.Box(new Rect(new Vector2(100, 300), new Vector2(200, 200)), prev, myRectStyle);
     }
+}

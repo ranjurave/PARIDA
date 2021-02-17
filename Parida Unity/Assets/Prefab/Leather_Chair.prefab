@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!65 &1138589807930775530
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3354997170779774191}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3896049, y: 0.5053694, z: 0.38434303}
+  m_Center: {x: 0.0052620023, y: 0.010523915, z: -0.007893026}
+--- !u!1001 &3353417612685940695
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1939175744719672, guid: 5e6a18de649e1db47b6f2ed538fc63f3, type: 3}
+      propertyPath: m_Name
+      value: Leather_Chair
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286612501438556, guid: 5e6a18de649e1db47b6f2ed538fc63f3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286612501438556, guid: 5e6a18de649e1db47b6f2ed538fc63f3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286612501438556, guid: 5e6a18de649e1db47b6f2ed538fc63f3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286612501438556, guid: 5e6a18de649e1db47b6f2ed538fc63f3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286612501438556, guid: 5e6a18de649e1db47b6f2ed538fc63f3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286612501438556, guid: 5e6a18de649e1db47b6f2ed538fc63f3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286612501438556, guid: 5e6a18de649e1db47b6f2ed538fc63f3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286612501438556, guid: 5e6a18de649e1db47b6f2ed538fc63f3, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286612501438556, guid: 5e6a18de649e1db47b6f2ed538fc63f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286612501438556, guid: 5e6a18de649e1db47b6f2ed538fc63f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286612501438556, guid: 5e6a18de649e1db47b6f2ed538fc63f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 64286068697835132, guid: 5e6a18de649e1db47b6f2ed538fc63f3, type: 3}
+    - {fileID: 64174691573521884, guid: 5e6a18de649e1db47b6f2ed538fc63f3, type: 3}
+    - {fileID: 64082211728199768, guid: 5e6a18de649e1db47b6f2ed538fc63f3, type: 3}
+    - {fileID: 64470232215042744, guid: 5e6a18de649e1db47b6f2ed538fc63f3, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 5e6a18de649e1db47b6f2ed538fc63f3, type: 3}
+--- !u!1 &3354997170779774191 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1939175744719672, guid: 5e6a18de649e1db47b6f2ed538fc63f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 3353417612685940695}
+  m_PrefabAsset: {fileID: 0}
