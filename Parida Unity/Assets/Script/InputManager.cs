@@ -16,10 +16,8 @@ public class InputManager : MonoBehaviour {
     public GameObject activeGameObject;
     public GameObject selectedGameObject;
     private static InputManager m_instance;
-    public Material highlitedMaterial;
-
-    private string active;
     private string prev;
+    private string active;
 
     // Property with setter and getter
     public static InputManager Instance {
@@ -39,17 +37,13 @@ public class InputManager : MonoBehaviour {
     void Start() {
         canPlaceObject = false;
         canGrabObject = false;
-        previousActiveGameObject = null;
-        activeGameObject = null;
     }
 
     // Update is called once per frame
     void Update() {
 
-        
         CrosshairCalculation();
         crosshair.SetActive(canPlaceObject);
-
 
         if (Input.touchCount == 0) {
             canGrabObject = true;
@@ -62,17 +56,11 @@ public class InputManager : MonoBehaviour {
 
         // On one finger touch
         //**************************
-        if (Input.touchCount == 1) {
-            if (IsPointerOverUI(touch)) {
-                return;
-            }
-            else {
-                if (Input.GetTouch(0).phase == TouchPhase.Began && canPlaceObject) {
-                    GameObject copy = Instantiate(selectedGameObject, crosshair.transform.position, crosshair.transform.rotation);
-                    copy.name = copy.name.Replace("(Clone)", "");
-                }
-            }
+        if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began && canPlaceObject) {
+            GameObject copy = Instantiate(selectedGameObject, crosshair.transform.position, crosshair.transform.rotation);
+            copy.name = copy.name.Replace("(Clone)", "");
         }
+
         // On two finger touch
         //*************************
         if (Input.touchCount == 2) {
@@ -90,8 +78,6 @@ public class InputManager : MonoBehaviour {
                 activeGameObject.transform.localEulerAngles = new Vector3(rot.x, angle, rot.z);
             }
         }
-
-
     }
 
     //********************
@@ -112,8 +98,6 @@ public class InputManager : MonoBehaviour {
         Ray ray = arCam.ScreenPointToRay(origin);
 
         if (raycastManager.Raycast(ray, hits)) {
-
-
             canPlaceObject = !IsPointerOverObject(ray);
             crosshair.SetActive(canPlaceObject);
             pose = hits[0].pose;
@@ -135,11 +119,12 @@ public class InputManager : MonoBehaviour {
                         activeGameObject = objectHit.collider.gameObject;
                         activeGameObject.transform.GetChild(0).gameObject.SetActive(true);
                         canGrabObject = false;
-                        prev = "Prev : " + previousActiveGameObject.name;
-                        active = "Active : " + activeGameObject.name;
                     }
                     else {
-                        previousActiveGameObject.transform.GetChild(0).gameObject.SetActive(true);
+                        activeGameObject = previousActiveGameObject;
+                        activeGameObject.transform.GetChild(0).gameObject.SetActive(true);
+                        canGrabObject = false;
+                     
                     }
                 }
 
@@ -159,6 +144,7 @@ public class InputManager : MonoBehaviour {
             }
         }
         return false;
+ 
     }
 
     //********************
@@ -168,7 +154,7 @@ public class InputManager : MonoBehaviour {
         GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
         myRectStyle.fontSize = 25;
         myRectStyle.normal.textColor = Color.red;
-        GUI.Box(new Rect(new Vector2(100, 100), new Vector2(200, 200)), active , myRectStyle);
-        GUI.Box(new Rect(new Vector2(100, 300), new Vector2(200, 200)), prev, myRectStyle);
+        GUI.Box(new Rect(new Vector2(100, 100), new Vector2(400, 100)), "Cangrab"+canGrabObject.ToString(), myRectStyle);
+        //GUI.Box(new Rect(new Vector2(100, 200), new Vector2(400, 100)), "activ"+activeGameObject.name, myRectStyle);
     }
 }
