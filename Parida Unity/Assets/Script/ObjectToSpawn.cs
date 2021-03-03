@@ -8,18 +8,13 @@ public class ObjectToSpawn : MonoBehaviour {
     public MenuManager mm;
     public GameObject selectedObject;
     public Button btn;
-    //private string debug;
 
-    // Start is called before the first frame update
     void Start() {
         btn.onClick.AddListener(AssignObject);
-        //debug = "00000000000";
     }
 
     void AssignObject() {
         InputManager.Instance.selectedGameObject = selectedObject;
-        //ipManager.selectedGameObject = selectedObject;
-        //debug = "IIIIIIIII";
         mm.ObjectSelected();
     }
 
