@@ -154,6 +154,7 @@ public class InputManager : MonoBehaviour {
         GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
         myRectStyle.fontSize = 25;
         myRectStyle.normal.textColor = Color.red;
-        GUI.Box(new Rect(new Vector2(100, 300), new Vector2(400, 100)), "IP ... " + selectedGameObject.name, myRectStyle);
+        GUI.Box(new Rect(new Vector2(100, 100), new Vector2(400, 100)), "Cangrab"+canGrabObject.ToString(), myRectStyle);
+        //GUI.Box(new Rect(new Vector2(100, 200), new Vector2(400, 100)), "activ"+activeGameObject.name, myRectStyle);
     }
 }
