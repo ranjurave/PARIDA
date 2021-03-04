@@ -16,6 +16,8 @@ public class InputManager : MonoBehaviour {
     public GameObject activeGameObject;
     public GameObject selectedGameObject;
     private static InputManager m_instance;
+    public bool focusObjectPlaced;
+    public bool viewModePanelOn;
     private string prev;
     private string active;
 
@@ -37,6 +39,7 @@ public class InputManager : MonoBehaviour {
     void Start() {
         canPlaceObject = false;
         canGrabObject = false;
+        focusObjectPlaced = false;
     }
 
     // Update is called once per frame
@@ -58,7 +61,7 @@ public class InputManager : MonoBehaviour {
         //**************************
         if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began && canPlaceObject) {
             GameObject copy = Instantiate(selectedGameObject, crosshair.transform.position, crosshair.transform.rotation);
-            copy.name = copy.name.Replace("(Clone)", "");
+            focusObjectPlaced = true;
         }
 
         // On two finger touch
@@ -99,6 +102,14 @@ public class InputManager : MonoBehaviour {
 
         if (raycastManager.Raycast(ray, hits)) {
             canPlaceObject = !IsPointerOverObject(ray);
+            if (canPlaceObject) {
+                if (viewModePanelOn) {
+                    canPlaceObject = false;
+                }
+                else {
+                    canPlaceObject = true;
+                }
+            }
             crosshair.SetActive(canPlaceObject);
             pose = hits[0].pose;
             crosshair.transform.position = pose.position;
@@ -117,14 +128,18 @@ public class InputManager : MonoBehaviour {
                         }
                         previousActiveGameObject = activeGameObject;
                         activeGameObject = objectHit.collider.gameObject;
-                        activeGameObject.transform.GetChild(0).gameObject.SetActive(true);
+                        if (!viewModePanelOn) {
+                            activeGameObject.transform.GetChild(0).gameObject.SetActive(true);
+                        }
                         canGrabObject = false;
                     }
                     else {
                         activeGameObject = previousActiveGameObject;
-                        activeGameObject.transform.GetChild(0).gameObject.SetActive(true);
+                        if (!viewModePanelOn) {
+                            activeGameObject.transform.GetChild(0).gameObject.SetActive(true);
+                        }
                         canGrabObject = false;
-                     
+
                     }
                 }
 
@@ -144,17 +159,17 @@ public class InputManager : MonoBehaviour {
             }
         }
         return false;
- 
+
     }
 
     //********************
     // for debugging
     //********************
-    private void OnGUI() {
-        GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
-        myRectStyle.fontSize = 25;
-        myRectStyle.normal.textColor = Color.red;
-        GUI.Box(new Rect(new Vector2(100, 100), new Vector2(400, 100)), "Cangrab"+canGrabObject.ToString(), myRectStyle);
-        //GUI.Box(new Rect(new Vector2(100, 200), new Vector2(400, 100)), "activ"+activeGameObject.name, myRectStyle);
-    }
+    //private void OnGUI() {
+    //    GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
+    //    myRectStyle.fontSize = 25;
+    //    myRectStyle.normal.textColor = Color.red;
+    //    GUI.Box(new Rect(new Vector2(100, 100), new Vector2(400, 100)), "Cangrab"+canGrabObject.ToString(), myRectStyle);
+    //    //GUI.Box(new Rect(new Vector2(100, 200), new Vector2(400, 100)), "activ"+activeGameObject.name, myRectStyle);
+    //}
 }

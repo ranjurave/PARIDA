@@ -13,44 +13,100 @@ public class MenuManager : MonoBehaviour {
     public GameObject focusObjectSelection;
     public GameObject focusObjectTypeSelection;
     public GameObject furnitureToPlace;
+    public GameObject focusObjectWarning;
+    public GameObject viewModePanel;
 
     void Start() {
+        focusObjectWarning.SetActive(false);
         roomSelection.SetActive(true);
         styleSelection.SetActive(false);
         focusObjectTypeSelection.SetActive(false);
         focusObjectSelection.SetActive(false);
         onScreenUI.SetActive(false);
         furnitureToPlace.SetActive(false);
+        viewModePanel.SetActive(false);
     }
 
     public void StyleSelection() {
+        focusObjectWarning.SetActive(false);
         roomSelection.SetActive(false);
         styleSelection.SetActive(true);
         furnitureToPlace.SetActive(false);
         focusObjectTypeSelection.SetActive(false);
         focusObjectSelection.SetActive(false);
+        viewModePanel.SetActive(false);
     }
     public void FocusObjectTypeSelection() {
+        focusObjectWarning.SetActive(false);
         roomSelection.SetActive(false);
         styleSelection.SetActive(false);
         focusObjectTypeSelection.SetActive(true);
         focusObjectSelection.SetActive(false);
         furnitureToPlace.SetActive(false);
+        viewModePanel.SetActive(false);
     }
     public void FocusObjectSelection() {
+        focusObjectWarning.SetActive(false);
         roomSelection.SetActive(false);
         styleSelection.SetActive(false);
         focusObjectTypeSelection.SetActive(false);
         focusObjectSelection.SetActive(true);
         furnitureToPlace.SetActive(false);
+        viewModePanel.SetActive(false);
     }
     public void ObjectSelected() {
+        focusObjectWarning.SetActive(false);
+        roomSelection.SetActive(false);
+        styleSelection.SetActive(false);
+        focusObjectTypeSelection.SetActive(false);
+        focusObjectSelection.SetActive(false);
+        furnitureToPlace.SetActive(false);
+        viewModePanel.SetActive(false);
+        onScreenUI.SetActive(true);
+    }
+    public void AddMoreObjects() {
+        if (!InputManager.Instance.focusObjectPlaced) {
+            focusObjectWarning.SetActive(true);
+            roomSelection.SetActive(false);
+            styleSelection.SetActive(false);
+            focusObjectTypeSelection.SetActive(false);
+            focusObjectSelection.SetActive(false);
+            onScreenUI.SetActive(false);
+            furnitureToPlace.SetActive(false);
+            viewModePanel.SetActive(false);
+        }
+        else {
+            focusObjectWarning.SetActive(false);
+            roomSelection.SetActive(false);
+            styleSelection.SetActive(false);
+            focusObjectTypeSelection.SetActive(false);
+            focusObjectSelection.SetActive(false);
+            onScreenUI.SetActive(false);
+            viewModePanel.SetActive(false);
+            furnitureToPlace.SetActive(true);
+        }
+    }
+    public void ViewModePanelOn() {
+        focusObjectWarning.SetActive(false);
+        roomSelection.SetActive(false);
+        styleSelection.SetActive(false);
+        focusObjectTypeSelection.SetActive(false);
+        focusObjectSelection.SetActive(false);
+        furnitureToPlace.SetActive(false);
+        onScreenUI.SetActive(false);
+        viewModePanel.SetActive(true);
+        InputManager.Instance.viewModePanelOn = true;
+    }
+    public void EditModeOn() {
+        focusObjectWarning.SetActive(false);
         roomSelection.SetActive(false);
         styleSelection.SetActive(false);
         focusObjectTypeSelection.SetActive(false);
         focusObjectSelection.SetActive(false);
         furnitureToPlace.SetActive(false);
         onScreenUI.SetActive(true);
+        viewModePanel.SetActive(false);
+        InputManager.Instance.viewModePanelOn = false;
     }
     public void BackButtonFocusObject() {
         roomSelection.SetActive(false);
@@ -76,16 +132,6 @@ public class MenuManager : MonoBehaviour {
         focusObjectTypeSelection.SetActive(false);
         focusObjectSelection.SetActive(true);
         onScreenUI.SetActive(false);
-    }
-
-    // TODO To check if focus object is placed
-    public void AddMoreObjects() {  
-        roomSelection.SetActive(false);
-        styleSelection.SetActive(false);
-        focusObjectTypeSelection.SetActive(false);
-        focusObjectSelection.SetActive(false);
-        onScreenUI.SetActive(false);
-        furnitureToPlace.SetActive(true);
     }
     public void BackAddMoreObjects() {
         roomSelection.SetActive(false);
