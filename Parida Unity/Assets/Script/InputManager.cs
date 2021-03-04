@@ -9,7 +9,7 @@ public class InputManager : MonoBehaviour {
     public GameObject crosshair;
     private List<ARRaycastHit> hits = new List<ARRaycastHit>();
     private Touch touch;
-    private bool canGrabObject;
+    public bool canGrabObject;
     private bool canPlaceObject;
     private Pose pose;
     private GameObject previousActiveGameObject;
@@ -49,7 +49,9 @@ public class InputManager : MonoBehaviour {
         crosshair.SetActive(canPlaceObject);
 
         if (Input.touchCount == 0) {
-            canGrabObject = true;
+            if (!viewModePanelOn) {
+                canGrabObject = true;
+            }
             return;
         }
 

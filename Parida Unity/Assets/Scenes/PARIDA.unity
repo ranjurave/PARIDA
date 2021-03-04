@@ -2739,7 +2739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mm: {fileID: 154560111}
-  selectedObject: {fileID: 8660156923362987509, guid: ce56e3cadb64226499b88893b9b464f7,
+  selectedObject: {fileID: 8660156923362987509, guid: 659f81ba81b8102468f3c6c1c25273aa,
     type: 3}
   btn: {fileID: 375589825}
 --- !u!114 &375589825
@@ -5376,7 +5376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mm: {fileID: 154560111}
-  selectedObject: {fileID: 8660156923362987509, guid: ce56e3cadb64226499b88893b9b464f7,
+  selectedObject: {fileID: 8660156923362987509, guid: 659f81ba81b8102468f3c6c1c25273aa,
     type: 3}
   btn: {fileID: 874362796}
 --- !u!114 &874362796
@@ -6637,6 +6637,7 @@ MonoBehaviour:
   arCam: {fileID: 2016040414}
   raycastManager: {fileID: 1795295897}
   crosshair: {fileID: 223974226}
+  canGrabObject: 0
   activeGameObject: {fileID: 2937649430991582158, guid: 1879c3efbfc466743a2021f64d93b8f3,
     type: 3}
   selectedGameObject: {fileID: 2937649430991582158, guid: 1879c3efbfc466743a2021f64d93b8f3,
@@ -11734,8 +11735,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 93.29
+  m_fontSizeBase: 93.29
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

@@ -96,6 +96,7 @@ public class MenuManager : MonoBehaviour {
         onScreenUI.SetActive(false);
         viewModePanel.SetActive(true);
         InputManager.Instance.viewModePanelOn = true;
+        InputManager.Instance.canGrabObject = false;
     }
     public void EditModeOn() {
         focusObjectWarning.SetActive(false);
