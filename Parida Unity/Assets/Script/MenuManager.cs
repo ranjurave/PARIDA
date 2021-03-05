@@ -15,6 +15,9 @@ public class MenuManager : MonoBehaviour {
     public GameObject furnitureToPlace;
     public GameObject focusObjectWarning;
     public GameObject viewModePanel;
+    public string selectedStyle;
+    public string testString;
+    private string debugString;
 
     void Start() {
         focusObjectWarning.SetActive(false);
@@ -25,9 +28,11 @@ public class MenuManager : MonoBehaviour {
         onScreenUI.SetActive(false);
         furnitureToPlace.SetActive(false);
         viewModePanel.SetActive(false);
+        debugString = selectedStyle;
     }
 
     public void StyleSelection() {
+
         focusObjectWarning.SetActive(false);
         roomSelection.SetActive(false);
         styleSelection.SetActive(true);
@@ -35,6 +40,7 @@ public class MenuManager : MonoBehaviour {
         focusObjectTypeSelection.SetActive(false);
         focusObjectSelection.SetActive(false);
         viewModePanel.SetActive(false);
+        debugString = selectedStyle;
     }
     public void FocusObjectTypeSelection() {
         focusObjectWarning.SetActive(false);
@@ -44,6 +50,7 @@ public class MenuManager : MonoBehaviour {
         focusObjectSelection.SetActive(false);
         furnitureToPlace.SetActive(false);
         viewModePanel.SetActive(false);
+        debugString = selectedStyle;
     }
     public void FocusObjectSelection() {
         focusObjectWarning.SetActive(false);
@@ -53,6 +60,8 @@ public class MenuManager : MonoBehaviour {
         focusObjectSelection.SetActive(true);
         furnitureToPlace.SetActive(false);
         viewModePanel.SetActive(false);
+        debugString = selectedStyle;
+        SelectiveButtonDisplay();
     }
     public void ObjectSelected() {
         focusObjectWarning.SetActive(false);
@@ -141,5 +150,27 @@ public class MenuManager : MonoBehaviour {
         focusObjectSelection.SetActive(false);
         onScreenUI.SetActive(true);
         furnitureToPlace.SetActive(false);
+    }
+
+    void SelectiveButtonDisplay() {
+        //string tag1 = "boh";
+        //GameObject.FindGameObjectWithTag(tag1).SetActive(false);
+        //debugString = selectedStyle;
+        //selectedStyle = "Bohemian";
+        Button[] taggedBtn;
+        taggedBtn = FindObjectsOfType<Button>();
+        foreach (Button btn in taggedBtn) {
+            if (btn.tag == selectedStyle) {
+                btn.interactable = false;
+            }
+        }
+    }
+
+    private void OnGUI() {
+        GameObject activeObject = InputManager.Instance.activeGameObject;
+        GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
+        myRectStyle.fontSize = 15;
+        myRectStyle.normal.textColor = Color.red;
+        GUI.Box(new Rect(new Vector2(50, 200), new Vector2(200, 100)), "var" + selectedStyle, myRectStyle);
     }
 }

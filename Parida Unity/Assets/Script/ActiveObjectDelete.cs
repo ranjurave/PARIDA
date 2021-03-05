@@ -27,13 +27,12 @@ public class ActiveObjectDelete : MonoBehaviour {
         GameObject activeObject = InputManager.Instance.activeGameObject;
         GameObject.Destroy(activeObject);
         deleteButton.interactable = false;
-        deleteButton.GetComponentInChildren<Text>().text = "Delete";
     }
     //private void OnGUI() {
     //    GameObject activeObject = InputManager.Instance.activeGameObject;
     //    GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
     //    myRectStyle.fontSize = 25;
     //    myRectStyle.normal.textColor = Color.red;
-    //    GUI.Box(new Rect(new Vector2(100, 300), new Vector2(200, 200)), activeObject.name, myRectStyle);
+    //    GUI.Box(new Rect(new Vector2(100, 300), new Vector2(200, 200)), styleSelected, myRectStyle);
     //}
 }

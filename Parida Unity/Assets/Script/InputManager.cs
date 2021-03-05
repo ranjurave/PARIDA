@@ -18,8 +18,6 @@ public class InputManager : MonoBehaviour {
     private static InputManager m_instance;
     public bool focusObjectPlaced;
     public bool viewModePanelOn;
-    private string prev;
-    private string active;
 
     // Property with setter and getter
     public static InputManager Instance {
@@ -169,9 +167,8 @@ public class InputManager : MonoBehaviour {
     //********************
     //private void OnGUI() {
     //    GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
-    //    myRectStyle.fontSize = 25;
+    //    myRectStyle.fontSize = 50;
     //    myRectStyle.normal.textColor = Color.red;
-    //    GUI.Box(new Rect(new Vector2(100, 100), new Vector2(400, 100)), "Cangrab"+canGrabObject.ToString(), myRectStyle);
-    //    //GUI.Box(new Rect(new Vector2(100, 200), new Vector2(400, 100)), "activ"+activeGameObject.name, myRectStyle);
+    //    GUI.Box(new Rect(new Vector2(100, 100), new Vector2(400, 100)), "Can place" + canPlaceObject.ToString(), myRectStyle);
     //}
 }
