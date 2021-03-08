@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ObjectToSpawn : MonoBehaviour {
     public MenuManager mm;
-    public GameObject selectedObject;
+    public ObjectPropertySet selectedObject;
     public Button btn;
     //private string debug;
 

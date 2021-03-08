@@ -12,9 +12,9 @@ public class InputManager : MonoBehaviour {
     public bool canGrabObject;
     private bool canPlaceObject;
     private Pose pose;
-    private GameObject previousActiveGameObject;
-    public GameObject activeGameObject;
-    public GameObject selectedGameObject;
+    private ObjectPropertySet previousActiveGameObject;
+    public ObjectPropertySet activeGameObject;
+    public ObjectPropertySet selectedGameObject;
     private static InputManager m_instance;
     public bool focusObjectPlaced;
     public bool viewModePanelOn;
@@ -60,7 +60,7 @@ public class InputManager : MonoBehaviour {
         // On one finger touch
         //**************************
         if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began && canPlaceObject) {
-            GameObject copy = Instantiate(selectedGameObject, crosshair.transform.position, crosshair.transform.rotation);
+            ObjectPropertySet copy = Instantiate(selectedGameObject, crosshair.transform.position, crosshair.transform.rotation);
             focusObjectPlaced = true;
         }
 
@@ -127,7 +127,7 @@ public class InputManager : MonoBehaviour {
                             previousActiveGameObject.transform.GetChild(0).gameObject.SetActive(false);
                         }
                         previousActiveGameObject = activeGameObject;
-                        activeGameObject = objectHit.collider.gameObject;
+                        activeGameObject = objectHit.collider.gameObject.GetComponent<ObjectPropertySet>();
                         if (!viewModePanelOn) {
                             activeGameObject.transform.GetChild(0).gameObject.SetActive(true);
                         }

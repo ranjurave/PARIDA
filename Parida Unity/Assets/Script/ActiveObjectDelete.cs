@@ -13,7 +13,7 @@ public class ActiveObjectDelete : MonoBehaviour {
 
     // Update is called once per frame
     private void Update() {
-        GameObject activeObject = InputManager.Instance.activeGameObject;
+        ObjectPropertySet activeObject = InputManager.Instance.activeGameObject;
         if (activeObject == null) {
             deleteButton.interactable = false;
             deleteButton.GetComponentInChildren<Text>().text = "Delete";            
@@ -24,8 +24,8 @@ public class ActiveObjectDelete : MonoBehaviour {
     }
 
     void DeleteGameObject() {
-        GameObject activeObject = InputManager.Instance.activeGameObject;
-        GameObject.Destroy(activeObject);
+        ObjectPropertySet activeObject = InputManager.Instance.activeGameObject;
+        Destroy(activeObject.gameObject);
         deleteButton.interactable = false;
     }
     //private void OnGUI() {

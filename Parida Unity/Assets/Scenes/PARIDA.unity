@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -478,8 +478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mm: {fileID: 154560111}
-  selectedObject: {fileID: 3354997170779774191, guid: 23c8e99bed708a34aba707cecde50242,
-    type: 3}
+  selectedObject: {fileID: 0}
   btn: {fileID: 44652956}
 --- !u!114 &44652956
 MonoBehaviour:
@@ -833,6 +832,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StyleButton: {fileID: 58049123}
   mm: {fileID: 154560111}
+  style: 0
 --- !u!1 &67309949
 GameObject:
   m_ObjectHideFlags: 0
@@ -1504,7 +1504,8 @@ MonoBehaviour:
   furnitureToPlace: {fileID: 509314429}
   focusObjectWarning: {fileID: 1288714551}
   viewModePanel: {fileID: 1679546380}
-  selectedStyle: 
+  allPanels: []
+  testString: 
 --- !u!1 &186128694
 GameObject:
   m_ObjectHideFlags: 0
@@ -2129,7 +2130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mm: {fileID: 154560111}
-  selectedObject: {fileID: 2272919727622143610, guid: 3dd603f5a3dcd784087d8baf6f32ea2d,
+  selectedObject: {fileID: 1426820302983665867, guid: 659f81ba81b8102468f3c6c1c25273aa,
     type: 3}
   btn: {fileID: 275794104}
 --- !u!114 &275794104
@@ -2702,8 +2703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mm: {fileID: 154560111}
-  selectedObject: {fileID: 8660156923362987509, guid: 659f81ba81b8102468f3c6c1c25273aa,
-    type: 3}
+  selectedObject: {fileID: 0}
   btn: {fileID: 375589825}
 --- !u!114 &375589825
 MonoBehaviour:
@@ -3381,8 +3381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mm: {fileID: 154560111}
-  selectedObject: {fileID: 8660156923362987509, guid: 7e55fa213dd6751469e1183abb16a6dd,
-    type: 3}
+  selectedObject: {fileID: 0}
   btn: {fileID: 437039624}
 --- !u!114 &437039624
 MonoBehaviour:
@@ -3736,6 +3735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StyleButton: {fileID: 466001631}
   mm: {fileID: 154560111}
+  style: 0
 --- !u!1 &509314429
 GameObject:
   m_ObjectHideFlags: 0
@@ -4231,9 +4231,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Mid Century
-
-'
+  m_text: Mid Century
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5199,8 +5197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mm: {fileID: 154560111}
-  selectedObject: {fileID: 8660156923362987509, guid: ce56e3cadb64226499b88893b9b464f7,
-    type: 3}
+  selectedObject: {fileID: 0}
   btn: {fileID: 842940519}
 --- !u!114 &842940519
 MonoBehaviour:
@@ -5482,8 +5479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mm: {fileID: 154560111}
-  selectedObject: {fileID: 8660156923362987509, guid: 659f81ba81b8102468f3c6c1c25273aa,
-    type: 3}
+  selectedObject: {fileID: 0}
   btn: {fileID: 874362796}
 --- !u!114 &874362796
 MonoBehaviour:
@@ -5620,7 +5616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mm: {fileID: 154560111}
-  selectedObject: {fileID: 8660156923362987509, guid: f92c7b17842424c448b6c94b91a839fd,
+  selectedObject: {fileID: 1614807492033235206, guid: f92c7b17842424c448b6c94b91a839fd,
     type: 3}
   btn: {fileID: 904965664}
 --- !u!114 &904965664
@@ -5894,8 +5890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mm: {fileID: 154560111}
-  selectedObject: {fileID: 8660156923362987509, guid: ce56e3cadb64226499b88893b9b464f7,
-    type: 3}
+  selectedObject: {fileID: 0}
   btn: {fileID: 981865266}
 --- !u!114 &981865266
 MonoBehaviour:
@@ -7484,8 +7479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mm: {fileID: 154560111}
-  selectedObject: {fileID: 8660156923362987509, guid: ce56e3cadb64226499b88893b9b464f7,
-    type: 3}
+  selectedObject: {fileID: 0}
   btn: {fileID: 1354818364}
 --- !u!114 &1354818364
 MonoBehaviour:
@@ -7971,7 +7965,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mm: {fileID: 154560111}
-  selectedObject: {fileID: 8660156923362987509, guid: 7e55fa213dd6751469e1183abb16a6dd,
+  selectedObject: {fileID: 6729843814588944514, guid: 7e55fa213dd6751469e1183abb16a6dd,
     type: 3}
   btn: {fileID: 1427211664}
 --- !u!114 &1427211664
@@ -8328,6 +8322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StyleButton: {fileID: 1445153454}
   mm: {fileID: 154560111}
+  style: 2
 --- !u!1001 &1452867318
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8472,6 +8467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StyleButton: {fileID: 1467515294}
   mm: {fileID: 154560111}
+  style: 1
 --- !u!114 &1467515294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8776,7 +8772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mm: {fileID: 154560111}
-  selectedObject: {fileID: 8660156923362987509, guid: ce56e3cadb64226499b88893b9b464f7,
+  selectedObject: {fileID: 2293330746950138629, guid: ce56e3cadb64226499b88893b9b464f7,
     type: 3}
   btn: {fileID: 1565666739}
 --- !u!114 &1565666739
@@ -11033,8 +11029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mm: {fileID: 154560111}
-  selectedObject: {fileID: 2272919727622143610, guid: 3dd603f5a3dcd784087d8baf6f32ea2d,
-    type: 3}
+  selectedObject: {fileID: 0}
   btn: {fileID: 1995499244}
 --- !u!114 &1995499244
 MonoBehaviour:
@@ -12091,7 +12086,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1732488301}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.7424565
+  m_Size: 0.74245656
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

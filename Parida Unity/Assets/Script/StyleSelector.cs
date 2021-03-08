@@ -4,16 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-enum Style {
-    Bohemian,
-    MidCentury,
-    Modern,
-    Minimalistic
-}
+//enum Style {
+//    Bohemian,
+//    MidCentury,
+//    Modern,
+//    Minimalistic
+//}
 
 public class StyleSelector : MonoBehaviour {
     public Button StyleButton;
     public MenuManager mm;
+    public Styles style;
 
     void Start() {
         StyleButton.onClick.AddListener(SelectStyle);
@@ -21,7 +22,7 @@ public class StyleSelector : MonoBehaviour {
     }
 
     void SelectStyle() {
-        mm.selectedStyle = StyleButton.GetComponentInChildren<TextMeshProUGUI>().text;
+        mm.selectedStyle = style;
         mm.FocusObjectTypeSelection();
     }
     //private void OnGUI() {
