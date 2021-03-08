@@ -1,15 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-
-//enum Style {
-//    Bohemian,
-//    MidCentury,
-//    Modern,
-//    Minimalistic
-//}
 
 public class StyleSelector : MonoBehaviour {
     public Button StyleButton;
@@ -18,7 +8,6 @@ public class StyleSelector : MonoBehaviour {
 
     void Start() {
         StyleButton.onClick.AddListener(SelectStyle);
-
     }
 
     void SelectStyle() {

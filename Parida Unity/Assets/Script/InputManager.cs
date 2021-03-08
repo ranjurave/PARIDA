@@ -9,15 +9,15 @@ public class InputManager : MonoBehaviour {
     public GameObject crosshair;
     private List<ARRaycastHit> hits = new List<ARRaycastHit>();
     private Touch touch;
-    public bool canGrabObject;
-    private bool canPlaceObject;
+    public bool canGrabObject { get; set; }
+    private bool canPlaceObject { get; set; }
     private Pose pose;
     private ObjectPropertySet previousActiveGameObject;
-    public ObjectPropertySet activeGameObject;
-    public ObjectPropertySet selectedGameObject;
+    public ObjectPropertySet activeGameObject { get; set; }
+    public ObjectPropertySet selectedGameObject { get; set; }
     private static InputManager m_instance;
-    public bool focusObjectPlaced;
-    public bool viewModePanelOn;
+    public bool focusObjectPlaced { get; set; }
+    public bool viewModePanelOn { get; set; }
 
     // Property with setter and getter
     public static InputManager Instance {
@@ -165,10 +165,10 @@ public class InputManager : MonoBehaviour {
     //********************
     // for debugging
     //********************
-    //private void OnGUI() {
-    //    GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
-    //    myRectStyle.fontSize = 50;
-    //    myRectStyle.normal.textColor = Color.red;
-    //    GUI.Box(new Rect(new Vector2(100, 100), new Vector2(400, 100)), "Can place" + canPlaceObject.ToString(), myRectStyle);
-    //}
+    private void OnGUI() {
+        GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
+        myRectStyle.fontSize = 50;
+        myRectStyle.normal.textColor = Color.red;
+        GUI.Box(new Rect(new Vector2(100, 100), new Vector2(400, 100)), "Can place" + canPlaceObject.ToString(), myRectStyle);
+    }
 }

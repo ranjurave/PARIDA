@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -478,7 +478,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mm: {fileID: 154560111}
-  selectedObject: {fileID: 0}
+  selectedObject: {fileID: 2293330746950138629, guid: ce56e3cadb64226499b88893b9b464f7,
+    type: 3}
   btn: {fileID: 44652956}
 --- !u!114 &44652956
 MonoBehaviour:
@@ -832,7 +833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StyleButton: {fileID: 58049123}
   mm: {fileID: 154560111}
-  style: 0
+  style: 4
 --- !u!1 &67309949
 GameObject:
   m_ObjectHideFlags: 0
@@ -1494,18 +1495,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da075b3502f4b794e99d70346f1f5a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFocus: {fileID: 2937649430991582158, guid: f382d5bd7c4f95643a4128a2c2580871,
-    type: 3}
-  onScreenUI: {fileID: 1912898136}
-  roomSelection: {fileID: 1923519656}
-  styleSelection: {fileID: 1533492822}
-  focusObjectSelection: {fileID: 868098049}
-  focusObjectTypeSelection: {fileID: 2105106833}
-  furnitureToPlace: {fileID: 509314429}
-  focusObjectWarning: {fileID: 1288714551}
+  roomSelectionPanel: {fileID: 1923519656}
+  styleSelectionPanel: {fileID: 1533492822}
+  focusObjectSelectionPanel: {fileID: 868098049}
+  focusObjectTypeSelectionPanel: {fileID: 2105106833}
+  onScreenUIPanel: {fileID: 1912898136}
   viewModePanel: {fileID: 1679546380}
-  allPanels: []
-  testString: 
+  moreFurniturePanel: {fileID: 509314429}
+  focusObjectWarningPanel: {fileID: 1288714551}
 --- !u!1 &186128694
 GameObject:
   m_ObjectHideFlags: 0
@@ -2703,7 +2700,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mm: {fileID: 154560111}
-  selectedObject: {fileID: 0}
+  selectedObject: {fileID: 1614807492033235206, guid: f92c7b17842424c448b6c94b91a839fd,
+    type: 3}
   btn: {fileID: 375589825}
 --- !u!114 &375589825
 MonoBehaviour:
@@ -3381,7 +3379,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mm: {fileID: 154560111}
-  selectedObject: {fileID: 0}
+  selectedObject: {fileID: 1426820302983665867, guid: 659f81ba81b8102468f3c6c1c25273aa,
+    type: 3}
   btn: {fileID: 437039624}
 --- !u!114 &437039624
 MonoBehaviour:
@@ -3735,7 +3734,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StyleButton: {fileID: 466001631}
   mm: {fileID: 154560111}
-  style: 0
+  style: 3
 --- !u!1 &509314429
 GameObject:
   m_ObjectHideFlags: 0
@@ -5197,7 +5196,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mm: {fileID: 154560111}
-  selectedObject: {fileID: 0}
+  selectedObject: {fileID: 1426820302983665867, guid: 659f81ba81b8102468f3c6c1c25273aa,
+    type: 3}
   btn: {fileID: 842940519}
 --- !u!114 &842940519
 MonoBehaviour:
@@ -5479,7 +5479,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mm: {fileID: 154560111}
-  selectedObject: {fileID: 0}
+  selectedObject: {fileID: 1614807492033235206, guid: f92c7b17842424c448b6c94b91a839fd,
+    type: 3}
   btn: {fileID: 874362796}
 --- !u!114 &874362796
 MonoBehaviour:
@@ -5890,7 +5891,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mm: {fileID: 154560111}
-  selectedObject: {fileID: 0}
+  selectedObject: {fileID: 2293330746950138629, guid: ce56e3cadb64226499b88893b9b464f7,
+    type: 3}
   btn: {fileID: 981865266}
 --- !u!114 &981865266
 MonoBehaviour:
@@ -6031,7 +6033,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Book Shelf
+  m_text: 'Cabinet
+
 
 '
   m_isRightToLeft: 0
@@ -6605,13 +6608,6 @@ MonoBehaviour:
   arCam: {fileID: 2016040414}
   raycastManager: {fileID: 1795295897}
   crosshair: {fileID: 1452867319}
-  canGrabObject: 0
-  activeGameObject: {fileID: 2937649430991582158, guid: 1879c3efbfc466743a2021f64d93b8f3,
-    type: 3}
-  selectedGameObject: {fileID: 2937649430991582158, guid: 1879c3efbfc466743a2021f64d93b8f3,
-    type: 3}
-  focusObjectPlaced: 0
-  viewModePanelOn: 0
 --- !u!4 &1085226121
 Transform:
   m_ObjectHideFlags: 0
@@ -6758,7 +6754,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Book Shelf
+  m_text: 'Table
 
 '
   m_isRightToLeft: 0
@@ -7479,7 +7475,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mm: {fileID: 154560111}
-  selectedObject: {fileID: 0}
+  selectedObject: {fileID: 6729843814588944514, guid: 7e55fa213dd6751469e1183abb16a6dd,
+    type: 3}
   btn: {fileID: 1354818364}
 --- !u!114 &1354818364
 MonoBehaviour:
@@ -11029,7 +11026,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mm: {fileID: 154560111}
-  selectedObject: {fileID: 0}
+  selectedObject: {fileID: 3555016552347885616, guid: 3dd603f5a3dcd784087d8baf6f32ea2d,
+    type: 3}
   btn: {fileID: 1995499244}
 --- !u!114 &1995499244
 MonoBehaviour:
@@ -12086,7 +12084,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1732488301}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.74245656
+  m_Size: 0.7424565
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
