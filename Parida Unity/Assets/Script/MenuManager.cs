@@ -20,7 +20,8 @@ public class MenuManager : MonoBehaviour {
 
     void Start() {
         TurnOffAll();
-        roomSelectionPanel.SetActive(true);
+        moreFurniturePanel.SetActive(true);
+        //roomSelectionPanel.SetActive(true);
     }
     public void TurnOffAll() {
         focusObjectWarningPanel.SetActive(false);
