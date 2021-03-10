@@ -5,5 +5,4 @@ public class ObjectDatabase : ScriptableObject {
     public ObjectPropertySet[] couches;
     public ObjectPropertySet[] tables;
     public ObjectPropertySet[] chairs;
-    public ObjectPropertySet[] tvs;
 }

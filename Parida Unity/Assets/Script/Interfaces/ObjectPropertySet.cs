@@ -11,4 +11,5 @@ public enum Styles {
 public class ObjectPropertySet : MonoBehaviour {
 
     public Styles style;
+    public Sprite sprite;
 }

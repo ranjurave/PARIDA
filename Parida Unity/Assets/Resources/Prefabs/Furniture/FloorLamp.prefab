@@ -224,6 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   style: 2
+  sprite: {fileID: 21300000, guid: beda10cc1e11f2146acb86b282c016b7, type: 3}
 --- !u!1 &3429090240066165460
 GameObject:
   m_ObjectHideFlags: 0

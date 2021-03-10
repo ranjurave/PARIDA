@@ -13,7 +13,9 @@ public class StyleSelector : MonoBehaviour {
     void SelectStyle() {
         mm.selectedStyle = style;
         mm.FocusObjectTypeSelection();
+
     }
+
     //private void OnGUI() {
     //    GameObject activeObject = InputManager.Instance.activeGameObject;
     //    GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
