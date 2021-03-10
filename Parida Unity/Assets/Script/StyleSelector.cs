@@ -17,10 +17,10 @@ public class StyleSelector : MonoBehaviour {
     }
 
     //private void OnGUI() {
-    //    GameObject activeObject = InputManager.Instance.activeGameObject;
+
     //    GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
-    //    myRectStyle.fontSize = 25;
+    //    myRectStyle.fontSize = 40;
     //    myRectStyle.normal.textColor = Color.red;
-    //    GUI.Box(new Rect(new Vector2(100, 300), new Vector2(200, 200)), mm.debugstyle, myRectStyle);
+    //    GUI.Box(new Rect(new Vector2(100, 300), new Vector2(200, 200)), debugsting, myRectStyle);
     //}
 }

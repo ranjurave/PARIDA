@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1992,10 +1992,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a48dea0b48eebe49a80788793ff5048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mm: {fileID: 154560111}
-  selectedObject: {fileID: 1426820302983665867, guid: 659f81ba81b8102468f3c6c1c25273aa,
-    type: 3}
   btn: {fileID: 275794104}
+  mm: {fileID: 154560111}
+  selectedObject: {fileID: 3555016552347885616, guid: 3dd603f5a3dcd784087d8baf6f32ea2d,
+    type: 3}
+  debugstring: 
 --- !u!114 &275794104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3220,7 +3221,6 @@ Transform:
   - {fileID: 2009386839}
   - {fileID: 408585485}
   - {fileID: 2030261693}
-  - {fileID: 729314394}
   m_Father: {fileID: 154560110}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4081,52 +4081,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CameraManager: {fileID: 2016040416}
---- !u!1 &729314393
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 729314394}
-  - component: {fileID: 729314395}
-  m_Layer: 0
-  m_Name: DynamicButtonManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &729314394
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 729314393}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 509314430}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &729314395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 729314393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bd37c8012719c44787c0997a765f34f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectsButton: {fileID: 618803454545261724, guid: 6514aee4ef6e2b349bd8facb675d19a1,
-    type: 3}
-  mm: {fileID: 154560111}
 --- !u!1 &750064997
 GameObject:
   m_ObjectHideFlags: 0
@@ -4562,10 +4516,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a48dea0b48eebe49a80788793ff5048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  btn: {fileID: 904965664}
   mm: {fileID: 154560111}
   selectedObject: {fileID: 1614807492033235206, guid: f92c7b17842424c448b6c94b91a839fd,
     type: 3}
-  btn: {fileID: 904965664}
+  debugstring: 
 --- !u!114 &904965664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6088,10 +6043,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a48dea0b48eebe49a80788793ff5048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mm: {fileID: 154560111}
-  selectedObject: {fileID: 6729843814588944514, guid: 7e55fa213dd6751469e1183abb16a6dd,
-    type: 3}
   btn: {fileID: 1427211664}
+  mm: {fileID: 154560111}
+  selectedObject: {fileID: 1426820302983665867, guid: 659f81ba81b8102468f3c6c1c25273aa,
+    type: 3}
+  debugstring: 
 --- !u!114 &1427211664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6347,7 +6303,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 854.9752, y: 288.19385}
+  m_AnchoredPosition: {x: 829, y: 341}
   m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1445153454
@@ -6574,7 +6530,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 369, y: 288.19385}
+  m_AnchoredPosition: {x: 353, y: 341}
   m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1467515293
@@ -6895,10 +6851,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a48dea0b48eebe49a80788793ff5048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  btn: {fileID: 1565666739}
   mm: {fileID: 154560111}
   selectedObject: {fileID: 2293330746950138629, guid: ce56e3cadb64226499b88893b9b464f7,
     type: 3}
-  btn: {fileID: 1565666739}
+  debugstring: 
 --- !u!114 &1565666739
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -64,13 +64,16 @@ public class MenuManager : MonoBehaviour {
         panelOpenOrder.Add(focusObjectSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
+        SelectiveButtonDisplay();
     }
     public void ObjectSelected() {
+        debugString = "Objcet selected";
         TurnOffAll();
         panelOpenOrder.Add(onScreenUIPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
     }
+
     public void AddMoreObjects() {
         if (!InputManager.Instance.focusObjectPlaced) {
             TurnOffAll();
@@ -111,23 +114,15 @@ public class MenuManager : MonoBehaviour {
         panelNum--;
     }
     void SelectiveButtonDisplay() {
-        debugString = debugString +" DISPLAY";
-        List<DynamicButton> allObjects = FindObjectsOfType<DynamicButton>().ToList();
-        allObjects.ForEach(x => x.objectsButton.interactable = false);
 
-        List<DynamicButton> selectedObjects = allObjects.Where(x => x.selectedObject.style == selectedStyle).ToList();
+        List<ObjectToSpawn> allObjects = FindObjectsOfType<ObjectToSpawn>().ToList();
+        allObjects.ForEach(x => x.btn.interactable = false);
+
+        List<ObjectToSpawn> selectedObjects = allObjects.Where(x => x.selectedObject.style == selectedStyle).ToList();
         selectedObjects.ForEach(x => x.btn.interactable = true);
-
-
-        //List<ObjectToSpawn> allObjects = FindObjectsOfType<ObjectToSpawn>().ToList();
-        //allObjects.ForEach(x => x.btn.interactable = false);
-
-        //List<ObjectToSpawn> selectedObjects = allObjects.Where(x => x.selectedObject.style == selectedStyle).ToList();
-        //selectedObjects.ForEach(x => x.btn.interactable = true);
     }
 
     void DynamicButtonAdd() {
-
         int couchCount = oDB.couches.Length;
         Button[] couchButtons = new Button[couchCount];
         Texture[] imgTexture;
@@ -142,15 +137,15 @@ public class MenuManager : MonoBehaviour {
             GameObject go = Instantiate(objButton, buttonHolder.transform);
             go.GetComponent<Image>().sprite = objSprite;
             go.name = objName;
-            go.GetComponent<DynamicButton>().toSpawnObject = oDB.couches[i];
+            go.GetComponent<ObjectToSpawn>().selectedObject = oDB.couches[i];
         }
     }
 
-    private void OnGUI() {
-        ObjectPropertySet activeObject = InputManager.Instance.activeGameObject;
-        GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
-        myRectStyle.fontSize = 40;
-        myRectStyle.normal.textColor = Color.red;
-        GUI.Box(new Rect(new Vector2(50, 200), new Vector2(200, 100)), debugString, myRectStyle);
-    }
+    //private void OnGUI() {
+    //    ObjectPropertySet activeObject = InputManager.Instance.activeGameObject;
+    //    GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
+    //    myRectStyle.fontSize = 40;
+    //    myRectStyle.normal.textColor = Color.red;
+    //    GUI.Box(new Rect(new Vector2(50, 200), new Vector2(200, 100)), debugString, myRectStyle);
+    //}
 }
