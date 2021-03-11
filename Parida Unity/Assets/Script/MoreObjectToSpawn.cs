@@ -22,10 +22,10 @@ public class MoreObjectToSpawn : MonoBehaviour {
         mm.AddMoreObjects();
     }
 
-    private void OnGUI() {
-        GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
-        myRectStyle.fontSize = 40;
-        myRectStyle.normal.textColor = Color.red;
-        GUI.Box(new Rect(new Vector2(100, 500), new Vector2(200, 200)), debugstring, myRectStyle);
-    }
+    //private void OnGUI() {
+    //    GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
+    //    myRectStyle.fontSize = 40;
+    //    myRectStyle.normal.textColor = Color.red;
+    //    GUI.Box(new Rect(new Vector2(100, 500), new Vector2(200, 200)), debugstring, myRectStyle);
+    //}
 }

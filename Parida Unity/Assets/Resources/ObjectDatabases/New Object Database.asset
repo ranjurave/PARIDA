@@ -21,3 +21,8 @@ MonoBehaviour:
   chairs:
   - {fileID: 1426820302983665867, guid: 659f81ba81b8102468f3c6c1c25273aa, type: 3}
   - {fileID: 6729843814588944514, guid: 7e55fa213dd6751469e1183abb16a6dd, type: 3}
+  focusObjects:
+  - {fileID: 1614807492033235206, guid: f92c7b17842424c448b6c94b91a839fd, type: 3}
+  - {fileID: 2293330746950138629, guid: ce56e3cadb64226499b88893b9b464f7, type: 3}
+  - {fileID: 3555016552347885616, guid: 3dd603f5a3dcd784087d8baf6f32ea2d, type: 3}
+  - {fileID: 1426820302983665867, guid: 659f81ba81b8102468f3c6c1c25273aa, type: 3}

@@ -635,6 +635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24db966844f462e4e815d8d9f04fa136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objName: Cabinet
   style: 1
   sprite: {fileID: 21300000, guid: bb00f3172e59b864ea325b784c2a3048, type: 3}
 --- !u!1 &8660156923646584111

@@ -4,12 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ObjectToSpawn : MonoBehaviour {
+    public static ObjectToSpawn Instance;
+
     public Button btn;
-    public MenuManager mm;
-    public ObjectPropertySet selectedObject;
+    public MenuManager mm { get; set; }
+    public ObjectPropertySet selectedObject { get; set; }
 
-    public string debugstring;
+    private string debugstring;
 
+    private void Awake() {
+        Instance = this;
+    }
     // Start is called before the first frame update
     void Start() {
         debugstring = "panellllllllll";
@@ -19,7 +24,9 @@ public class ObjectToSpawn : MonoBehaviour {
     void AssignObject() {
         debugstring = "in Method";
         InputManager.Instance.selectedGameObject = selectedObject;
-        mm.ObjectSelected();
+
+        MenuManager.Instance.ObjectSelected();
+        //mm.ObjectSelected();
     }
 
     //private void OnGUI() {
