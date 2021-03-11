@@ -16,6 +16,7 @@ public class InputManager : MonoBehaviour {
     public ObjectPropertySet activeGameObject { get; set; }
     public ObjectPropertySet selectedGameObject { get; set; }
     private static InputManager im_instance;
+    private float oldRotationAngle;
     public bool focusObjectPlaced { get; set; }
     public bool viewModePanelOn { get; set; }
 
@@ -77,8 +78,16 @@ public class InputManager : MonoBehaviour {
                 float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
                 angle += 180;
 
-                Vector3 rot = activeGameObject.transform.localEulerAngles;
-                activeGameObject.transform.localEulerAngles = new Vector3(rot.x, angle, rot.z);
+                if (Input.GetTouch(1).phase == TouchPhase.Began) // at the beginning of the gesture
+                {
+                    oldRotationAngle = angle; // there is no "jump" in the rotation
+                }
+
+                float deltaAngle = angle - oldRotationAngle;
+                Vector3 rotEuler = activeGameObject.transform.localEulerAngles;
+                rotEuler.y += deltaAngle;
+                activeGameObject.transform.localEulerAngles = rotEuler;
+                oldRotationAngle = angle;
             }
         }
     }
