@@ -7,14 +7,13 @@ using System;
 using System.Linq;
 
 public class MenuManager : MonoBehaviour {
-    //public static MenuManager Instance;
 
     private static MenuManager mm_instance;
 
     public GameObject roomSelectionPanel;
     public GameObject styleSelectionPanel;
-    public GameObject focusObjectSelectionPanel;
-    public GameObject focusObjectTypeSelectionPanel;
+    public GameObject focusFurnitureSelectionPanel;
+    public GameObject focusFurnitureTypeSelectionPanel;
     public GameObject onScreenUIPanel;
     public GameObject viewModePanel;
     public GameObject moreFurniturePanel;
@@ -26,11 +25,7 @@ public class MenuManager : MonoBehaviour {
     private List<GameObject> panelOpenOrder = new List<GameObject> { };
     private int panelNum;
     public Styles selectedStyle { get; set; }
-    private string debugString;
-
-    //private void Awake() {
-    //    Instance = this;
-    //}
+    //private string debugString;
 
     public static MenuManager Instance {
         get {
@@ -46,7 +41,6 @@ public class MenuManager : MonoBehaviour {
     }
 
     void Start() {
-        debugString = "Start";
         TurnOffAll();
         panelNum = 0;
         panelOpenOrder.Add(roomSelectionPanel);
@@ -56,8 +50,8 @@ public class MenuManager : MonoBehaviour {
         focusObjectWarningPanel.SetActive(false);
         roomSelectionPanel.SetActive(false);
         styleSelectionPanel.SetActive(false);
-        focusObjectTypeSelectionPanel.SetActive(false);
-        focusObjectSelectionPanel.SetActive(false);
+        focusFurnitureTypeSelectionPanel.SetActive(false);
+        focusFurnitureSelectionPanel.SetActive(false);
         onScreenUIPanel.SetActive(false);
         moreFurniturePanel.SetActive(false);
         viewModePanel.SetActive(false);
@@ -70,20 +64,19 @@ public class MenuManager : MonoBehaviour {
     }
     public void FocusObjectTypeSelection() {
         TurnOffAll();
-        panelOpenOrder.Add(focusObjectTypeSelectionPanel);
+        panelOpenOrder.Add(focusFurnitureTypeSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
     }
     public void FocusObjectSelection() {
         TurnOffAll();
-        panelOpenOrder.Add(focusObjectSelectionPanel);
+        panelOpenOrder.Add(focusFurnitureSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
         DynamicButtonAdd();
-        SelectiveButtonDisplay();
+        DynamicButtonEnable();
     }
-    public void ObjectSelected()  {
-        debugString = "Objcet selected";
+    public void SpawnSelectedObject()  {
         TurnOffAll();
         panelOpenOrder.Add(onScreenUIPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
@@ -101,7 +94,7 @@ public void AddMoreObjects() {
             panelOpenOrder.Last<GameObject>().SetActive(true);
             panelNum++;
             DynamicButtonAdd();
-            SelectiveButtonDisplay();
+            DynamicButtonEnable();
         }
     }
     public void ViewModePanelOn() {
@@ -131,8 +124,6 @@ public void AddMoreObjects() {
     }
 
     void DynamicButtonAdd( ) {
-
-        debugString = "add";
         int objCount = oDB.focusObjects.Length;
         Button[] objButtons = new Button[objCount];
         Texture[] imgTexture;
@@ -151,7 +142,7 @@ public void AddMoreObjects() {
         }
     }
 
-    void SelectiveButtonDisplay() {
+    void DynamicButtonEnable() {
 
         //debugString = "dislpay";
         List<ObjectToSpawn> allObjects = FindObjectsOfType<ObjectToSpawn>().ToList();
@@ -163,12 +154,11 @@ public void AddMoreObjects() {
         selectedObjects?.ForEach(x => x.btn.interactable = true);
     }
 
-
-    private void OnGUI() {
-        ObjectPropertySet activeObject = InputManager.Instance.activeGameObject;
-        GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
-        myRectStyle.fontSize = 40;
-        myRectStyle.normal.textColor = Color.red;
-        GUI.Box(new Rect(new Vector2(50, 200), new Vector2(200, 100)), debugString, myRectStyle);
-    }
+    //private void OnGUI() {
+    //    ObjectPropertySet activeObject = InputManager.Instance.activeGameObject;
+    //    GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
+    //    myRectStyle.fontSize = 40;
+    //    myRectStyle.normal.textColor = Color.red;
+    //    GUI.Box(new Rect(new Vector2(50, 200), new Vector2(200, 100)), debugString, myRectStyle);
+    //}
 }

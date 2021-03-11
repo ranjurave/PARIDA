@@ -694,7 +694,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StyleButton: {fileID: 58049123}
-  mm: {fileID: 154560111}
   style: 4
 --- !u!1 &67309949
 GameObject:
@@ -1359,8 +1358,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSelectionPanel: {fileID: 1923519656}
   styleSelectionPanel: {fileID: 1533492822}
-  focusObjectSelectionPanel: {fileID: 868098049}
-  focusObjectTypeSelectionPanel: {fileID: 2105106833}
+  focusFurnitureSelectionPanel: {fileID: 868098049}
+  focusFurnitureTypeSelectionPanel: {fileID: 2105106833}
   onScreenUIPanel: {fileID: 1912898136}
   viewModePanel: {fileID: 1679546380}
   moreFurniturePanel: {fileID: 509314429}
@@ -2913,7 +2912,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StyleButton: {fileID: 466001631}
-  mm: {fileID: 154560111}
   style: 3
 --- !u!1 &509314429
 GameObject:
@@ -2925,7 +2923,7 @@ GameObject:
   m_Component:
   - component: {fileID: 509314430}
   m_Layer: 0
-  m_Name: FurnitureToPlace
+  m_Name: MoreFurnitureToPlace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3670,80 +3668,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750064997}
   m_CullTransparentMesh: 0
---- !u!1 &756513675
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 756513677}
-  - component: {fileID: 756513676}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &756513676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 756513675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5ec51c84bddc434d998c0d79dded3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &756513677
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 756513675}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 720, y: 1280, z: 183.9908}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &788232992
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 788232993}
-  m_Layer: 0
-  m_Name: Rooms
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &788232993
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 788232992}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -91, y: -59, z: 303.87863}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1064567132}
-  m_Father: {fileID: 1288714552}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &807825500
 GameObject:
   m_ObjectHideFlags: 0
@@ -3890,7 +3814,7 @@ GameObject:
   m_Component:
   - component: {fileID: 868098050}
   m_Layer: 0
-  m_Name: FocusObjectSelection
+  m_Name: FocusFurnitureSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4236,17 +4160,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1064567131}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 303.8786}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2086499742}
-  m_Father: {fileID: 788232993}
-  m_RootOrder: 0
+  m_Father: {fileID: 1288714552}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 345, y: -145}
+  m_AnchoredPosition: {x: 254, y: -203.99995}
   m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1064567133
@@ -4850,7 +4774,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 154560111}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: FocusObjectSelection
         m_Mode: 1
         m_Arguments:
@@ -4928,7 +4852,7 @@ Transform:
   m_Children:
   - {fileID: 1593456330}
   - {fileID: 2061590689}
-  - {fileID: 788232993}
+  - {fileID: 1064567132}
   m_Father: {fileID: 154560110}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5537,7 +5461,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StyleButton: {fileID: 1445153454}
-  mm: {fileID: 154560111}
   style: 2
 --- !u!1001 &1452867318
 PrefabInstance:
@@ -5682,7 +5605,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StyleButton: {fileID: 1467515294}
-  mm: {fileID: 154560111}
   style: 1
 --- !u!114 &1467515294
 MonoBehaviour:
@@ -8495,7 +8417,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2105106834}
   m_Layer: 0
-  m_Name: FocusObjectTypeSelection
+  m_Name: FocusFurnituretTypeSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

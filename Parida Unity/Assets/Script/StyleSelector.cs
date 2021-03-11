@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class StyleSelector : MonoBehaviour {
     public Button StyleButton;
-    public MenuManager mm;
     public Styles style;
 
     void Start() {
@@ -11,9 +10,8 @@ public class StyleSelector : MonoBehaviour {
     }
 
     void SelectStyle() {
-        mm.selectedStyle = style;
-        mm.FocusObjectTypeSelection();
-
+        MenuManager.Instance.selectedStyle = style;
+        MenuManager.Instance.FocusObjectTypeSelection();
     }
 
     //private void OnGUI() {

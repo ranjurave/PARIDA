@@ -15,21 +15,21 @@ public class InputManager : MonoBehaviour {
     private ObjectPropertySet previousActiveGameObject;
     public ObjectPropertySet activeGameObject { get; set; }
     public ObjectPropertySet selectedGameObject { get; set; }
-    private static InputManager m_instance;
+    private static InputManager im_instance;
     public bool focusObjectPlaced { get; set; }
     public bool viewModePanelOn { get; set; }
 
     // Property with setter and getter
     public static InputManager Instance {
         get {
-            if (m_instance == null) {
-                m_instance = GameObject.FindObjectOfType<InputManager>();
+            if (im_instance == null) {
+                im_instance = GameObject.FindObjectOfType<InputManager>();
             }
 
-            return m_instance;
+            return im_instance;
         }
         set {
-            m_instance = value;
+            im_instance = value;
         }
     }
 
