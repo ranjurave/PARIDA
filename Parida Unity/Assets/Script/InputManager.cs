@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour {
     private Touch touch;
     public bool canGrabObject { get; set; }
     private bool canPlaceObject { get; set; }
+    private bool moveTouch;
     private Pose pose;
     private ObjectPropertySet previousActiveGameObject;
     public ObjectPropertySet activeGameObject { get; set; }
@@ -43,11 +44,11 @@ public class InputManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
         CrosshairCalculation();
         crosshair.SetActive(canPlaceObject);
 
         if (Input.touchCount == 0) {
+            moveTouch = false;
             if (!viewModePanelOn) {
                 canGrabObject = true;
             }
@@ -60,9 +61,12 @@ public class InputManager : MonoBehaviour {
 
         // On one finger touch
         //**************************
-        if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began && canPlaceObject) {
-            ObjectPropertySet copy = Instantiate(selectedGameObject, crosshair.transform.position, crosshair.transform.rotation);
-            focusObjectPlaced = true;
+        if (Input.touchCount == 1) {
+            moveTouch = true;
+            if (Input.GetTouch(0).phase == TouchPhase.Began && canPlaceObject) {
+                ObjectPropertySet copy = Instantiate(selectedGameObject, crosshair.transform.position, crosshair.transform.rotation);
+                focusObjectPlaced = true;
+            }
         }
 
         // On two finger touch
@@ -152,7 +156,7 @@ public class InputManager : MonoBehaviour {
                     }
                 }
 
-                if (Input.touchCount == 1) {
+                if (moveTouch) {
                     var hitPose = hits[0].pose;
                     activeGameObject.transform.position = hitPose.position;
                 }

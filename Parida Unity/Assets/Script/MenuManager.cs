@@ -43,7 +43,7 @@ public class MenuManager : MonoBehaviour {
     void Start() {
         TurnOffAll();
         panelNum = 0;
-        panelOpenOrder.Add(roomSelectionPanel);
+        panelOpenOrder.Add(styleSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
     }
     public void TurnOffAll() {
@@ -56,9 +56,9 @@ public class MenuManager : MonoBehaviour {
         moreFurniturePanel.SetActive(false);
         viewModePanel.SetActive(false);
     }
-    public void StyleSelection() {
+    public void RoomSelection() {
         TurnOffAll();
-        panelOpenOrder.Add(styleSelectionPanel);
+        panelOpenOrder.Add(roomSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
     }
@@ -124,6 +124,17 @@ public void AddMoreObjects() {
     }
 
     void DynamicButtonAdd( ) {
+        List<ObjectToSpawn> previousButtons = FindObjectsOfType<ObjectToSpawn>().ToList();
+        for (int i = 0; i < previousButtons.Count; i++) {
+            Debug.Log(i);
+
+            Destroy(previousButtons[i].gameObject);
+        }
+        previousButtons.Clear();
+        //previousButtons.ForEach(x => {
+        // Destroy(x.btn);
+        //});
+
         int objCount = oDB.focusObjects.Length;
         Button[] objButtons = new Button[objCount];
         Texture[] imgTexture;
@@ -137,21 +148,18 @@ public void AddMoreObjects() {
             GameObject go = Instantiate(objButton, buttonHolder.transform);
             go.GetComponent<Image>().sprite = objSprite;
             go.name = objName;
-            Debug.Log(go.name);
             go.GetComponent<ObjectToSpawn>().selectedObject = oDB.focusObjects[i];
         }
     }
 
     void DynamicButtonEnable() {
-
-        //debugString = "dislpay";
-        List<ObjectToSpawn> allObjects = FindObjectsOfType<ObjectToSpawn>().ToList();
-        allObjects.ForEach(x => {
+        List<ObjectToSpawn> allButtons = FindObjectsOfType<ObjectToSpawn>().ToList();
+        allButtons.ForEach(x => {
             x.btn.interactable = false;
         });
 
-        List<ObjectToSpawn> selectedObjects = allObjects.Where(x => x.selectedObject.style == selectedStyle).ToList();
-        selectedObjects?.ForEach(x => x.btn.interactable = true);
+        List<ObjectToSpawn> selectedButtons = allButtons.Where(x => x.selectedObject.style == selectedStyle).ToList();
+        selectedButtons?.ForEach(x => x.btn.interactable = true);
     }
 
     //private void OnGUI() {
