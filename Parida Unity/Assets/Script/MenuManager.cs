@@ -12,8 +12,8 @@ public class MenuManager : MonoBehaviour {
 
     public GameObject roomSelectionPanel;
     public GameObject styleSelectionPanel;
-    public GameObject focusFurnitureSelectionPanel;
-    public GameObject focusFurnitureTypeSelectionPanel;
+    public GameObject focusFurniturePanel;
+    public GameObject focusCategoryPanel;
     public GameObject onScreenUIPanel;
     public GameObject viewModePanel;
     public GameObject moreFurniturePanel;
@@ -25,6 +25,7 @@ public class MenuManager : MonoBehaviour {
     private List<GameObject> panelOpenOrder = new List<GameObject> { };
     private int panelNum;
     public Styles selectedStyle { get; set; }
+    public Category selectedCategory { get; set; }
     //private string debugString;
 
     public static MenuManager Instance {
@@ -47,11 +48,11 @@ public class MenuManager : MonoBehaviour {
         panelOpenOrder.Last<GameObject>().SetActive(true);
     }
     public void TurnOffAll() {
-        focusObjectWarningPanel.SetActive(false);
-        roomSelectionPanel.SetActive(false);
         styleSelectionPanel.SetActive(false);
-        focusFurnitureTypeSelectionPanel.SetActive(false);
-        focusFurnitureSelectionPanel.SetActive(false);
+        roomSelectionPanel.SetActive(false);
+        focusCategoryPanel.SetActive(false);
+        focusFurniturePanel.SetActive(false);
+        focusObjectWarningPanel.SetActive(false);
         onScreenUIPanel.SetActive(false);
         moreFurniturePanel.SetActive(false);
         viewModePanel.SetActive(false);
@@ -62,15 +63,15 @@ public class MenuManager : MonoBehaviour {
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
     }
-    public void FocusObjectTypeSelection() {
+    public void FocusCategorySelection() {
         TurnOffAll();
-        panelOpenOrder.Add(focusFurnitureTypeSelectionPanel);
+        panelOpenOrder.Add(focusCategoryPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
     }
-    public void FocusObjectSelection() {
+    public void FocusFurnitureSelection() {
         TurnOffAll();
-        panelOpenOrder.Add(focusFurnitureSelectionPanel);
+        panelOpenOrder.Add(focusFurniturePanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
         DynamicButtonAdd();
@@ -126,15 +127,10 @@ public void AddMoreObjects() {
     void DynamicButtonAdd( ) {
         List<ObjectToSpawn> previousButtons = FindObjectsOfType<ObjectToSpawn>().ToList();
         for (int i = 0; i < previousButtons.Count; i++) {
-            Debug.Log(i);
-
             Destroy(previousButtons[i].gameObject);
         }
-        previousButtons.Clear();
-        //previousButtons.ForEach(x => {
-        // Destroy(x.btn);
-        //});
 
+        //TODO depending on category, populate that category objects. Try to create a variable of oDB.
         int objCount = oDB.focusObjects.Length;
         Button[] objButtons = new Button[objCount];
         Texture[] imgTexture;

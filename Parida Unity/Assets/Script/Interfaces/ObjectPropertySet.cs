@@ -8,6 +8,16 @@ public enum Styles {
     MINIMALISTIC
 }
 
+public enum Category {
+    NONE,
+    COUCH,
+    CHAIR,
+    TV,
+    FIREPLACE,
+    LIBRARY,
+    COFFEETABLE
+}
+
 public class ObjectPropertySet : MonoBehaviour {
     public string objName;
     public Styles style;

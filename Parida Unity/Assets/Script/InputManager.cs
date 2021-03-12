@@ -82,7 +82,7 @@ public class InputManager : MonoBehaviour {
                 float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
                 angle += 180;
 
-                if (Input.GetTouch(1).phase == TouchPhase.Began) // at the beginning of the gesture
+                if (Input.GetTouch(1).phase == TouchPhase.Began)// at the beginning of the gesture
                 {
                     oldRotationAngle = angle; // there is no "jump" in the rotation
                 }
