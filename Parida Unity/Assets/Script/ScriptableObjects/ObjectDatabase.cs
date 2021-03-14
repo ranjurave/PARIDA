@@ -5,7 +5,6 @@ public class ObjectDatabase : ScriptableObject {
     public ObjectPropertySet[] couches;
     public ObjectPropertySet[] tables;
     public ObjectPropertySet[] chairs;
-    public ObjectPropertySet[] focusObjects;
     public ObjectPropertySet[] tvs;
     public ObjectPropertySet[] library;
     public ObjectPropertySet[] coffeeTable;

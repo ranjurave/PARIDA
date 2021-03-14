@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 251000668932864969}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.003, y: 0.733, z: 0.0008953}
-  m_LocalScale: {x: 0.25838, y: 0.13564949, z: 0.25838}
+  m_LocalScale: {x: 0.25838, y: 0.22756559, z: 0.25838}
   m_Children: []
   m_Father: {fileID: 5498140983213084438}
   m_RootOrder: 1
@@ -39,7 +39,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251000668932864969}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &8437856238002180254
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 6089574975403823818}
   - component: {fileID: 3555016552347885616}
   m_Layer: 0
-  m_Name: FloorLamp
+  m_Name: FloorLamp 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objName: FloorLamp
-  style: 2
+  style: 4
   sprite: {fileID: 21300000, guid: beda10cc1e11f2146acb86b282c016b7, type: 3}
 --- !u!1 &3429090240066165460
 GameObject:

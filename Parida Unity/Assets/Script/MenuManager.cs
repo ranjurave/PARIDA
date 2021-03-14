@@ -1,25 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using System;
 using System.Linq;
+
+//=====================================================
+//DisplayPanel class tobe added to all panels in Unity.
+
 
 public class MenuManager : MonoBehaviour {
 
     private static MenuManager mm_instance;
 
-    public GameObject roomSelectionPanel;
     public GameObject styleSelectionPanel;
-    public GameObject focusFurniturePanel;
+    public GameObject roomSelectionPanel;
     public GameObject focusCategoryPanel;
+    public GameObject focusTVPanel;
+    public GameObject focusFireplacePanel;
+    public GameObject focusLibraryPanel;
+    public GameObject focusCoffeetablePanel;
     public GameObject onScreenUIPanel;
     public GameObject viewModePanel;
     public GameObject moreFurniturePanel;
     public GameObject focusObjectWarningPanel;
 
     public ObjectDatabase oDB;
+    private ObjectPropertySet objPS;
     public GameObject buttonHolder;
     public GameObject objButton;
     private List<GameObject> panelOpenOrder = new List<GameObject> { };
@@ -42,20 +47,17 @@ public class MenuManager : MonoBehaviour {
     }
 
     void Start() {
+        //Debug.Log("start...");
         TurnOffAll();
         panelNum = 0;
         panelOpenOrder.Add(styleSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
     }
     public void TurnOffAll() {
-        styleSelectionPanel.SetActive(false);
-        roomSelectionPanel.SetActive(false);
-        focusCategoryPanel.SetActive(false);
-        focusFurniturePanel.SetActive(false);
-        focusObjectWarningPanel.SetActive(false);
-        onScreenUIPanel.SetActive(false);
-        moreFurniturePanel.SetActive(false);
-        viewModePanel.SetActive(false);
+        List<DisplayPanel> allPanels = FindObjectsOfType<DisplayPanel>().ToList();
+        allPanels.ForEach(x => {
+            x.gameObject.SetActive(false);
+        });
     }
     public void RoomSelection() {
         TurnOffAll();
@@ -69,9 +71,34 @@ public class MenuManager : MonoBehaviour {
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
     }
-    public void FocusFurnitureSelection() {
+    public void FocusTVSelection() {
         TurnOffAll();
-        panelOpenOrder.Add(focusFurniturePanel);
+        panelOpenOrder.Add(focusTVPanel);
+        panelOpenOrder.Last<GameObject>().SetActive(true);
+        panelNum++;
+
+        DynamicButtonAdd();
+        DynamicButtonEnable();
+    }
+    public void FocusFireplaceSelection() {
+        TurnOffAll();
+        panelOpenOrder.Add(focusFireplacePanel);
+        panelOpenOrder.Last<GameObject>().SetActive(true);
+        panelNum++;
+        DynamicButtonAdd();
+        DynamicButtonEnable();
+    }
+    public void FocusLibrarySelection() {
+        TurnOffAll();
+        panelOpenOrder.Add(focusLibraryPanel);
+        panelOpenOrder.Last<GameObject>().SetActive(true);
+        panelNum++;
+        DynamicButtonAdd();
+        DynamicButtonEnable();
+    }
+    public void FocusCoffeetableSelection() {
+        TurnOffAll();
+        panelOpenOrder.Add(focusCoffeetablePanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
         DynamicButtonAdd();
@@ -94,6 +121,7 @@ public void AddMoreObjects() {
             panelOpenOrder.Add(moreFurniturePanel);
             panelOpenOrder.Last<GameObject>().SetActive(true);
             panelNum++;
+
             DynamicButtonAdd();
             DynamicButtonEnable();
         }
@@ -124,27 +152,24 @@ public void AddMoreObjects() {
         panelNum--;
     }
 
-    void DynamicButtonAdd( ) {
+    void DynamicButtonAdd() {
         List<ObjectToSpawn> previousButtons = FindObjectsOfType<ObjectToSpawn>().ToList();
         for (int i = 0; i < previousButtons.Count; i++) {
             Destroy(previousButtons[i].gameObject);
         }
 
         //TODO depending on category, populate that category objects. Try to create a variable of oDB.
-        int objCount = oDB.focusObjects.Length;
-        Button[] objButtons = new Button[objCount];
-        Texture[] imgTexture;
-        imgTexture = Resources.LoadAll<Texture>("Image");
+        int objCount = oDB.tvs.Length;
 
-        for (int i = 0; i < oDB.focusObjects.Length; i++) {
-            string objName = oDB.focusObjects[i].name;
-            Styles objStyle = oDB.focusObjects[i].style; 
-            Sprite objSprite = oDB.focusObjects[i].sprite; 
+        for (int i = 0; i < oDB.tvs.Length; i++) {
+            string objName = oDB.tvs[i].name;
+            Styles objStyle = oDB.tvs[i].style; 
+            Sprite objSprite = oDB.tvs[i].sprite; 
 
             GameObject go = Instantiate(objButton, buttonHolder.transform);
             go.GetComponent<Image>().sprite = objSprite;
             go.name = objName;
-            go.GetComponent<ObjectToSpawn>().selectedObject = oDB.focusObjects[i];
+            go.GetComponent<ObjectToSpawn>().selectedObject = oDB.tvs[i];
         }
     }
 
