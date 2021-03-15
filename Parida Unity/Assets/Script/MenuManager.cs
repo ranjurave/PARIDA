@@ -3,28 +3,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-//=====================================================
-//DisplayPanel class tobe added to all panels in Unity.
-
-
 public class MenuManager : MonoBehaviour {
-
-    private static MenuManager mm_instance;
-
     public GameObject styleSelectionPanel;
     public GameObject roomSelectionPanel;
-    public GameObject focusCategoryPanel;
-    public GameObject focusTVPanel;
-    public GameObject focusFireplacePanel;
-    public GameObject focusLibraryPanel;
-    public GameObject focusCoffeetablePanel;
+    public GameObject focusCategorySelectionPanel;
+    public GameObject focusFurnitureSelectionPanel;
     public GameObject onScreenUIPanel;
     public GameObject viewModePanel;
     public GameObject moreFurniturePanel;
     public GameObject focusObjectWarningPanel;
 
+    private static MenuManager mm_instance;
     public ObjectDatabase oDB;
-    private ObjectPropertySet objPS;
     public GameObject buttonHolder;
     public GameObject objButton;
     private List<GameObject> panelOpenOrder = new List<GameObject> { };
@@ -47,7 +37,6 @@ public class MenuManager : MonoBehaviour {
     }
 
     void Start() {
-        //Debug.Log("start...");
         TurnOffAll();
         panelNum = 0;
         panelOpenOrder.Add(styleSelectionPanel);
@@ -67,41 +56,40 @@ public class MenuManager : MonoBehaviour {
     }
     public void FocusCategorySelection() {
         TurnOffAll();
-        panelOpenOrder.Add(focusCategoryPanel);
+        panelOpenOrder.Add(focusCategorySelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
     }
     public void FocusTVSelection() {
         TurnOffAll();
-        panelOpenOrder.Add(focusTVPanel);
+        panelOpenOrder.Add(focusFurnitureSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
-
-        DynamicButtonAdd();
+        DynamicButtonAdd(oDB.tvs);
         DynamicButtonEnable();
     }
     public void FocusFireplaceSelection() {
         TurnOffAll();
-        panelOpenOrder.Add(focusFireplacePanel);
+        panelOpenOrder.Add(focusFurnitureSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
-        DynamicButtonAdd();
+        DynamicButtonAdd(oDB.firePlace);
         DynamicButtonEnable();
     }
     public void FocusLibrarySelection() {
         TurnOffAll();
-        panelOpenOrder.Add(focusLibraryPanel);
+        panelOpenOrder.Add(focusFurnitureSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
-        DynamicButtonAdd();
+        DynamicButtonAdd(oDB.library);
         DynamicButtonEnable();
     }
     public void FocusCoffeetableSelection() {
         TurnOffAll();
-        panelOpenOrder.Add(focusCoffeetablePanel);
+        panelOpenOrder.Add(focusFurnitureSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
-        DynamicButtonAdd();
+        DynamicButtonAdd(oDB.coffeeTable);
         DynamicButtonEnable();
     }
     public void SpawnSelectedObject()  {
@@ -122,7 +110,7 @@ public void AddMoreObjects() {
             panelOpenOrder.Last<GameObject>().SetActive(true);
             panelNum++;
 
-            DynamicButtonAdd();
+            //DynamicButtonAdd();
             DynamicButtonEnable();
         }
     }
@@ -152,24 +140,24 @@ public void AddMoreObjects() {
         panelNum--;
     }
 
-    void DynamicButtonAdd() {
+    void DynamicButtonAdd(ObjectPropertySet[] objToAdd) {
         List<ObjectToSpawn> previousButtons = FindObjectsOfType<ObjectToSpawn>().ToList();
         for (int i = 0; i < previousButtons.Count; i++) {
             Destroy(previousButtons[i].gameObject);
         }
 
-        //TODO depending on category, populate that category objects. Try to create a variable of oDB.
         int objCount = oDB.tvs.Length;
+        int objc = objToAdd.Length;
 
-        for (int i = 0; i < oDB.tvs.Length; i++) {
-            string objName = oDB.tvs[i].name;
-            Styles objStyle = oDB.tvs[i].style; 
-            Sprite objSprite = oDB.tvs[i].sprite; 
+        for (int i = 0; i < objToAdd.Length; i++) {
+            string objName = objToAdd[i].name;
+            Styles objStyle = objToAdd[i].style;
+            Sprite objSprite = objToAdd[i].sprite;
 
             GameObject go = Instantiate(objButton, buttonHolder.transform);
             go.GetComponent<Image>().sprite = objSprite;
             go.name = objName;
-            go.GetComponent<ObjectToSpawn>().selectedObject = oDB.tvs[i];
+            go.GetComponent<ObjectToSpawn>().selectedObject = objToAdd[i];
         }
     }
 
