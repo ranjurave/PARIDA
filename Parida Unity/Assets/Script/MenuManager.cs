@@ -10,12 +10,14 @@ public class MenuManager : MonoBehaviour {
     public GameObject focusFurnitureSelectionPanel;
     public GameObject onScreenUIPanel;
     public GameObject viewModePanel;
-    public GameObject moreFurniturePanel;
+    public GameObject moreFurnitureCategory;
+    public GameObject moreFurnitureSelection;
     public GameObject focusObjectWarningPanel;
 
     private static MenuManager mm_instance;
     public ObjectDatabase oDB;
-    public GameObject buttonHolder;
+    public GameObject focusButtonHolder;
+    public GameObject moreButtonHolder;
     public GameObject objButton;
     private List<GameObject> panelOpenOrder = new List<GameObject> { };
     private int panelNum;
@@ -39,7 +41,8 @@ public class MenuManager : MonoBehaviour {
     void Start() {
         TurnOffAll();
         panelNum = 0;
-        panelOpenOrder.Add(styleSelectionPanel);
+        //panelOpenOrder.Add(styleSelectionPanel);
+        panelOpenOrder.Add(moreFurnitureCategory);
         panelOpenOrder.Last<GameObject>().SetActive(true);
     }
     public void TurnOffAll() {
@@ -65,32 +68,32 @@ public class MenuManager : MonoBehaviour {
         panelOpenOrder.Add(focusFurnitureSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
-        DynamicButtonAdd(oDB.tvs);
-        DynamicButtonEnable();
+        FocusButtonAdd(oDB.tvs);
+        FocusButtonEnable();
     }
     public void FocusFireplaceSelection() {
         TurnOffAll();
         panelOpenOrder.Add(focusFurnitureSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
-        DynamicButtonAdd(oDB.firePlace);
-        DynamicButtonEnable();
+        FocusButtonAdd(oDB.firePlace);
+        FocusButtonEnable();
     }
     public void FocusLibrarySelection() {
         TurnOffAll();
         panelOpenOrder.Add(focusFurnitureSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
-        DynamicButtonAdd(oDB.library);
-        DynamicButtonEnable();
+        FocusButtonAdd(oDB.library);
+        FocusButtonEnable();
     }
     public void FocusCoffeetableSelection() {
         TurnOffAll();
         panelOpenOrder.Add(focusFurnitureSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
-        DynamicButtonAdd(oDB.coffeeTable);
-        DynamicButtonEnable();
+        FocusButtonAdd(oDB.coffeeTable);
+        FocusButtonEnable();
     }
     public void SpawnSelectedObject()  {
         TurnOffAll();
@@ -106,15 +109,21 @@ public void AddMoreObjects() {
         }
         else {
             TurnOffAll();
-            panelOpenOrder.Add(moreFurniturePanel);
+            panelOpenOrder.Add(moreFurnitureCategory);
             panelOpenOrder.Last<GameObject>().SetActive(true);
             panelNum++;
-
-            //DynamicButtonAdd();
-            DynamicButtonEnable();
         }
     }
-    public void ViewModePanelOn() {
+    public void moreCouchSelection() {
+        TurnOffAll();
+        panelOpenOrder.Add(moreFurnitureSelection);
+        panelOpenOrder.Last<GameObject>().SetActive(true);
+        panelNum++;
+        MoreFurnitureButtonAdd(oDB.couches);
+        MoreFurnitureButtonEnable();
+    }
+
+        public void ViewModePanelOn() {
         TurnOffAll();
         panelOpenOrder.Add(viewModePanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
@@ -140,7 +149,9 @@ public void AddMoreObjects() {
         panelNum--;
     }
 
-    void DynamicButtonAdd(ObjectPropertySet[] objToAdd) {
+    //TODO:- Create one dynamic panel for focus-furniture and more-furniture
+    //TODO:- focusObjectPlaced boolean to be rewritten to match to above change
+    void FocusButtonAdd(ObjectPropertySet[] objToAdd) {
         List<ObjectToSpawn> previousButtons = FindObjectsOfType<ObjectToSpawn>().ToList();
         for (int i = 0; i < previousButtons.Count; i++) {
             Destroy(previousButtons[i].gameObject);
@@ -154,14 +165,45 @@ public void AddMoreObjects() {
             Styles objStyle = objToAdd[i].style;
             Sprite objSprite = objToAdd[i].sprite;
 
-            GameObject go = Instantiate(objButton, buttonHolder.transform);
+            GameObject go = Instantiate(objButton, focusButtonHolder.transform);
             go.GetComponent<Image>().sprite = objSprite;
             go.name = objName;
             go.GetComponent<ObjectToSpawn>().selectedObject = objToAdd[i];
         }
     }
 
-    void DynamicButtonEnable() {
+    void FocusButtonEnable() {
+        List<ObjectToSpawn> allButtons = FindObjectsOfType<ObjectToSpawn>().ToList();
+        allButtons.ForEach(x => {
+            x.btn.interactable = false;
+        });
+
+        List<ObjectToSpawn> selectedButtons = allButtons.Where(x => x.selectedObject.style == selectedStyle).ToList();
+        selectedButtons?.ForEach(x => x.btn.interactable = true);
+    }
+
+    void MoreFurnitureButtonAdd(ObjectPropertySet[] objToAdd) {
+        List<ObjectToSpawn> previousButtons = FindObjectsOfType<ObjectToSpawn>().ToList();
+        for (int i = 0; i < previousButtons.Count; i++) {
+            Destroy(previousButtons[i].gameObject);
+        }
+
+        int objCount = oDB.tvs.Length;
+        int objc = objToAdd.Length;
+
+        for (int i = 0; i < objToAdd.Length; i++) {
+            string objName = objToAdd[i].name;
+            Styles objStyle = objToAdd[i].style;
+            Sprite objSprite = objToAdd[i].sprite;
+
+            GameObject go = Instantiate(objButton, moreButtonHolder.transform);
+            go.GetComponent<Image>().sprite = objSprite;
+            go.name = objName;
+            go.GetComponent<ObjectToSpawn>().selectedObject = objToAdd[i];
+        }
+    }
+
+    void MoreFurnitureButtonEnable() {
         List<ObjectToSpawn> allButtons = FindObjectsOfType<ObjectToSpawn>().ToList();
         allButtons.ForEach(x => {
             x.btn.interactable = false;
