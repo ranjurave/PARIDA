@@ -12,12 +12,15 @@ public class MenuManager : MonoBehaviour {
     public GameObject viewModePanel;
     public GameObject moreFurnitureCategory;
     public GameObject focusObjectWarningPanel;
+    public GameObject furnitureTextureChangePanel;
 
+    public Button textureChangeButton;
     private static MenuManager mm_instance;
     public ObjectDatabase oDB;
     public GameObject panelButtonHolder;
     public GameObject objButton;
     private List<GameObject> panelOpenOrder = new List<GameObject> { };
+    //TODO panelnum to be removed
     private int panelNum;
     public Styles selectedStyle { get; set; }
     public Category selectedCategory { get; set; }
@@ -41,6 +44,18 @@ public class MenuManager : MonoBehaviour {
         panelNum = 0;
         panelOpenOrder.Add(styleSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
+        textureChangeButton.interactable = false;
+
+    }
+
+    private void Update() {
+        
+        if (InputManager.Instance.activeGameObject.texSet != TextureSet.NONE) {
+            textureChangeButton.interactable = true;
+        }
+        else {
+            textureChangeButton.interactable = false;
+        }
     }
     public void TurnOffAll() {
         List<DisplayPanel> allPanels = FindObjectsOfType<DisplayPanel>().ToList();
@@ -97,9 +112,14 @@ public class MenuManager : MonoBehaviour {
         panelOpenOrder.Add(onScreenUIPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
-    } 
-
-public void AddMoreObjects() {
+    }
+    public void FurnitureTextureChange() {
+        TurnOffAll();
+        panelOpenOrder.Add(furnitureTextureChangePanel);
+        panelOpenOrder.Last<GameObject>().SetActive(true);
+        panelNum++;
+    }
+    public void AddMoreObjects() {
         if (!InputManager.Instance.focusObjectPlaced) {
             TurnOffAll();
             focusObjectWarningPanel.SetActive(true);

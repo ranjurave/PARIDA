@@ -29,6 +29,7 @@ public class ActiveObjectDelete : MonoBehaviour {
         Destroy(activeObject.gameObject);
         deleteButton.interactable = false;
     }
+
     //private void OnGUI() {
     //    GameObject activeObject = InputManager.Instance.activeGameObject;
     //    GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);

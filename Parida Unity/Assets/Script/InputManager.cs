@@ -4,7 +4,6 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.EventSystems;
 
 public class InputManager : MonoBehaviour {
-    //public ARPlaneManager planeManager { get; set; }
     public Camera arCam;
     public ARRaycastManager raycastManager;
     public GameObject crosshair;
@@ -36,21 +35,16 @@ public class InputManager : MonoBehaviour {
         }
     }
 
-    private void Awake() {
-        //planeManager = GetComponent<ARPlaneManager>();
-    }
-
-    // Start is called before the first frame update
     void Start() {
         canPlaceObject = false;
         canGrabObject = false;
         focusObjectPlaced = false;
     }
 
-    // Update is called once per frame
     void Update() {
         CrosshairCalculation();
         crosshair.SetActive(canPlaceObject);
+        TextureButtonActive();
 
         if (Input.touchCount == 0) {
             moveTouch = false;
@@ -63,7 +57,7 @@ public class InputManager : MonoBehaviour {
         touch = Input.GetTouch(0);
 
         if (IsPointerOverUI(touch)) return;
-
+        //TODO pressing button sometimes moves objects in scene. Back buttons mainly.
         // On one finger touch
         //**************************
         if (Input.touchCount == 1) {
@@ -177,16 +171,31 @@ public class InputManager : MonoBehaviour {
             }
         }
         return false;
-
     }
 
-    //********************
-    // for debugging
-    //********************
-    //private void OnGUI() {
-    //    GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
-    //    myRectStyle.fontSize = 50;
-    //    myRectStyle.normal.textColor = Color.red;
-    //    GUI.Box(new Rect(new Vector2(100, 100), new Vector2(400, 100)), "Can place" + canPlaceObject.ToString(), myRectStyle);
-    //}
+    void TextureButtonActive() {
+        ObjectPropertySet activeObj = activeGameObject;
+        if (canPlaceObject) {
+            MenuManager.Instance.textureChangeButton.interactable = false;
+
+        }
+        else {
+            if (activeObj.texSet != TextureSet.NONE) {
+                MenuManager.Instance.textureChangeButton.interactable = true;
+            }
+            else {
+                MenuManager.Instance.textureChangeButton.interactable = false;
+            }
+        }
+    }
+
+//********************
+// for debugging
+//********************
+private void OnGUI() {
+        GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
+        myRectStyle.fontSize = 50;
+        myRectStyle.normal.textColor = Color.red;
+        GUI.Box(new Rect(new Vector2(100, 100), new Vector2(400, 100)), activeGameObject.isActiveAndEnabled.ToString(), myRectStyle);
+    }
 }

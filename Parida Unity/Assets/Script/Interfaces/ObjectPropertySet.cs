@@ -22,4 +22,5 @@ public class ObjectPropertySet : MonoBehaviour {
     public string objName;
     public Styles style;
     public Sprite sprite;
+    public TextureSet texSet;
 }

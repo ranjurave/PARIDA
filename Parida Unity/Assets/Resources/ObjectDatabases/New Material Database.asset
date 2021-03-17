@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66ee099ffc0222943912048c4c54f4c9, type: 3}
+  m_Name: New Material Database
+  m_EditorClassIdentifier: 
+  couche1:
+  - {fileID: 2646464747035972389, guid: 57785aed91dc3bc4eaab95cc7086ff1e, type: 3}
+  - {fileID: 4036117228573770254, guid: ed2429a7b2b56cf4a80b84fba83b4a94, type: 3}
+  - {fileID: 5255585444940542508, guid: fd5c254cd02096345a64e1f751501de8, type: 3}
+  couche2:
+  - {fileID: 8944928659994003041, guid: 893f9bf5236abbb469f54388f69ae979, type: 3}
+  - {fileID: 3653136508073508395, guid: 03575824f8683a14888e421c2f832f4f, type: 3}
+  - {fileID: 8941456205675447412, guid: 3a6a52c25f6483d49be6176b8dfa4718, type: 3}
+  couche3:
+  - {fileID: 2936147337086081251, guid: a1bdf9ad24d5d964c861f6c110e04844, type: 3}
+  - {fileID: 5149605378166382147, guid: b037dee2797aa5749a20bd574d68a247, type: 3}
+  - {fileID: 1783188702912610140, guid: bf8cedad7b461ae4aa34412bdeb712d5, type: 3}
+  table1: []
+  table2: []
+  table3: []
+  library1: []
+  library2: []
+  library3: []
