@@ -821,6 +821,10 @@ MonoBehaviour:
   style: 3
   sprite: {fileID: 21300000, guid: 6b4adacc4db920f4bb585a6588ee4613, type: 3}
   texSet: 3
+  materialSet:
+  - {fileID: 2936147337086081251, guid: a1bdf9ad24d5d964c861f6c110e04844, type: 3}
+  - {fileID: 5149605378166382147, guid: b037dee2797aa5749a20bd574d68a247, type: 3}
+  - {fileID: 1783188702912610140, guid: bf8cedad7b461ae4aa34412bdeb712d5, type: 3}
 --- !u!1 &8660156923646584111
 GameObject:
   m_ObjectHideFlags: 0

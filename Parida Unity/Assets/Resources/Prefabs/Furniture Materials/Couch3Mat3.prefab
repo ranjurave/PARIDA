@@ -85,4 +85,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a405aed2597a4a4dbdcd040f90e826a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  matImage: {fileID: 21300000, guid: 245f0b1b3711e3f4984289c5b1aa0a05, type: 3}
   texSet: 3

@@ -1,24 +1,24 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class ObjectToSpawn : MonoBehaviour {
-    public static ObjectToSpawn Instance;
+public class MaterialToApply : MonoBehaviour {
+    public static MaterialToApply Instance;
 
     public Button btn;
-    public ObjectPropertySet selectedObject { get; set; }
+    public ObjectMaterialSet selectedMaterial { get; set; }
+
     //private string debugstring;
 
     private void Awake() {
         Instance = this;
     }
-
+    // Start is called before the first frame update
     void Start() {
-        btn.onClick.AddListener(AssignObject);
+        btn.onClick.AddListener(AssignMaterial);
     }
 
-    void AssignObject() {
-        InputManager.Instance.selectedGameObject = selectedObject;
-        MenuManager.Instance.SpawnSelectedObject();
+    void AssignMaterial() {
+        // TODO apply material
     }
 
     //private void OnGUI() {

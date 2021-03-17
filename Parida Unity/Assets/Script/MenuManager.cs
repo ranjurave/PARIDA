@@ -17,8 +17,11 @@ public class MenuManager : MonoBehaviour {
     public Button textureChangeButton;
     private static MenuManager mm_instance;
     public ObjectDatabase oDB;
+    public MaterialDatabase mDB;
     public GameObject panelButtonHolder;
+    public GameObject TextureButtonHolder;
     public GameObject objButton;
+    public GameObject matButton;
     private List<GameObject> panelOpenOrder = new List<GameObject> { };
     //TODO panelnum to be removed
     private int panelNum;
@@ -57,24 +60,28 @@ public class MenuManager : MonoBehaviour {
             textureChangeButton.interactable = false;
         }
     }
+
     public void TurnOffAll() {
         List<DisplayPanel> allPanels = FindObjectsOfType<DisplayPanel>().ToList();
         allPanels.ForEach(x => {
             x.gameObject.SetActive(false);
         });
     }
+
     public void RoomSelection() {
         TurnOffAll();
         panelOpenOrder.Add(roomSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
     }
+
     public void FocusCategorySelection() {
         TurnOffAll();
         panelOpenOrder.Add(focusCategorySelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
     }
+
     public void FocusTVSelection() {
         TurnOffAll();
         panelOpenOrder.Add(furnitureSelectionPanel);
@@ -83,6 +90,7 @@ public class MenuManager : MonoBehaviour {
         FurnitureButtonAdd(oDB.tvs);
         FurnitureButtonEnable();
     }
+
     public void FocusFireplaceSelection() {
         TurnOffAll();
         panelOpenOrder.Add(furnitureSelectionPanel);
@@ -91,6 +99,7 @@ public class MenuManager : MonoBehaviour {
         FurnitureButtonAdd(oDB.firePlace);
         FurnitureButtonEnable();
     }
+
     public void FocusLibrarySelection() {
         TurnOffAll();
         panelOpenOrder.Add(furnitureSelectionPanel);
@@ -99,6 +108,7 @@ public class MenuManager : MonoBehaviour {
         FurnitureButtonAdd(oDB.library);
         FurnitureButtonEnable();
     }
+
     public void FocusCoffeetableSelection() {
         TurnOffAll();
         panelOpenOrder.Add(furnitureSelectionPanel);
@@ -107,18 +117,22 @@ public class MenuManager : MonoBehaviour {
         FurnitureButtonAdd(oDB.coffeeTable);
         FurnitureButtonEnable();
     }
+
     public void SpawnSelectedObject()  {
         TurnOffAll();
         panelOpenOrder.Add(onScreenUIPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
     }
+
     public void FurnitureTextureChange() {
         TurnOffAll();
         panelOpenOrder.Add(furnitureTextureChangePanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
+        TextureButtonAdd(InputManager.Instance.activeGameObject.materialSet);
         panelNum++;
     }
+
     public void AddMoreObjects() {
         if (!InputManager.Instance.focusObjectPlaced) {
             TurnOffAll();
@@ -148,6 +162,7 @@ public class MenuManager : MonoBehaviour {
         InputManager.Instance.viewModePanelOn = true;
         InputManager.Instance.canGrabObject = false;
     }
+
     public void EditModeOn() {
         TurnOffAll();
         panelOpenOrder.RemoveAt(panelNum);
@@ -155,10 +170,12 @@ public class MenuManager : MonoBehaviour {
         panelNum--;
         InputManager.Instance.viewModePanelOn = false;
     }
+
     public void WarningOkButton() {
         focusObjectWarningPanel.SetActive(false);
         onScreenUIPanel.SetActive(true);
     }
+
     public void BackButton() {
         TurnOffAll();
         panelOpenOrder.RemoveAt(panelNum);
@@ -171,9 +188,6 @@ public class MenuManager : MonoBehaviour {
         for (int i = 0; i < previousButtons.Count; i++) {
             Destroy(previousButtons[i].gameObject);
         }
-
-        int objCount = oDB.tvs.Length;
-        int objc = objToAdd.Length;
 
         for (int i = 0; i < objToAdd.Length; i++) {
             string objName = objToAdd[i].name;
@@ -195,6 +209,19 @@ public class MenuManager : MonoBehaviour {
 
         List<ObjectToSpawn> selectedButtons = allButtons.Where(x => x.selectedObject.style == selectedStyle).ToList();
         selectedButtons?.ForEach(x => x.btn.interactable = true);
+    }
+
+    void TextureButtonAdd(ObjectMaterialSet[] objMatToAdd) {
+        List<MaterialToApply> previousButtons = FindObjectsOfType<MaterialToApply>().ToList();
+        for (int i = 0; i < previousButtons.Count; i++) {
+            Destroy(previousButtons[i].gameObject);
+        }
+
+        for (int i = 0; i < objMatToAdd.Length; i++) {
+            Sprite objSprite = objMatToAdd[i].matImage;
+            GameObject go = Instantiate(matButton, TextureButtonHolder.transform);
+            go.GetComponent<Image>().sprite = objSprite;
+        }
     }
 
     //private void OnGUI() {

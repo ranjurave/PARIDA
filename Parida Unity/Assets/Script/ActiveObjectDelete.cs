@@ -4,14 +4,12 @@ using UnityEngine.UI;
 public class ActiveObjectDelete : MonoBehaviour {
     public Button deleteButton;
     
-    // Start is called before the first frame update
     void Start() {
         deleteButton.onClick.AddListener(DeleteGameObject);
         deleteButton.interactable = false;
         deleteButton.GetComponentInChildren<Text>().text = "Delete";
     }
 
-    // Update is called once per frame
     private void Update() {
         ObjectPropertySet activeObject = InputManager.Instance.activeGameObject;
         if (activeObject == null) {

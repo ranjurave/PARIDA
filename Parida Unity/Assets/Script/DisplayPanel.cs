@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class DisplayPanel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //This class added to all panels for find with linq
+    //Dont delete!!!
 }

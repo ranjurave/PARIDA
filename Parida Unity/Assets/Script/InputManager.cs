@@ -20,6 +20,7 @@ public class InputManager : MonoBehaviour {
     private float oldRotationAngle;
     public bool focusObjectPlaced { get; set; }
     public bool viewModePanelOn { get; set; }
+    public ObjectMaterialSet activeObjMatSet;
 
     // Property with setter and getter
     public static InputManager Instance {
@@ -192,10 +193,10 @@ public class InputManager : MonoBehaviour {
 //********************
 // for debugging
 //********************
-private void OnGUI() {
-        GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
-        myRectStyle.fontSize = 50;
-        myRectStyle.normal.textColor = Color.red;
-        GUI.Box(new Rect(new Vector2(100, 100), new Vector2(400, 100)), activeGameObject.isActiveAndEnabled.ToString(), myRectStyle);
-    }
+//private void OnGUI() {
+//        GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
+//        myRectStyle.fontSize = 50;
+//        myRectStyle.normal.textColor = Color.red;
+//        GUI.Box(new Rect(new Vector2(100, 100), new Vector2(400, 100)), activeGameObject.isActiveAndEnabled.ToString(), myRectStyle);
+//    }
 }
