@@ -16,6 +16,7 @@ public class ActiveObjectDelete : MonoBehaviour {
         ObjectPropertySet activeObject = InputManager.Instance.activeGameObject;
         if (activeObject == null) {
             deleteButton.interactable = false;
+            // TODO Delete button text to fix
             //deleteButton.GetComponentInChildren<Text>().text = "Delete";            
         } else {
             deleteButton.interactable = true;

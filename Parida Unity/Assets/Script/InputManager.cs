@@ -4,6 +4,7 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.EventSystems;
 
 public class InputManager : MonoBehaviour {
+    //public ARPlaneManager planeManager { get; set; }
     public Camera arCam;
     public ARRaycastManager raycastManager;
     public GameObject crosshair;
@@ -33,6 +34,10 @@ public class InputManager : MonoBehaviour {
         set {
             im_instance = value;
         }
+    }
+
+    private void Awake() {
+        //planeManager = GetComponent<ARPlaneManager>();
     }
 
     // Start is called before the first frame update
