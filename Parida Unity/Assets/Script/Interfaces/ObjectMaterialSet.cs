@@ -15,4 +15,5 @@ public enum TextureSet {
 public class ObjectMaterialSet : MonoBehaviour {
     public Sprite matImage;
     public TextureSet texSet;
+    public Material materialOption;
 }

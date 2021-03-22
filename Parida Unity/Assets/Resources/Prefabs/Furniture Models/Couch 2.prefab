@@ -915,7 +915,7 @@ MonoBehaviour:
   objName: Couch
   style: 1
   sprite: {fileID: 21300000, guid: 6b4adacc4db920f4bb585a6588ee4613, type: 3}
-  texSet: 2
+  texSet: 1
   materialSet:
   - {fileID: 8944928659994003041, guid: 893f9bf5236abbb469f54388f69ae979, type: 3}
   - {fileID: 3653136508073508395, guid: 03575824f8683a14888e421c2f832f4f, type: 3}

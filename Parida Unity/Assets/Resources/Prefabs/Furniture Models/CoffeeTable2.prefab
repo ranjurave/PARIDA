@@ -623,3 +623,4 @@ MonoBehaviour:
   style: 1
   sprite: {fileID: 21300000, guid: 8045d269dc265634684536da24483879, type: 3}
   texSet: 0
+  materialSet: []

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9092444174389242297}
   - component: {fileID: 2079556797484655964}
-  - component: {fileID: 2646464747035972389}
+  - component: {fileID: 7134353230016460342}
   m_Layer: 0
   m_Name: Couch1Mat1
   m_TagString: Untagged
@@ -73,7 +73,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2646464747035972389
+--- !u!114 &7134353230016460342
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,3 +87,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   matImage: {fileID: 21300000, guid: a17ebc541d4ce2046becdcfe850347c4, type: 3}
   texSet: 1
+  materialOption: {fileID: 2100000, guid: 426c5042f943a6c42a484e72f8ed065b, type: 2}

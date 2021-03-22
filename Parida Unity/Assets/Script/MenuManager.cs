@@ -219,8 +219,13 @@ public class MenuManager : MonoBehaviour {
 
         for (int i = 0; i < objMatToAdd.Length; i++) {
             Sprite objSprite = objMatToAdd[i].matImage;
+            Material mat = objMatToAdd[i].materialOption;
+            //objMatToAdd[i].materialToApply/
+            //objMatToAdd[i].picked
             GameObject go = Instantiate(matButton, TextureButtonHolder.transform);
             go.GetComponent<Image>().sprite = objSprite;
+            go.GetComponent<MaterialToApply>().selectedMaterial.materialOption = mat;
+            //go.
         }
     }
 

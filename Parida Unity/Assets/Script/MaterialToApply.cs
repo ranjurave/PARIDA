@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class MaterialToApply : MonoBehaviour {
     public static MaterialToApply Instance;
-
+    //public Material pickedMaterial;
     public Button btn;
     public ObjectMaterialSet selectedMaterial { get; set; }
 
@@ -19,6 +19,10 @@ public class MaterialToApply : MonoBehaviour {
 
     void AssignMaterial() {
         // TODO apply material
+        ObjectPropertySet furniture = InputManager.Instance.activeGameObject;
+        Debug.Log(furniture.name);
+        furniture.transform.GetChild(2).GetComponent<Renderer>().material = selectedMaterial.materialOption;
+        MenuManager.Instance.BackButton();
     }
 
     //private void OnGUI() {

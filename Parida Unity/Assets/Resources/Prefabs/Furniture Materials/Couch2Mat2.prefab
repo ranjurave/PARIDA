@@ -87,3 +87,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   matImage: {fileID: 21300000, guid: 1dcfc738c8066b74cb3cd1723c0370d5, type: 3}
   texSet: 2
+  materialOption: {fileID: 2100000, guid: 1047ff5083a524644a2cfd4a16844b8f, type: 2}

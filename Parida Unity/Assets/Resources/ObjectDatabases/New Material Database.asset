@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: New Material Database
   m_EditorClassIdentifier: 
   couche1:
-  - {fileID: 2646464747035972389, guid: 57785aed91dc3bc4eaab95cc7086ff1e, type: 3}
+  - {fileID: 7134353230016460342, guid: 57785aed91dc3bc4eaab95cc7086ff1e, type: 3}
   - {fileID: 4036117228573770254, guid: ed2429a7b2b56cf4a80b84fba83b4a94, type: 3}
   - {fileID: 5255585444940542508, guid: fd5c254cd02096345a64e1f751501de8, type: 3}
   couche2:

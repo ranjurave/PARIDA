@@ -623,6 +623,8 @@ MonoBehaviour:
   objName: Table
   style: 3
   sprite: {fileID: 21300000, guid: 8045d269dc265634684536da24483879, type: 3}
+  texSet: 3
+  materialSet: []
 --- !u!1 &8660156924281861488
 GameObject:
   m_ObjectHideFlags: 0
