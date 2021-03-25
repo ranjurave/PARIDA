@@ -1,26 +1,29 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
+using System.Collections.Generic;
 
 public class MaterialToApply : MonoBehaviour {
     public static MaterialToApply Instance;
     public Material pickedMaterial { get; set; }
     public Button btn;
-    public ObjectMaterialSet selectedMaterial { get; set; }
-
+    public ObjectPropertySet toChangeObject { get; set; }
     //private string debugstring;
 
     private void Awake() {
         Instance = this;
     }
-    // Start is called before the first frame update
+
     void Start() {
         btn.onClick.AddListener(AssignMaterial);
     }
 
     void AssignMaterial() {
-        // TODO apply material
-        ObjectPropertySet furniture = InputManager.Instance.activeGameObject;
-        furniture.transform.GetChild(2).GetComponent<Renderer>().material = pickedMaterial;
+        List<MeshFilter> meshObjects = toChangeObject.transform.GetComponentsInChildren<MeshFilter>().ToList();
+        meshObjects.RemoveAt(0);
+        foreach (MeshFilter mesh in meshObjects) {
+            mesh.GetComponent<Renderer>().material = pickedMaterial;
+        }
         MenuManager.Instance.BackButton();
     }
 
