@@ -24,6 +24,10 @@ MonoBehaviour:
   - {fileID: 2936147337086081251, guid: a1bdf9ad24d5d964c861f6c110e04844, type: 3}
   - {fileID: 5149605378166382147, guid: b037dee2797aa5749a20bd574d68a247, type: 3}
   - {fileID: 1783188702912610140, guid: bf8cedad7b461ae4aa34412bdeb712d5, type: 3}
+  couchMinimal1:
+  - {fileID: 5008838325791048878, guid: e4664bb573d7cbb4a888236fc3e8d3c5, type: 3}
+  - {fileID: 4594836227539511063, guid: a47614069082c674dacfa93acaf68a33, type: 3}
+  - {fileID: 8563774368801106138, guid: ae58d158995c2d344981006457346bc7, type: 3}
   table1: []
   table2: []
   table3: []
