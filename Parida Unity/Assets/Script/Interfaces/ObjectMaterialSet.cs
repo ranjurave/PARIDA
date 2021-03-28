@@ -4,6 +4,7 @@ public enum TextureSet {
     COUCH1,
     COUCH2,
     COUCH3,
+    COUCHMINIMAL1,
     TABLE1,
     TABLE2,
     TABLE3,
