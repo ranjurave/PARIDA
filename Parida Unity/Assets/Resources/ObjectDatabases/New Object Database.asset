@@ -23,7 +23,7 @@ MonoBehaviour:
   chairs:
   - {fileID: -6945320941373300883, guid: 23c8e99bed708a34aba707cecde50242, type: 3}
   tvs:
-  - {fileID: 6729843814588944514, guid: bc5500abc01cbcb418a591fa78e200fe, type: 3}
+  - {fileID: 6059727157305201533, guid: 9067a741e5ff56442b6da2c80755b651, type: 3}
   - {fileID: 6729843814588944514, guid: ddcafc51e212a7946bfd8e38460e1ddf, type: 3}
   - {fileID: 6729843814588944514, guid: e32cf546b33ecdc479fe8141af3683fa, type: 3}
   library:
