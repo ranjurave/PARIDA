@@ -3,6 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Material Database", menuName = "Custom/MaterialDatabase")]
 public class MaterialDatabase : ScriptableObject {
     public ObjectMaterialSet[] TV1;
+    public ObjectMaterialSet[] TV2;
+    public ObjectMaterialSet[] TV3;
     public ObjectMaterialSet[] couche1;
     public ObjectMaterialSet[] couche2;
     public ObjectMaterialSet[] couche3;

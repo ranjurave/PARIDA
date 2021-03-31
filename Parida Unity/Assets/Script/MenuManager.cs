@@ -117,7 +117,7 @@ public class MenuManager : MonoBehaviour {
         FurnitureButtonAdd(oDB.coffeeTable);
         FurnitureButtonEnable();
     }
-
+    //TODO no need to add to array
     public void SpawnSelectedObject()  {
         TurnOffAll();
         panelOpenOrder.Add(onScreenUIPanel);
@@ -207,7 +207,7 @@ public class MenuManager : MonoBehaviour {
             x.btn.interactable = false;
         });
 
-        List<ObjectToSpawn> selectedButtons = allButtons.Where(x => x.selectedObject.style == selectedStyle).ToList();
+        List<ObjectToSpawn> selectedButtons = allButtons.Where(x => x.selectedObject.style == selectedStyle || x.selectedObject.style == Styles.ALL).ToList();
         selectedButtons?.ForEach(x => x.btn.interactable = true);
     }
 

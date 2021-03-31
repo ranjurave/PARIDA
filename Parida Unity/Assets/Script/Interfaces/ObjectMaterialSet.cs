@@ -2,6 +2,8 @@ using UnityEngine;
 public enum TextureSet {
     NONE,
     TV1,
+    TV2,
+    TV3,
     COUCH1,
     COUCH2,
     COUCH3,

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public enum Styles {
     NONE,
+    ALL,
     BOHEMIAN,
     MID_CENTURY,
     MODERN,
