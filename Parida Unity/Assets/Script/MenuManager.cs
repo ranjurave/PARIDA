@@ -23,7 +23,6 @@ public class MenuManager : MonoBehaviour {
     public GameObject objButton;
     public GameObject matButton;
     private List<GameObject> panelOpenOrder = new List<GameObject> { };
-    //TODO panelnum to be removed
     private int panelNum;
     public Styles selectedStyle { get; set; }
     public Category selectedCategory { get; set; }
@@ -51,9 +50,7 @@ public class MenuManager : MonoBehaviour {
 
     }
 
-    private void Update() {
-        Debug.Log(selectedStyle);
-        
+    private void Update() {        
         if (InputManager.Instance.activeGameObject.texSet != TextureSet.NONE) {
             textureChangeButton.interactable = true;
         }

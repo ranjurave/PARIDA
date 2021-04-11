@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class StyleSelector : MonoBehaviour {
     public Button StyleButton;
-    public Styles style;
+    public Styles style { get; set; }
 
     void Start() {
         StyleButton.onClick.AddListener(SelectStyle);
