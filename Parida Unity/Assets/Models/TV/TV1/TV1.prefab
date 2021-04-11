@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24db966844f462e4e815d8d9f04fa136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objName: 
+  objName: TV1
   style: 1
   sprite: {fileID: 21300000, guid: 5c27a96a87026cf4aafc683856f255dc, type: 3}
   texSet: 1

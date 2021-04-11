@@ -52,6 +52,7 @@ public class MenuManager : MonoBehaviour {
     }
 
     private void Update() {
+        Debug.Log(selectedStyle);
         
         if (InputManager.Instance.activeGameObject.texSet != TextureSet.NONE) {
             textureChangeButton.interactable = true;
@@ -117,7 +118,7 @@ public class MenuManager : MonoBehaviour {
         FurnitureButtonAdd(oDB.coffeeTable);
         FurnitureButtonEnable();
     }
-    //TODO no need to add to array
+
     public void SpawnSelectedObject()  {
         TurnOffAll();
         panelOpenOrder.Add(onScreenUIPanel);
@@ -163,6 +164,7 @@ public class MenuManager : MonoBehaviour {
         InputManager.Instance.canGrabObject = false;
     }
 
+    //TODO Hide AR planes by default.
     public void EditModeOn() {
         TurnOffAll();
         panelOpenOrder.RemoveAt(panelNum);

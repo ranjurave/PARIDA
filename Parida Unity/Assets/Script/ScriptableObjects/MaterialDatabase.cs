@@ -5,10 +5,9 @@ public class MaterialDatabase : ScriptableObject {
     public ObjectMaterialSet[] TV1;
     public ObjectMaterialSet[] TV2;
     public ObjectMaterialSet[] TV3;
-    public ObjectMaterialSet[] couche1;
-    public ObjectMaterialSet[] couche2;
-    public ObjectMaterialSet[] couche3;
-    public ObjectMaterialSet[] couchMinimal1;
+    public ObjectMaterialSet[] couchMinimal;
+    public ObjectMaterialSet[] coucheModern1;
+    public ObjectMaterialSet[] coucheModern2;
     public ObjectMaterialSet[] table1;
     public ObjectMaterialSet[] table2;
     public ObjectMaterialSet[] table3;

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4507627906943345646}
   - component: {fileID: 657969918665419851}
-  - component: {fileID: 953848832334006221}
   - component: {fileID: 3048560048478764954}
+  - component: {fileID: 953848832334006221}
   m_Layer: 0
   m_Name: TV3
   m_TagString: Untagged
@@ -43,23 +43,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3874678007604885844}
   m_Mesh: {fileID: -5511996699474248536, guid: 2e5728f0419a6f246b3b51ace7065d43, type: 3}
---- !u!114 &953848832334006221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3874678007604885844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24db966844f462e4e815d8d9f04fa136, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objName: 
-  style: 1
-  sprite: {fileID: 21300000, guid: 9c2229bb7ebfd2541b04b4af8ce10352, type: 3}
-  texSet: 3
-  materialSet: []
 --- !u!65 &3048560048478764954
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -73,6 +56,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.8300247, z: 1.7781482}
   m_Center: {x: 0, y: 0.91072154, z: 0.0028820038}
+--- !u!114 &953848832334006221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3874678007604885844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24db966844f462e4e815d8d9f04fa136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objName: TV3
+  style: 1
+  sprite: {fileID: 21300000, guid: 9c2229bb7ebfd2541b04b4af8ce10352, type: 3}
+  texSet: 3
+  materialSet: []
 --- !u!1 &5421095386441981231
 GameObject:
   m_ObjectHideFlags: 0

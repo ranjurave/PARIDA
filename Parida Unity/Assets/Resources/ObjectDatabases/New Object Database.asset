@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: New Object Database
   m_EditorClassIdentifier: 
   couches:
-  - {fileID: 2293330746950138629, guid: a78fdba591946d042bb1a9a80a84763f, type: 3}
-  - {fileID: 2293330746950138629, guid: ce56e3cadb64226499b88893b9b464f7, type: 3}
-  - {fileID: 2293330746950138629, guid: 168e5108e53027249b5243aa4a4cc154, type: 3}
-  - {fileID: 448756079646617917, guid: 3312eeb2cfadc764fafa03d58c0ad86a, type: 3}
+  - {fileID: 7700665396525013999, guid: 8c22c7d4ab305264eaca5a31e6520a70, type: 3}
+  - {fileID: 2781267705332422547, guid: 50058d88a4c3c85478f9c5cc0cae45fc, type: 3}
+  - {fileID: 8092553984359315166, guid: 8a57859600d4468439ecb8717e813e54, type: 3}
+  - {fileID: 5755281934456806607, guid: 37a78e4fb7d6f4f4e8dce192c921c9b0, type: 3}
+  - {fileID: 337560173074446900, guid: facd69be3f1f3dc4b88ecb0d74f2c8ed, type: 3}
+  - {fileID: 3875761606946960586, guid: 212790b8379edee44bc9eccbc27c7899, type: 3}
   tables:
   - {fileID: 6729843814588944514, guid: 7e55fa213dd6751469e1183abb16a6dd, type: 3}
   - {fileID: 1614807492033235206, guid: f92c7b17842424c448b6c94b91a839fd, type: 3}
