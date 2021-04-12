@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.Android;
 using UnityEngine.EventSystems;
 
 public class InputManager : MonoBehaviour {
@@ -36,6 +37,12 @@ public class InputManager : MonoBehaviour {
         }
     }
 
+    //TODO can be deleted
+    public void Awake() {
+        if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite)) {
+            Permission.RequestUserPermission(Permission.ExternalStorageWrite);
+        }
+    }
     void Start() {
         canPlaceObject = false;
         canGrabObject = false;
@@ -43,6 +50,7 @@ public class InputManager : MonoBehaviour {
     }
 
     void Update() {
+
         CrosshairCalculation();
         crosshair.SetActive(canPlaceObject);
         TextureButtonActive();
