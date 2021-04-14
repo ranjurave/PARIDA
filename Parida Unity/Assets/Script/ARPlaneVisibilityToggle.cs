@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using TMPro;
-using UnityEngine.XR.ARSubsystems;
 
 public class ARPlaneVisibilityToggle : MonoBehaviour {
     private ARPlaneManager planeManager;
@@ -13,11 +10,26 @@ public class ARPlaneVisibilityToggle : MonoBehaviour {
     
     private void Awake() {
         planeManager = GetComponent<ARPlaneManager>();
-        planeAROn = true;
+        planeAROn = false;
         toggleButton.GetComponentInChildren<TextMeshProUGUI>().text = "Hide AR Planes";
     }
 
-    //TODO hide planes when in view mode
+    private void Start() {
+        planeManager.enabled = false;
+        foreach (var plane in planeManager.trackables) {
+            plane.gameObject.SetActive(false);
+        }
+        toggleButton.GetComponentInChildren<TextMeshProUGUI>().text = "Show AR Planes";
+        planeAROn = false;
+    }
+
+    private void Update() {
+        if (InputManager.Instance.viewModePanelOn) {
+            planeAROn = true;
+            SetAllPanelsActive();
+        }
+    }
+
     public void SetAllPanelsActive() {
         if (planeAROn) {
             planeManager.enabled = false;

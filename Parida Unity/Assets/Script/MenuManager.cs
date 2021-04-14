@@ -47,10 +47,9 @@ public class MenuManager : MonoBehaviour {
         panelOpenOrder.Add(styleSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         textureChangeButton.interactable = false;
-
     }
 
-    private void Update() {        
+    private void Update() {
         if (InputManager.Instance.activeGameObject.texSet != TextureSet.NONE) {
             textureChangeButton.interactable = true;
         }
@@ -116,7 +115,7 @@ public class MenuManager : MonoBehaviour {
         FurnitureButtonEnable();
     }
 
-    public void SpawnSelectedObject()  {
+    public void SpawnSelectedObject() {
         TurnOffAll();
         panelOpenOrder.Add(onScreenUIPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
@@ -152,7 +151,7 @@ public class MenuManager : MonoBehaviour {
         FurnitureButtonEnable();
     }
 
-        public void ViewModePanelOn() {
+    public void ViewModePanelOn() {
         TurnOffAll();
         panelOpenOrder.Add(viewModePanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);

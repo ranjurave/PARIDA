@@ -21,7 +21,7 @@ public class InputManager : MonoBehaviour {
     private float oldRotationAngle;
     public bool focusObjectPlaced { get; set; }
     public bool viewModePanelOn { get; set; }
-    public ObjectMaterialSet activeObjMatSet;
+    public ObjectMaterialSet activeObjMatSet { get; set; }
 
     // Property with setter and getter
     public static InputManager Instance {

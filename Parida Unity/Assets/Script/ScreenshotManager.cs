@@ -5,20 +5,8 @@ using UnityEngine.Android;
 
 public class ScreenshotManager : MonoBehaviour {
     public void CaptureIt() {
-        //if (Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite)) {
-            //string timeStamp = System.DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss");
-            //string fileName = "Photo-" + timeStamp + ".png";
-            //string pathToSave = fileName;
-            //ScreenCapture.CaptureScreenshot(pathToSave, 1);
-            StartCoroutine(CRSaveScreenshot());
-            _ShowAndroidToastMessage("Picture taken, check your gallery.");
-        //}
-        //else {
-        //    Permission.RequestUserPermission(Permission.ExternalStorageWrite);
-        //    if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite)) {
-        //        _ShowAndroidToastMessage("Picture cannot be taken without granting storage permission.");
-        //    }
-        //}
+        StartCoroutine(CRSaveScreenshot());
+        _ShowAndroidToastMessage("Picture taken, check your gallery.");
     }
 
     IEnumerator CRSaveScreenshot() {
@@ -59,9 +47,7 @@ public class ScreenshotManager : MonoBehaviour {
         if (unityActivity != null) {
             AndroidJavaClass toastClass = new AndroidJavaClass("android.widget.Toast");
             unityActivity.Call("runOnUiThread", new AndroidJavaRunnable(() => {
-                AndroidJavaObject toastObject =
-                    toastClass.CallStatic<AndroidJavaObject>(
-                        "makeText", unityActivity, message, 0);
+                AndroidJavaObject toastObject = toastClass.CallStatic<AndroidJavaObject>("makeText", unityActivity, message, 0);
                 toastObject.Call("show");
             }));
         }
