@@ -8,6 +8,9 @@ public class MaterialDatabase : ScriptableObject {
     public ObjectMaterialSet[] couchMinimal;
     public ObjectMaterialSet[] coucheModern1;
     public ObjectMaterialSet[] coucheModern2;
+    public ObjectMaterialSet[] coucheModern3;
+    public ObjectMaterialSet[] coucheModern4;
+    public ObjectMaterialSet[] coffeeTable1;
     public ObjectMaterialSet[] table1;
     public ObjectMaterialSet[] table2;
     public ObjectMaterialSet[] table3;

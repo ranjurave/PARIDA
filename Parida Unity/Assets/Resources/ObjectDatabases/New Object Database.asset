@@ -19,6 +19,10 @@ MonoBehaviour:
   - {fileID: 5755281934456806607, guid: 37a78e4fb7d6f4f4e8dce192c921c9b0, type: 3}
   - {fileID: 337560173074446900, guid: facd69be3f1f3dc4b88ecb0d74f2c8ed, type: 3}
   - {fileID: 3875761606946960586, guid: 212790b8379edee44bc9eccbc27c7899, type: 3}
+  - {fileID: -8621192739761630516, guid: 2cc652576fe0ae14cb90823d646b6e7a, type: 3}
+  - {fileID: 6393500601944504318, guid: 4faaef8a33cf54348895c366e0426aa3, type: 3}
+  - {fileID: 3606176690643632714, guid: e0ffae858bf60d945b368831b9f649d6, type: 3}
+  - {fileID: 1516784117559083059, guid: a1d0a464d48919e49be7c6559476aa0f, type: 3}
   tables:
   - {fileID: 6729843814588944514, guid: 7e55fa213dd6751469e1183abb16a6dd, type: 3}
   - {fileID: 1614807492033235206, guid: f92c7b17842424c448b6c94b91a839fd, type: 3}
@@ -33,8 +37,9 @@ MonoBehaviour:
   - {fileID: 1426820302983665867, guid: 659f81ba81b8102468f3c6c1c25273aa, type: 3}
   - {fileID: 1426820302983665867, guid: ef437ddcac3302a4cb979c9ef8858e38, type: 3}
   coffeeTable:
-  - {fileID: 6729843814588944514, guid: 714c6f22bf51ab742999f66669b94b72, type: 3}
+  - {fileID: 2884509726053957933, guid: 1006815b5fcc2064da1bc66df8d45e72, type: 3}
   - {fileID: 6729843814588944514, guid: d2ef24810ccbe8c48a2b395ffbb7f161, type: 3}
+  - {fileID: 6729843814588944514, guid: 26c4318c9891aee42ab51454da59a7f3, type: 3}
   - {fileID: 6729843814588944514, guid: 26c4318c9891aee42ab51454da59a7f3, type: 3}
   firePlace:
   - {fileID: 3555016552347885616, guid: 3dd603f5a3dcd784087d8baf6f32ea2d, type: 3}
