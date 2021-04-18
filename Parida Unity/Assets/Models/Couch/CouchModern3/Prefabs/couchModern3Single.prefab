@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24db966844f462e4e815d8d9f04fa136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objName: 
+  objName: cm3
   style: 4
   sprite: {fileID: 21300000, guid: ac4689b523fedf84ab69a5da57ca2238, type: 3}
   texSet: 7
@@ -230,5 +230,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.8606505, y: 1.5129985, z: 1}
-  m_Center: {x: -0.010599136, y: 0.74405986, z: 0}
+  m_Size: {x: 0.8527312, y: 0.7076761, z: 0.63532573}
+  m_Center: {x: -0.0030017495, y: 0.3413987, z: 0.000000029802322}

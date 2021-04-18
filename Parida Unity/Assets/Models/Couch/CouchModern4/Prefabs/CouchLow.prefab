@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3061775904932859070}
-  - component: {fileID: 3606176690643632714}
   - component: {fileID: 1260298947390568436}
+  - component: {fileID: 3606176690643632714}
   m_Layer: 0
   m_Name: CouchLow
   m_TagString: Untagged
@@ -34,27 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3606176690643632714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2393184202262566404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24db966844f462e4e815d8d9f04fa136, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objName: 
-  style: 2
-  sprite: {fileID: 21300000, guid: 0a70303d179f3be408142e0de5c4792a, type: 3}
-  texSet: 8
-  materialSet:
-  - {fileID: 1334202094573935969, guid: 2bea6a0976dc85c4787705f229ff60c3, type: 3}
-  - {fileID: 8944573699930123085, guid: 32bdf83b9d2f9d443a76bcb2d33f0fac, type: 3}
-  - {fileID: 8170964085570687063, guid: 7c03d994f89d7574598e17fb16906fad, type: 3}
-  - {fileID: 5986297543750620700, guid: d882f683da2687c459eb44dfd04309e1, type: 3}
 --- !u!65 &1260298947390568436
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -68,6 +47,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.184466, y: 0.69355375, z: 0.9070332}
   m_Center: {x: -0.010329723, y: 0.30472454, z: -0.005164787}
+--- !u!114 &3606176690643632714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2393184202262566404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24db966844f462e4e815d8d9f04fa136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objName: CL
+  style: 2
+  sprite: {fileID: 21300000, guid: 0a70303d179f3be408142e0de5c4792a, type: 3}
+  texSet: 8
+  materialSet:
+  - {fileID: 1334202094573935969, guid: 2bea6a0976dc85c4787705f229ff60c3, type: 3}
+  - {fileID: 8944573699930123085, guid: 32bdf83b9d2f9d443a76bcb2d33f0fac, type: 3}
+  - {fileID: 8170964085570687063, guid: 7c03d994f89d7574598e17fb16906fad, type: 3}
+  - {fileID: 5986297543750620700, guid: d882f683da2687c459eb44dfd04309e1, type: 3}
 --- !u!1 &4049767825192246877
 GameObject:
   m_ObjectHideFlags: 0

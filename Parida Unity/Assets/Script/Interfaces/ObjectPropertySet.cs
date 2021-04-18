@@ -15,6 +15,7 @@ public enum Category {
     CHAIR,
     TV,
     FIREPLACE,
+    FLOORLAMP,
     LIBRARY,
     COFFEETABLE
 }

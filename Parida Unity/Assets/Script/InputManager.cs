@@ -64,12 +64,12 @@ public class InputManager : MonoBehaviour {
         }
 
         touch = Input.GetTouch(0);
-
         if (IsPointerOverUI(touch)) return;
         //TODO pressing button sometimes moves objects in scene. Back buttons mainly.
         // On one finger touch
         //**************************
         if (Input.touchCount == 1) {
+            if (IsPointerOverUI(touch)) return;
             moveTouch = true;
             if (Input.GetTouch(0).phase == TouchPhase.Began && canPlaceObject) {
                 ObjectPropertySet copy = Instantiate(selectedGameObject, crosshair.transform.position, crosshair.transform.rotation);
@@ -80,7 +80,7 @@ public class InputManager : MonoBehaviour {
         // On two finger touch
         //*************************
         if (Input.touchCount == 2) {
-
+            if (IsPointerOverUI(touch)) return;
             Ray ray = arCam.ScreenPointToRay(touch.position);
 
             if (raycastManager.Raycast(ray, hits)) {

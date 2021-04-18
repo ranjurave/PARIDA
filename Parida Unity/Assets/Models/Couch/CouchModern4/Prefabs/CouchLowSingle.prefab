@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24db966844f462e4e815d8d9f04fa136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objName: 
+  objName: CL
   style: 2
   sprite: {fileID: 21300000, guid: d70ea9abf94a15e409a090f3ce330996, type: 3}
   texSet: 8

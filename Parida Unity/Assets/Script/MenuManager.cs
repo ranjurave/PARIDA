@@ -150,7 +150,14 @@ public class MenuManager : MonoBehaviour {
         FurnitureButtonAdd(oDB.couches);
         FurnitureButtonEnable();
     }
-
+    public void moreFloorLampSelection() {
+        TurnOffAll();
+        panelOpenOrder.Add(furnitureSelectionPanel);
+        panelOpenOrder.Last<GameObject>().SetActive(true);
+        panelNum++;
+        FurnitureButtonAdd(oDB.floorLamp);
+        FurnitureButtonEnable();
+    }
     public void ViewModePanelOn() {
         TurnOffAll();
         panelOpenOrder.Add(viewModePanel);
