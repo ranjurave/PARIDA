@@ -16,7 +16,6 @@ public enum Category {
     TV,
     FIREPLACE,
     FLOORLAMP,
-    LIBRARY,
     COFFEETABLE
 }
 

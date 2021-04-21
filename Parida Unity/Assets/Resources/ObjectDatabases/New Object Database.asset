@@ -27,7 +27,11 @@ MonoBehaviour:
   - {fileID: 6729843814588944514, guid: 7e55fa213dd6751469e1183abb16a6dd, type: 3}
   - {fileID: 1614807492033235206, guid: f92c7b17842424c448b6c94b91a839fd, type: 3}
   chairs:
-  - {fileID: -6945320941373300883, guid: 23c8e99bed708a34aba707cecde50242, type: 3}
+  - {fileID: 2022896249815554896, guid: d6822cf440cb8044ca7f0b908a4bfbc6, type: 3}
+  - {fileID: -6106823036378386824, guid: ec843fcfe19af5344a8e8d763882ea07, type: 3}
+  - {fileID: 1818821344323000973, guid: fb89201d29ce11a4e8ccdbdc9ba209d9, type: 3}
+  - {fileID: 6707176526940281644, guid: 169444db605262f4da2a73ec7af91e99, type: 3}
+  - {fileID: 5525276615073444302, guid: dab469cf1dd32ac46a19c42c99b351c6, type: 3}
   tvs:
   - {fileID: 6059727157305201533, guid: 9067a741e5ff56442b6da2c80755b651, type: 3}
   - {fileID: 8908964639444613876, guid: 7db0b9d427f941d4f9eb744938f3bec7, type: 3}

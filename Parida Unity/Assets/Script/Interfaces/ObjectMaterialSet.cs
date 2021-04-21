@@ -4,6 +4,13 @@ public enum TextureSet {
     TV1,
     TV2,
     TV3,
+    FIREPLACE1,
+    FIREPLACE2,
+    CHAIR1,
+    CHAIR2,
+    CHAIR3,
+    CHAIR4,
+    CHAIR5,
     COUCHMINIMAL,
     COUCHMODERN1,
     COUCHMODERN2,
@@ -13,16 +20,10 @@ public enum TextureSet {
     COFFEETABLE2,
     COFFEETABLE3,
     COFFEETABLE4,
-    TABLE1,
-    TABLE2,
-    TABLE3,
     FLOORLAMP1,
     FLOORLAMP2,
     FLOORLAMP3,
-    FLOORLAMP4,
-    LIBRARY1,
-    LIBRARY2,
-    LIBRARY3
+    FLOORLAMP4
 }
 
 public class ObjectMaterialSet : MonoBehaviour {
