@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 816443972165266088}
+  - component: {fileID: 5860253991972276677}
+  - component: {fileID: 2522710430022049879}
   m_Layer: 0
   m_Name: Fireplace2
   m_TagString: Untagged
@@ -32,6 +34,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5860253991972276677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8804730492629010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24db966844f462e4e815d8d9f04fa136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objName: 
+  style: 1
+  sprite: {fileID: 21300000, guid: 20e101b9b971bab49aa9c931f6716c7c, type: 3}
+  texSet: 5
+  materialSet:
+  - {fileID: 1906639234599337561, guid: 09be2e7f93e484948b61662bbe222b6c, type: 3}
+  - {fileID: 4632209213657259909, guid: 134350d63b0f44a4e976def236548c74, type: 3}
+  - {fileID: 4582327521117978014, guid: 0c1f300e9b3d99a468905fc6ef31ce83, type: 3}
+  - {fileID: 7081399574554498878, guid: b0f329973b5804c45913d1d1260d8406, type: 3}
+--- !u!65 &2522710430022049879
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8804730492629010}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.740663, y: 3.0782785, z: 1.4090229}
+  m_Center: {x: 0.038691282, y: 1.4923811, z: 0.0055273175}
 --- !u!1 &322588124589603966
 GameObject:
   m_ObjectHideFlags: 0

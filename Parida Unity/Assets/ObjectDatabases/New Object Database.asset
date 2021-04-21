@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50423130dc17df348b21000dcf3012e2, type: 3}
+  m_Name: New Object Database
+  m_EditorClassIdentifier: 
+  couches:
+  - {fileID: 7700665396525013999, guid: 8c22c7d4ab305264eaca5a31e6520a70, type: 3}
+  - {fileID: 2781267705332422547, guid: 50058d88a4c3c85478f9c5cc0cae45fc, type: 3}
+  - {fileID: 8092553984359315166, guid: 8a57859600d4468439ecb8717e813e54, type: 3}
+  - {fileID: 5755281934456806607, guid: 37a78e4fb7d6f4f4e8dce192c921c9b0, type: 3}
+  - {fileID: 337560173074446900, guid: facd69be3f1f3dc4b88ecb0d74f2c8ed, type: 3}
+  - {fileID: 3875761606946960586, guid: 212790b8379edee44bc9eccbc27c7899, type: 3}
+  - {fileID: -8621192739761630516, guid: 2cc652576fe0ae14cb90823d646b6e7a, type: 3}
+  - {fileID: 6393500601944504318, guid: 4faaef8a33cf54348895c366e0426aa3, type: 3}
+  - {fileID: 3606176690643632714, guid: e0ffae858bf60d945b368831b9f649d6, type: 3}
+  - {fileID: 1516784117559083059, guid: a1d0a464d48919e49be7c6559476aa0f, type: 3}
+  chairs:
+  - {fileID: 2022896249815554896, guid: d6822cf440cb8044ca7f0b908a4bfbc6, type: 3}
+  - {fileID: -6106823036378386824, guid: ec843fcfe19af5344a8e8d763882ea07, type: 3}
+  - {fileID: 1818821344323000973, guid: fb89201d29ce11a4e8ccdbdc9ba209d9, type: 3}
+  - {fileID: 6707176526940281644, guid: 169444db605262f4da2a73ec7af91e99, type: 3}
+  - {fileID: 5525276615073444302, guid: dab469cf1dd32ac46a19c42c99b351c6, type: 3}
+  tvs:
+  - {fileID: 6059727157305201533, guid: 9067a741e5ff56442b6da2c80755b651, type: 3}
+  - {fileID: 8908964639444613876, guid: 7db0b9d427f941d4f9eb744938f3bec7, type: 3}
+  - {fileID: 953848832334006221, guid: e218c65c6cc94464aaf10d8b12125222, type: 3}
+  coffeeTable:
+  - {fileID: 2884509726053957933, guid: 1006815b5fcc2064da1bc66df8d45e72, type: 3}
+  - {fileID: 3197174057114968252, guid: 5c13a1176739c744e9710f684879f3ed, type: 3}
+  - {fileID: 6735073598573523041, guid: d81a68805e80a984895dc3bc480d4ba2, type: 3}
+  - {fileID: 6550250751299605432, guid: f11daef97d0ca044aa50dc094c18d6f6, type: 3}
+  firePlace:
+  - {fileID: 1742235668468882044, guid: 58437cd193bd2ee4285f99a9a7555499, type: 3}
+  - {fileID: 5860253991972276677, guid: 3271eb74f6481e045a498226ebeb1e09, type: 3}
+  floorLamp:
+  - {fileID: 4314709287243056874, guid: bb26a4c37bc57f44fbc9ef0c525c8e28, type: 3}
+  - {fileID: 792785632657609789, guid: 49e1ea6c4b4de904d86dd4e619b699a7, type: 3}
+  - {fileID: 2092065686347387279, guid: e574b688ddbd26246abe8440bfae9f7c, type: 3}
+  - {fileID: 5418033038335642278, guid: 5276f066f33b8294faa53c99219d6863, type: 3}
+  plants:
+  - {fileID: 7595877181966319584, guid: e9339893aba8fb94d99782dd4086c407, type: 3}
+  - {fileID: 2386352821242175435, guid: 01e90580502427a4896001de24e694f0, type: 3}
+  - {fileID: 1453007935218821029, guid: 64c1854a58317e84dabd0a9fb158b4a1, type: 3}

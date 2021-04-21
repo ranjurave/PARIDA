@@ -8,4 +8,5 @@ public class ObjectDatabase : ScriptableObject {
     public ObjectPropertySet[] coffeeTable;
     public ObjectPropertySet[] firePlace;
     public ObjectPropertySet[] floorLamp;
+    public ObjectPropertySet[] plants;
 }

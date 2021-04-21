@@ -97,15 +97,6 @@ public class MenuManager : MonoBehaviour {
         FurnitureButtonEnable();
     }
 
-    public void FocusLibrarySelection() {
-        TurnOffAll();
-        panelOpenOrder.Add(furnitureSelectionPanel);
-        panelOpenOrder.Last<GameObject>().SetActive(true);
-        panelNum++;
-        FurnitureButtonAdd(oDB.library);
-        FurnitureButtonEnable();
-    }
-
     public void FocusCoffeetableSelection() {
         TurnOffAll();
         panelOpenOrder.Add(furnitureSelectionPanel);
@@ -158,6 +149,22 @@ public class MenuManager : MonoBehaviour {
         FurnitureButtonAdd(oDB.floorLamp);
         FurnitureButtonEnable();
     }
+    public void moreChairSelection() {
+        TurnOffAll();
+        panelOpenOrder.Add(furnitureSelectionPanel);
+        panelOpenOrder.Last<GameObject>().SetActive(true);
+        panelNum++;
+        FurnitureButtonAdd(oDB.chairs);
+        FurnitureButtonEnable();
+    }
+    public void morePlantsSelection() {
+        TurnOffAll();
+        panelOpenOrder.Add(furnitureSelectionPanel);
+        panelOpenOrder.Last<GameObject>().SetActive(true);
+        panelNum++;
+        FurnitureButtonAdd(oDB.plants);
+        FurnitureButtonEnable();
+    }
     public void ViewModePanelOn() {
         TurnOffAll();
         panelOpenOrder.Add(viewModePanel);
@@ -167,7 +174,6 @@ public class MenuManager : MonoBehaviour {
         InputManager.Instance.canGrabObject = false;
     }
 
-    //TODO Hide AR planes by default.
     public void EditModeOn() {
         TurnOffAll();
         panelOpenOrder.RemoveAt(panelNum);

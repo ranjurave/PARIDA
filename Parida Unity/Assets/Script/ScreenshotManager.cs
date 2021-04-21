@@ -23,14 +23,13 @@ public class ScreenshotManager : MonoBehaviour {
         if (!System.IO.Directory.Exists(myFolderLocation)) {
             System.IO.Directory.CreateDirectory(myFolderLocation);
         }
-
-        ScreenCapture.CaptureScreenshot(myFileName);
-        //MOVE THE SCREENSHOT WHERE WE WANT IT TO BE STORED
-
+        MenuManager.Instance.viewModePanel.SetActive(false);
         yield return new WaitForSeconds(1);
+        ScreenCapture.CaptureScreenshot(myFileName);
+        yield return new WaitForSeconds(1);
+        MenuManager.Instance.viewModePanel.SetActive(true);
 
-        System.IO.File.Move(myDefaultLocation, myScreenshotLocation);
-
+        System.IO.File.Move(myDefaultLocation, myScreenshotLocation); //MOVE THE SCREENSHOT WHERE WE WANT IT TO BE STORED
         //REFRESHING THE ANDROID PHONE PHOTO GALLERY IS BEGUN
         AndroidJavaClass classPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
         AndroidJavaObject objActivity = classPlayer.GetStatic<AndroidJavaObject>("currentActivity");

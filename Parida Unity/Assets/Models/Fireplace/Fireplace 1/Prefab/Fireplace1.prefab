@@ -207,8 +207,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.1337898, y: 4.819175, z: 1.0773112}
-  m_Center: {x: -0.015462279, y: 0.038655758, z: -0.03865564}
+  m_Size: {x: 3.1337898, y: 4.8996754, z: 1.0773112}
+  m_Center: {x: -0.015462279, y: 2.3933039, z: -0.03865564}
 --- !u!114 &1742235668468882044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,7 +222,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objName: 
-  style: 0
-  sprite: {fileID: 0}
-  texSet: 27
-  materialSet: []
+  style: 1
+  sprite: {fileID: 21300000, guid: 820a5709cf37b82459ce4cb2150fd12f, type: 3}
+  texSet: 4
+  materialSet:
+  - {fileID: 1748858928082111589, guid: 12d2ab841884b454c9824ef23672867c, type: 3}
+  - {fileID: 1809949969974866707, guid: 84ec15eba8b6dd84a84d8ae7db7ce3f6, type: 3}
+  - {fileID: 1522788937321186943, guid: e5f2de80a94e49a4db25eeb6ddf920ed, type: 3}
+  - {fileID: 5688625973932109777, guid: 24f1533073d0cc742b399386ae0172dc, type: 3}
