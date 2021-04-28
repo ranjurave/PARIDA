@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.Android;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class InputManager : MonoBehaviour {
     public Camera arCam;
@@ -50,7 +51,6 @@ public class InputManager : MonoBehaviour {
     }
 
     void Update() {
-
         CrosshairCalculation();
         crosshair.SetActive(canPlaceObject);
         TextureButtonActive();

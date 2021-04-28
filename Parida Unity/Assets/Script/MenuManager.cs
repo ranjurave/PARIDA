@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using TMPro;
 
 public class MenuManager : MonoBehaviour {
     public GameObject styleSelectionPanel;
@@ -45,15 +46,16 @@ public class MenuManager : MonoBehaviour {
 
     void Start() {
         textureChangeButton.interactable = false;
+        panelNum = 0;
+        TurnOffAll();
         FirstPanel();
     }
         
     public void FirstPanel(){
-        TurnOffAll();
+        panelOpenOrder.Clear();
         panelNum = 0;
         panelOpenOrder.Add(styleSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
-        panelNum++;
     }
 
     private void Update() {
