@@ -13,6 +13,8 @@ public class MenuManager : MonoBehaviour {
     public GameObject moreFurnitureCategory;
     public GameObject focusObjectWarningPanel;
     public GameObject furnitureTextureChangePanel;
+    public GameObject bohemianDescriptionPanel;
+    public GameObject modernDescriptionPanel;
 
     public Button textureChangeButton;
     private static MenuManager mm_instance;
@@ -42,11 +44,16 @@ public class MenuManager : MonoBehaviour {
     }
 
     void Start() {
+        textureChangeButton.interactable = false;
+        FirstPanel();
+    }
+        
+    public void FirstPanel(){
         TurnOffAll();
         panelNum = 0;
         panelOpenOrder.Add(styleSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
-        textureChangeButton.interactable = false;
+        panelNum++;
     }
 
     private void Update() {
@@ -64,7 +71,14 @@ public class MenuManager : MonoBehaviour {
             x.gameObject.SetActive(false);
         });
     }
-
+    public void ShowStyleDescription() {
+        if(selectedStyle == Styles.BOHEMIAN) {
+            bohemianDescriptionPanel.SetActive(true);
+        }
+        if (selectedStyle == Styles.MODERN) {
+            modernDescriptionPanel.SetActive(true);
+        }
+    }
     public void RoomSelection() {
         TurnOffAll();
         panelOpenOrder.Add(roomSelectionPanel);
@@ -186,12 +200,23 @@ public class MenuManager : MonoBehaviour {
         focusObjectWarningPanel.SetActive(false);
         onScreenUIPanel.SetActive(true);
     }
-
+    public void BohemianOkButton() {
+        bohemianDescriptionPanel.SetActive(false);
+        RoomSelection();
+    }
+    public void ModernOkButton() {
+        modernDescriptionPanel.SetActive(false);
+        RoomSelection();
+    }
     public void BackButton() {
         TurnOffAll();
         panelOpenOrder.RemoveAt(panelNum);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum--;
+    }
+    public void DescriptionBackButton() {
+        TurnOffAll();
+        FirstPanel();
     }
 
     void FurnitureButtonAdd(ObjectPropertySet[] objToAdd) {
@@ -238,8 +263,6 @@ public class MenuManager : MonoBehaviour {
             go.GetComponent<MaterialToApply>().toChangeObject = InputManager.Instance.activeGameObject;
         }
     }
-
-
 
     //private void OnGUI() {
     //    ObjectPropertySet activeObject = InputManager.Instance.activeGameObject;

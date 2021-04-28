@@ -11,6 +11,7 @@ public class StyleSelector : MonoBehaviour {
 
     void SelectStyle() {
         MenuManager.Instance.selectedStyle = style;
+        MenuManager.Instance.ShowStyleDescription();
     }
 
     //private void OnGUI() {
