@@ -46,6 +46,7 @@ public class MenuManager : MonoBehaviour {
 
     void Start() {
         textureChangeButton.interactable = false;
+        InputManager.Instance.editPanelOn = false;
         panelNum = 0;
         TurnOffAll();
         FirstPanel();
@@ -123,6 +124,7 @@ public class MenuManager : MonoBehaviour {
     }
 
     public void SpawnSelectedObject() {
+        InputManager.Instance.editPanelOn = true;
         TurnOffAll();
         panelOpenOrder.Add(onScreenUIPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
@@ -130,6 +132,7 @@ public class MenuManager : MonoBehaviour {
     }
 
     public void FurnitureTextureChange() {
+        InputManager.Instance.editPanelOn = false;
         TurnOffAll();
         panelOpenOrder.Add(furnitureTextureChangePanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
@@ -138,6 +141,7 @@ public class MenuManager : MonoBehaviour {
     }
 
     public void AddMoreObjects() {
+        InputManager.Instance.editPanelOn = false;
         if (!InputManager.Instance.focusObjectPlaced) {
             TurnOffAll();
             focusObjectWarningPanel.SetActive(true);
@@ -182,15 +186,16 @@ public class MenuManager : MonoBehaviour {
         FurnitureButtonEnable();
     }
     public void ViewModePanelOn() {
+        InputManager.Instance.editPanelOn = false;
+        InputManager.Instance.viewModePanelOn = true;
         TurnOffAll();
         panelOpenOrder.Add(viewModePanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
-        InputManager.Instance.viewModePanelOn = true;
-        InputManager.Instance.canGrabObject = false;
     }
 
     public void EditModeOn() {
+        InputManager.Instance.editPanelOn = true;
         TurnOffAll();
         panelOpenOrder.RemoveAt(panelNum);
         panelOpenOrder.Last<GameObject>().SetActive(true);
@@ -212,6 +217,7 @@ public class MenuManager : MonoBehaviour {
     }
     public void BackButton() {
         TurnOffAll();
+        InputManager.Instance.editPanelOn = true;
         panelOpenOrder.RemoveAt(panelNum);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum--;
@@ -271,6 +277,6 @@ public class MenuManager : MonoBehaviour {
     //    GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
     //    myRectStyle.fontSize = 40;
     //    myRectStyle.normal.textColor = Color.red;
-    //    GUI.Box(new Rect(new Vector2(50, 200), new Vector2(200, 100)), debugString, myRectStyle);
+    //    GUI.Box(new Rect(new Vector2(50, 200), new Vector2(200, 100)), InputManager.Instance.editPanelOn.ToString(), myRectStyle);
     //}
 }

@@ -20,7 +20,7 @@ public class MaterialToApply : MonoBehaviour {
 
     void AssignMaterial() {
         List<MeshFilter> meshObjects = toChangeObject.transform.GetComponentsInChildren<MeshFilter>().ToList();
-        meshObjects.RemoveAt(0);
+        meshObjects.RemoveAt(0); // not to apply material for the selection hilight mesh
         foreach (MeshFilter mesh in meshObjects) {
             mesh.GetComponent<Renderer>().material = pickedMaterial;
         }

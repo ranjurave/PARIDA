@@ -13,6 +13,7 @@ public class InputManager : MonoBehaviour {
     private Touch touch;
     public bool canGrabObject { get; set; }
     private bool canPlaceObject { get; set; }
+    public bool editPanelOn { get; set; }
     private bool moveTouch;
     private Pose pose;
     private ObjectPropertySet previousActiveGameObject;
@@ -37,7 +38,7 @@ public class InputManager : MonoBehaviour {
             im_instance = value;
         }
     }
-
+    //TODO recalculate floor
     //TODO can be deleted
     public void Awake() {
         if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite)) {
@@ -51,55 +52,58 @@ public class InputManager : MonoBehaviour {
     }
 
     void Update() {
-        CrosshairCalculation();
-        crosshair.SetActive(canPlaceObject);
-        TextureButtonActive();
+        if (editPanelOn) {
 
-        if (Input.touchCount == 0) {
-            moveTouch = false;
-            if (!viewModePanelOn) {
-                canGrabObject = true;
-            }
-            return;
-        }
+            CrosshairCalculation();
+            crosshair.SetActive(canPlaceObject);
+            TextureButtonActive();
 
-        touch = Input.GetTouch(0);
-        if (IsPointerOverUI(touch)) return;
-        //TODO pressing button sometimes moves objects in scene. Back buttons mainly.
-        // On one finger touch
-        //**************************
-        if (Input.touchCount == 1) {
-            if (IsPointerOverUI(touch)) return;
-            moveTouch = true;
-            if (Input.GetTouch(0).phase == TouchPhase.Began && canPlaceObject) {
-                ObjectPropertySet copy = Instantiate(selectedGameObject, crosshair.transform.position, crosshair.transform.rotation);
-                focusObjectPlaced = true;
-            }
-        }
-
-        // On two finger touch
-        //*************************
-        if (Input.touchCount == 2) {
-            if (IsPointerOverUI(touch)) return;
-            Ray ray = arCam.ScreenPointToRay(touch.position);
-
-            if (raycastManager.Raycast(ray, hits)) {
-                pose = hits[0].pose;
-                Vector3 magnitude = pose.position - activeGameObject.transform.position;
-                Vector3 direction = magnitude.normalized;
-                float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-                angle += 180;
-
-                if (Input.GetTouch(1).phase == TouchPhase.Began)// at the beginning of the gesture
-                {
-                    oldRotationAngle = angle; // there is no "jump" in the rotation
+            if (Input.touchCount == 0) {
+                moveTouch = false;
+                if (!viewModePanelOn) {
+                    canGrabObject = true;
                 }
+                return;
+            }
 
-                float deltaAngle = angle - oldRotationAngle;
-                Vector3 rotEuler = activeGameObject.transform.localEulerAngles;
-                rotEuler.y += deltaAngle;
-                activeGameObject.transform.localEulerAngles = rotEuler;
-                oldRotationAngle = angle;
+            touch = Input.GetTouch(0);
+            if (IsPointerOverUI(touch)) return;
+            //TODO pressing button sometimes moves objects in scene. Back buttons mainly.
+            // On one finger touch
+            //**************************
+            if (Input.touchCount == 1) {
+                if (IsPointerOverUI(touch)) return;
+                moveTouch = true;
+                if (Input.GetTouch(0).phase == TouchPhase.Began && canPlaceObject) {
+                    ObjectPropertySet copy = Instantiate(selectedGameObject, crosshair.transform.position, crosshair.transform.rotation);
+                    focusObjectPlaced = true;
+                }
+            }
+
+            // On two finger touch
+            //*************************
+            if (Input.touchCount == 2) {
+                if (IsPointerOverUI(touch)) return;
+                Ray ray = arCam.ScreenPointToRay(touch.position);
+
+                if (raycastManager.Raycast(ray, hits)) {
+                    pose = hits[0].pose;
+                    Vector3 magnitude = pose.position - activeGameObject.transform.position;
+                    Vector3 direction = magnitude.normalized;
+                    float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+                    angle += 180;
+
+                    if (Input.GetTouch(1).phase == TouchPhase.Began)// at the beginning of the gesture
+                    {
+                        oldRotationAngle = angle; // there is no "jump" in the rotation
+                    }
+
+                    float deltaAngle = angle - oldRotationAngle;
+                    Vector3 rotEuler = activeGameObject.transform.localEulerAngles;
+                    rotEuler.y += deltaAngle;
+                    activeGameObject.transform.localEulerAngles = rotEuler;
+                    oldRotationAngle = angle;
+                }
             }
         }
     }
@@ -198,13 +202,13 @@ public class InputManager : MonoBehaviour {
         }
     }
 
-//********************
-// for debugging
-//********************
-//private void OnGUI() {
-//        GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
-//        myRectStyle.fontSize = 50;
-//        myRectStyle.normal.textColor = Color.red;
-//        GUI.Box(new Rect(new Vector2(100, 100), new Vector2(400, 100)), activeGameObject.isActiveAndEnabled.ToString(), myRectStyle);
-//    }
+    //********************
+    // for debugging
+    //********************
+    //private void OnGUI() {
+    //        GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
+    //        myRectStyle.fontSize = 50;
+    //        myRectStyle.normal.textColor = Color.red;
+    //        GUI.Box(new Rect(new Vector2(100, 100), new Vector2(400, 100)), activeGameObject.isActiveAndEnabled.ToString(), myRectStyle);
+    //    }
 }
