@@ -88,7 +88,14 @@ public class MenuManager : MonoBehaviour {
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
     }
-
+    public void FocusObjectCheck() {
+        if (InputManager.Instance.focusObjectPlaced) {
+            AddMoreObjects();
+        }
+        else {
+            FocusCategorySelection();
+        }
+    }
     public void FocusCategorySelection() {
         TurnOffAll();
         panelOpenOrder.Add(focusCategorySelectionPanel);
@@ -186,6 +193,13 @@ public class MenuManager : MonoBehaviour {
         FurnitureButtonEnable();
     }
     public void ViewModePanelOn() {
+        if (InputManager.Instance.activeGameObject) {
+            InputManager.Instance.activeGameObject.transform.GetChild(0).gameObject.SetActive(false);
+        }
+        else if(InputManager.Instance.previousActiveGameObject) {
+            InputManager.Instance.previousActiveGameObject.transform.GetChild(0).gameObject.SetActive(false);
+        }
+        InputManager.Instance.crosshair.SetActive(false);
         InputManager.Instance.editPanelOn = false;
         InputManager.Instance.viewModePanelOn = true;
         TurnOffAll();
@@ -196,6 +210,7 @@ public class MenuManager : MonoBehaviour {
 
     public void EditModeOn() {
         InputManager.Instance.editPanelOn = true;
+        InputManager.Instance.crosshair.SetActive(true);
         TurnOffAll();
         panelOpenOrder.RemoveAt(panelNum);
         panelOpenOrder.Last<GameObject>().SetActive(true);
@@ -217,7 +232,6 @@ public class MenuManager : MonoBehaviour {
     }
     public void BackButton() {
         TurnOffAll();
-        InputManager.Instance.editPanelOn = true;
         panelOpenOrder.RemoveAt(panelNum);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum--;
@@ -272,11 +286,11 @@ public class MenuManager : MonoBehaviour {
         }
     }
 
-    //private void OnGUI() {
-    //    ObjectPropertySet activeObject = InputManager.Instance.activeGameObject;
-    //    GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
-    //    myRectStyle.fontSize = 40;
-    //    myRectStyle.normal.textColor = Color.red;
-    //    GUI.Box(new Rect(new Vector2(50, 200), new Vector2(200, 100)), InputManager.Instance.editPanelOn.ToString(), myRectStyle);
-    //}
+    private void OnGUI() {
+        ObjectPropertySet activeObject = InputManager.Instance.activeGameObject;
+        GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
+        myRectStyle.fontSize = 40;
+        myRectStyle.normal.textColor = Color.red;
+        GUI.Box(new Rect(new Vector2(50, 200), new Vector2(200, 100)), panelNum.ToString(), myRectStyle);
+    }
 }

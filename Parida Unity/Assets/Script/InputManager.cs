@@ -16,7 +16,7 @@ public class InputManager : MonoBehaviour {
     public bool editPanelOn { get; set; }
     private bool moveTouch;
     private Pose pose;
-    private ObjectPropertySet previousActiveGameObject;
+    public ObjectPropertySet previousActiveGameObject { get; set; }
     public ObjectPropertySet activeGameObject { get; set; }
     public ObjectPropertySet selectedGameObject { get; set; }
     private static InputManager im_instance;

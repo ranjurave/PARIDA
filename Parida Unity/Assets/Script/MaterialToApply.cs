@@ -24,7 +24,8 @@ public class MaterialToApply : MonoBehaviour {
         foreach (MeshFilter mesh in meshObjects) {
             mesh.GetComponent<Renderer>().material = pickedMaterial;
         }
-        MenuManager.Instance.BackButton();
+        InputManager.Instance.crosshair.SetActive(true);
+        MenuManager.Instance.EditModeOn();
     }
 
     //private void OnGUI() {
