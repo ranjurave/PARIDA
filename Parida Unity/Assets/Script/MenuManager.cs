@@ -75,7 +75,8 @@ public class MenuManager : MonoBehaviour {
         });
     }
     public void ShowStyleDescription() {
-        if(selectedStyle == Styles.BOHEMIAN) {
+        InputManager.Instance.editPanelOn = false;
+        if (selectedStyle == Styles.BOHEMIAN) {
             bohemianDescriptionPanel.SetActive(true);
         }
         if (selectedStyle == Styles.MODERN) {
@@ -83,12 +84,14 @@ public class MenuManager : MonoBehaviour {
         }
     }
     public void RoomSelection() {
+        InputManager.Instance.editPanelOn = false;
         TurnOffAll();
         panelOpenOrder.Add(roomSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
     }
     public void FocusObjectCheck() {
+        InputManager.Instance.editPanelOn = false;
         if (InputManager.Instance.focusObjectPlaced) {
             AddMoreObjects();
         }
@@ -97,6 +100,7 @@ public class MenuManager : MonoBehaviour {
         }
     }
     public void FocusCategorySelection() {
+        InputManager.Instance.editPanelOn = false;
         TurnOffAll();
         panelOpenOrder.Add(focusCategorySelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
@@ -104,6 +108,7 @@ public class MenuManager : MonoBehaviour {
     }
 
     public void FocusTVSelection() {
+        InputManager.Instance.editPanelOn = false;
         TurnOffAll();
         panelOpenOrder.Add(furnitureSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
@@ -113,6 +118,7 @@ public class MenuManager : MonoBehaviour {
     }
 
     public void FocusFireplaceSelection() {
+        InputManager.Instance.editPanelOn = false;
         TurnOffAll();
         panelOpenOrder.Add(furnitureSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
@@ -122,6 +128,7 @@ public class MenuManager : MonoBehaviour {
     }
 
     public void FocusCoffeetableSelection() {
+        InputManager.Instance.editPanelOn = false;
         TurnOffAll();
         panelOpenOrder.Add(furnitureSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
@@ -131,11 +138,12 @@ public class MenuManager : MonoBehaviour {
     }
 
     public void SpawnSelectedObject() {
-        InputManager.Instance.editPanelOn = true;
+        InputManager.Instance.editPanelOn = false;
         TurnOffAll();
         panelOpenOrder.Add(onScreenUIPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum++;
+        InputManager.Instance.editPanelOn = true;
     }
 
     public void FurnitureTextureChange() {
@@ -161,6 +169,7 @@ public class MenuManager : MonoBehaviour {
         }
     }
     public void moreCouchSelection() {
+        InputManager.Instance.editPanelOn = false;
         TurnOffAll();
         panelOpenOrder.Add(furnitureSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
@@ -169,6 +178,7 @@ public class MenuManager : MonoBehaviour {
         FurnitureButtonEnable();
     }
     public void moreFloorLampSelection() {
+        InputManager.Instance.editPanelOn = false;
         TurnOffAll();
         panelOpenOrder.Add(furnitureSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
@@ -177,6 +187,7 @@ public class MenuManager : MonoBehaviour {
         FurnitureButtonEnable();
     }
     public void moreChairSelection() {
+        InputManager.Instance.editPanelOn = false;
         TurnOffAll();
         panelOpenOrder.Add(furnitureSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
@@ -185,6 +196,7 @@ public class MenuManager : MonoBehaviour {
         FurnitureButtonEnable();
     }
     public void morePlantsSelection() {
+        InputManager.Instance.editPanelOn = false;
         TurnOffAll();
         panelOpenOrder.Add(furnitureSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
@@ -209,13 +221,13 @@ public class MenuManager : MonoBehaviour {
     }
 
     public void EditModeOn() {
-        InputManager.Instance.editPanelOn = true;
         InputManager.Instance.crosshair.SetActive(true);
         TurnOffAll();
         panelOpenOrder.RemoveAt(panelNum);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         panelNum--;
         InputManager.Instance.viewModePanelOn = false;
+        InputManager.Instance.editPanelOn = true;
     }
 
     public void WarningOkButton() {
@@ -286,11 +298,11 @@ public class MenuManager : MonoBehaviour {
         }
     }
 
-    private void OnGUI() {
-        ObjectPropertySet activeObject = InputManager.Instance.activeGameObject;
-        GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
-        myRectStyle.fontSize = 40;
-        myRectStyle.normal.textColor = Color.red;
-        GUI.Box(new Rect(new Vector2(50, 200), new Vector2(200, 100)), panelNum.ToString(), myRectStyle);
-    }
+    //private void OnGUI() {
+    //    ObjectPropertySet activeObject = InputManager.Instance.activeGameObject;
+    //    GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
+    //    myRectStyle.fontSize = 40;
+    //    myRectStyle.normal.textColor = Color.red;
+    //    GUI.Box(new Rect(new Vector2(50, 200), new Vector2(200, 100)), panelNum.ToString(), myRectStyle);
+    //}
 }

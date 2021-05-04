@@ -14,15 +14,6 @@ public class ARPlaneVisibilityToggle : MonoBehaviour {
         toggleButton.GetComponentInChildren<TextMeshProUGUI>().text = "Hide AR Planes";
     }
 
-    private void Start() {
-        //planeManager.enabled = false;
-        //foreach (var plane in planeManager.trackables) {
-        //    plane.gameObject.SetActive(false);
-        //}
-        //toggleButton.GetComponentInChildren<TextMeshProUGUI>().text = "Show AR Planes";
-        //planeAROn = false;
-    }
-
     private void Update() {
         if (InputManager.Instance.viewModePanelOn) {
             planeAROn = true;
