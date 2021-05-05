@@ -10,7 +10,7 @@ public class ARPlaneVisibilityToggle : MonoBehaviour {
     
     private void Awake() {
         planeManager = GetComponent<ARPlaneManager>();
-        planeAROn = false;
+        planeAROn = true;
         toggleButton.GetComponentInChildren<TextMeshProUGUI>().text = "Hide AR Planes";
     }
 

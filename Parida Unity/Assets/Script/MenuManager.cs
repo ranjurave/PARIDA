@@ -18,6 +18,7 @@ public class MenuManager : MonoBehaviour {
     public GameObject modernDescriptionPanel;
 
     public Button textureChangeButton;
+    private string placementMessage;
     private static MenuManager mm_instance;
     public ObjectDatabase oDB;
     public MaterialDatabase mDB;
@@ -26,7 +27,6 @@ public class MenuManager : MonoBehaviour {
     public GameObject objButton;
     public GameObject matButton;
     private List<GameObject> panelOpenOrder = new List<GameObject> { };
-    private int panelNum;
     public Styles selectedStyle { get; set; }
     public Category selectedCategory { get; set; }
     //private string debugString;
@@ -46,15 +46,14 @@ public class MenuManager : MonoBehaviour {
 
     void Start() {
         textureChangeButton.interactable = false;
+        textureChangeButton.GetComponentInChildren<TextMeshProUGUI>().color = new Color(102, 102, 102, 255);
         InputManager.Instance.editPanelOn = false;
-        panelNum = 0;
         TurnOffAll();
         FirstPanel();
     }
         
     public void FirstPanel(){
         panelOpenOrder.Clear();
-        panelNum = 0;
         panelOpenOrder.Add(styleSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
     }
@@ -62,9 +61,11 @@ public class MenuManager : MonoBehaviour {
     private void Update() {
         if (InputManager.Instance.activeGameObject.texSet != TextureSet.NONE) {
             textureChangeButton.interactable = true;
+            textureChangeButton.GetComponentInChildren<TextMeshProUGUI>().color = new Color(255, 148, 126, 255);
         }
         else {
             textureChangeButton.interactable = false;
+            textureChangeButton.GetComponentInChildren<TextMeshProUGUI>().color = new Color(102, 102, 102, 255);
         }
     }
 
@@ -88,7 +89,40 @@ public class MenuManager : MonoBehaviour {
         TurnOffAll();
         panelOpenOrder.Add(roomSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
-        panelNum++;
+    }
+    public void FocusCategorySelection() {
+        placementMessage = "Pick a furniture as focus object";
+        furnitureSelectionPanel.GetComponentInChildren<TextMeshProUGUI>().text = placementMessage;
+        InputManager.Instance.editPanelOn = false;
+        TurnOffAll();
+        panelOpenOrder.Add(focusCategorySelectionPanel);
+        panelOpenOrder.Last<GameObject>().SetActive(true);
+    }
+    public void FocusTVSelection() {
+        InputManager.Instance.editPanelOn = false;
+        TurnOffAll();
+        panelOpenOrder.Add(furnitureSelectionPanel);
+        panelOpenOrder.Last<GameObject>().SetActive(true);
+        FurnitureButtonAdd(oDB.tvs);
+        FurnitureButtonEnable();
+    }
+
+    public void FocusFireplaceSelection() {
+        InputManager.Instance.editPanelOn = false;
+        TurnOffAll();
+        panelOpenOrder.Add(furnitureSelectionPanel);
+        panelOpenOrder.Last<GameObject>().SetActive(true);
+        FurnitureButtonAdd(oDB.firePlace);
+        FurnitureButtonEnable();
+    }
+
+    public void FocusCoffeetableSelection() {
+        InputManager.Instance.editPanelOn = false;
+        TurnOffAll();
+        panelOpenOrder.Add(furnitureSelectionPanel);
+        panelOpenOrder.Last<GameObject>().SetActive(true);
+        FurnitureButtonAdd(oDB.coffeeTable);
+        FurnitureButtonEnable();
     }
     public void FocusObjectCheck() {
         InputManager.Instance.editPanelOn = false;
@@ -99,50 +133,11 @@ public class MenuManager : MonoBehaviour {
             FocusCategorySelection();
         }
     }
-    public void FocusCategorySelection() {
-        InputManager.Instance.editPanelOn = false;
-        TurnOffAll();
-        panelOpenOrder.Add(focusCategorySelectionPanel);
-        panelOpenOrder.Last<GameObject>().SetActive(true);
-        panelNum++;
-    }
-
-    public void FocusTVSelection() {
-        InputManager.Instance.editPanelOn = false;
-        TurnOffAll();
-        panelOpenOrder.Add(furnitureSelectionPanel);
-        panelOpenOrder.Last<GameObject>().SetActive(true);
-        panelNum++;
-        FurnitureButtonAdd(oDB.tvs);
-        FurnitureButtonEnable();
-    }
-
-    public void FocusFireplaceSelection() {
-        InputManager.Instance.editPanelOn = false;
-        TurnOffAll();
-        panelOpenOrder.Add(furnitureSelectionPanel);
-        panelOpenOrder.Last<GameObject>().SetActive(true);
-        panelNum++;
-        FurnitureButtonAdd(oDB.firePlace);
-        FurnitureButtonEnable();
-    }
-
-    public void FocusCoffeetableSelection() {
-        InputManager.Instance.editPanelOn = false;
-        TurnOffAll();
-        panelOpenOrder.Add(furnitureSelectionPanel);
-        panelOpenOrder.Last<GameObject>().SetActive(true);
-        panelNum++;
-        FurnitureButtonAdd(oDB.coffeeTable);
-        FurnitureButtonEnable();
-    }
-
     public void SpawnSelectedObject() {
         InputManager.Instance.editPanelOn = false;
         TurnOffAll();
         panelOpenOrder.Add(onScreenUIPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
-        panelNum++;
         InputManager.Instance.editPanelOn = true;
     }
 
@@ -152,11 +147,12 @@ public class MenuManager : MonoBehaviour {
         panelOpenOrder.Add(furnitureTextureChangePanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         TextureButtonAdd(InputManager.Instance.activeGameObject.materialSet);
-        panelNum++;
     }
 
     public void AddMoreObjects() {
         InputManager.Instance.editPanelOn = false;
+        placementMessage = "Place around the focus object";
+        furnitureSelectionPanel.GetComponentInChildren<TextMeshProUGUI>().text = placementMessage;
         if (!InputManager.Instance.focusObjectPlaced) {
             TurnOffAll();
             focusObjectWarningPanel.SetActive(true);
@@ -165,7 +161,6 @@ public class MenuManager : MonoBehaviour {
             TurnOffAll();
             panelOpenOrder.Add(moreFurnitureCategory);
             panelOpenOrder.Last<GameObject>().SetActive(true);
-            panelNum++;
         }
     }
     public void moreCouchSelection() {
@@ -173,7 +168,6 @@ public class MenuManager : MonoBehaviour {
         TurnOffAll();
         panelOpenOrder.Add(furnitureSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
-        panelNum++;
         FurnitureButtonAdd(oDB.couches);
         FurnitureButtonEnable();
     }
@@ -182,7 +176,6 @@ public class MenuManager : MonoBehaviour {
         TurnOffAll();
         panelOpenOrder.Add(furnitureSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
-        panelNum++;
         FurnitureButtonAdd(oDB.floorLamp);
         FurnitureButtonEnable();
     }
@@ -191,7 +184,6 @@ public class MenuManager : MonoBehaviour {
         TurnOffAll();
         panelOpenOrder.Add(furnitureSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
-        panelNum++;
         FurnitureButtonAdd(oDB.chairs);
         FurnitureButtonEnable();
     }
@@ -200,11 +192,11 @@ public class MenuManager : MonoBehaviour {
         TurnOffAll();
         panelOpenOrder.Add(furnitureSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
-        panelNum++;
         FurnitureButtonAdd(oDB.plants);
         FurnitureButtonEnable();
     }
     public void ViewModePanelOn() {
+        InputManager.Instance.editPanelOn = false;
         if (InputManager.Instance.activeGameObject) {
             InputManager.Instance.activeGameObject.transform.GetChild(0).gameObject.SetActive(false);
         }
@@ -212,20 +204,17 @@ public class MenuManager : MonoBehaviour {
             InputManager.Instance.previousActiveGameObject.transform.GetChild(0).gameObject.SetActive(false);
         }
         InputManager.Instance.crosshair.SetActive(false);
-        InputManager.Instance.editPanelOn = false;
         InputManager.Instance.viewModePanelOn = true;
         TurnOffAll();
         panelOpenOrder.Add(viewModePanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
-        panelNum++;
     }
 
     public void EditModeOn() {
-        InputManager.Instance.crosshair.SetActive(true);
         TurnOffAll();
-        panelOpenOrder.RemoveAt(panelNum);
+        panelOpenOrder.RemoveAt(panelOpenOrder.Count-1);
         panelOpenOrder.Last<GameObject>().SetActive(true);
-        panelNum--;
+        InputManager.Instance.crosshair.SetActive(true);
         InputManager.Instance.viewModePanelOn = false;
         InputManager.Instance.editPanelOn = true;
     }
@@ -244,9 +233,8 @@ public class MenuManager : MonoBehaviour {
     }
     public void BackButton() {
         TurnOffAll();
-        panelOpenOrder.RemoveAt(panelNum);
+        panelOpenOrder.RemoveAt(panelOpenOrder.Count-1);
         panelOpenOrder.Last<GameObject>().SetActive(true);
-        panelNum--;
     }
     public void DescriptionBackButton() {
         TurnOffAll();
@@ -297,12 +285,11 @@ public class MenuManager : MonoBehaviour {
             go.GetComponent<MaterialToApply>().toChangeObject = InputManager.Instance.activeGameObject;
         }
     }
-
     //private void OnGUI() {
     //    ObjectPropertySet activeObject = InputManager.Instance.activeGameObject;
     //    GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
     //    myRectStyle.fontSize = 40;
     //    myRectStyle.normal.textColor = Color.red;
-    //    GUI.Box(new Rect(new Vector2(50, 200), new Vector2(200, 100)), panelNum.ToString(), myRectStyle);
+    //    GUI.Box(new Rect(new Vector2(50, 200), new Vector2(200, 100)), panelOpenOrder.Count.ToString(), myRectStyle);
     //}
 }
