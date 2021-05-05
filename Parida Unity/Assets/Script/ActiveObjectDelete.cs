@@ -7,8 +7,6 @@ public class ActiveObjectDelete : MonoBehaviour {
     void Start() {
         deleteButton.onClick.AddListener(DeleteGameObject);
         deleteButton.interactable = false;
-        //deleteButton.GetComponentInChildren<Text>().color = new Color(102, 102, 102, 255);
-        deleteButton.GetComponentInChildren<Text>().color = new Color(255, 255, 255, 255);
         deleteButton.GetComponentInChildren<Text>().text = "Delete";
     }
 
@@ -16,10 +14,8 @@ public class ActiveObjectDelete : MonoBehaviour {
         ObjectPropertySet activeObject = InputManager.Instance.activeGameObject;
         if (activeObject == null) {
             deleteButton.interactable = false;
-            deleteButton.GetComponentInChildren<Text>().color = new Color(102, 102, 102, 255);
         } else {
             deleteButton.interactable = true;
-            deleteButton.GetComponentInChildren<Text>().color = new Color(255, 148, 126, 255);
         }
     }
 
@@ -27,7 +23,6 @@ public class ActiveObjectDelete : MonoBehaviour {
         ObjectPropertySet activeObject = InputManager.Instance.activeGameObject;
         Destroy(activeObject.gameObject);
         deleteButton.interactable = false;
-        deleteButton.GetComponentInChildren<Text>().color = new Color(102, 102, 102, 255);
     }
 
     //private void OnGUI() {

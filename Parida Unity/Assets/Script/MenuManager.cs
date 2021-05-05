@@ -46,7 +46,6 @@ public class MenuManager : MonoBehaviour {
 
     void Start() {
         textureChangeButton.interactable = false;
-        textureChangeButton.GetComponentInChildren<TextMeshProUGUI>().color = new Color(102, 102, 102, 255);
         InputManager.Instance.editPanelOn = false;
         TurnOffAll();
         FirstPanel();
@@ -61,11 +60,9 @@ public class MenuManager : MonoBehaviour {
     private void Update() {
         if (InputManager.Instance.activeGameObject.texSet != TextureSet.NONE) {
             textureChangeButton.interactable = true;
-            textureChangeButton.GetComponentInChildren<TextMeshProUGUI>().color = new Color(255, 148, 126, 255);
         }
         else {
             textureChangeButton.interactable = false;
-            textureChangeButton.GetComponentInChildren<TextMeshProUGUI>().color = new Color(102, 102, 102, 255);
         }
     }
 
