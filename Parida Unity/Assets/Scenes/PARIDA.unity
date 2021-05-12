@@ -5909,7 +5909,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 70, y: 22.526}
+  m_AnchoredPosition: {x: 70, y: 79.28}
   m_SizeDelta: {x: 844.596, y: 1244.269}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &731075748
@@ -11294,7 +11294,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030517578, y: 0}
+  m_AnchoredPosition: {x: 1.500061, y: 0}
   m_SizeDelta: {x: -3.0000591, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1573288359
@@ -15465,8 +15465,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 70, y: -687.21106}
-  m_SizeDelta: {x: 814.2, y: 160.022}
+  m_AnchoredPosition: {x: 89.775, y: -666.7726}
+  m_SizeDelta: {x: 818.594, y: 203.967}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2106955757
 MonoBehaviour:
@@ -15488,7 +15488,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Furniture not matching with the choosen style are disabled.
+  m_text: Items of furniture not matching with the chosen style are disabled.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
