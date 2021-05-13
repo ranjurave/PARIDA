@@ -17,6 +17,7 @@ public enum Category {
     FIREPLACE,
     FLOORLAMP,
     PLANTS,
+    BOOKSHELF,
     COFFEETABLE
 }
 

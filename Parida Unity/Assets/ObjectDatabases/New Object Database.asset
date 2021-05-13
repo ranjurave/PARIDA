@@ -41,6 +41,10 @@ MonoBehaviour:
   firePlace:
   - {fileID: 1742235668468882044, guid: 58437cd193bd2ee4285f99a9a7555499, type: 3}
   - {fileID: 5860253991972276677, guid: 3271eb74f6481e045a498226ebeb1e09, type: 3}
+  bookShelf:
+  - {fileID: 736061517155609482, guid: f490829b71f3d8f40a3a4486ab1bceb3, type: 3}
+  - {fileID: 7969228530447438962, guid: 645e4e5de731c7a4aa25ea3e587580af, type: 3}
+  - {fileID: 4418445387731628770, guid: e963771dfa2cc5c4199ebf695f450948, type: 3}
   floorLamp:
   - {fileID: 4314709287243056874, guid: bb26a4c37bc57f44fbc9ef0c525c8e28, type: 3}
   - {fileID: 792785632657609789, guid: 49e1ea6c4b4de904d86dd4e619b699a7, type: 3}
