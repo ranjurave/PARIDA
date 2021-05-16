@@ -16,6 +16,7 @@ public class MenuManager : MonoBehaviour {
     public GameObject furnitureTextureChangePanel;
     public GameObject bohemianDescriptionPanel;
     public GameObject modernDescriptionPanel;
+    public GameObject underDevPanel;
 
     public Button textureChangeButton;
     private string placementMessage;
@@ -57,6 +58,10 @@ public class MenuManager : MonoBehaviour {
         panelOpenOrder.Last<GameObject>().SetActive(true);
     }
 
+    public void UnderDev() {
+        TurnOffAll();
+        underDevPanel.SetActive(true);
+    }
     private void Update() {
         if (InputManager.Instance.activeGameObject.texSet != TextureSet.NONE) {
             textureChangeButton.interactable = true;
@@ -224,7 +229,10 @@ public class MenuManager : MonoBehaviour {
         InputManager.Instance.viewModePanelOn = false;
         InputManager.Instance.editPanelOn = true;
     }
-
+    public void UnderDevOkButton() {
+        underDevPanel.SetActive(false);
+        panelOpenOrder.Last<GameObject>().SetActive(true);
+    }
     public void WarningOkButton() {
         focusObjectWarningPanel.SetActive(false);
         onScreenUIPanel.SetActive(true);
