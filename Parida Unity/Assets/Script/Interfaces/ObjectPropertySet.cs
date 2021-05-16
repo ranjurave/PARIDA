@@ -14,7 +14,6 @@ public enum Category {
     COUCH,
     CHAIR,
     TV,
-    FIREPLACE,
     FLOORLAMP,
     PLANTS,
     BOOKSHELF,

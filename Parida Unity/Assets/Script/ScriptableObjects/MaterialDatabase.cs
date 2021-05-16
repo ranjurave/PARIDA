@@ -19,8 +19,6 @@ public class MaterialDatabase : ScriptableObject {
     public ObjectMaterialSet[] coffeeTable2;
     public ObjectMaterialSet[] coffeeTable3;
     public ObjectMaterialSet[] coffeeTable4;
-    public ObjectMaterialSet[] fireplace1; 
-    public ObjectMaterialSet[] fireplace2;
     public ObjectMaterialSet[] bookShelf1;
     public ObjectMaterialSet[] bookShelf2;
     public ObjectMaterialSet[] bookShelf3;

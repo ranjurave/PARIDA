@@ -39,7 +39,7 @@ MonoBehaviour:
   - {fileID: 6735073598573523041, guid: d81a68805e80a984895dc3bc480d4ba2, type: 3}
   - {fileID: 6550250751299605432, guid: f11daef97d0ca044aa50dc094c18d6f6, type: 3}
   firePlace:
-  - {fileID: 1742235668468882044, guid: 58437cd193bd2ee4285f99a9a7555499, type: 3}
+  - {fileID: 0}
   - {fileID: 5860253991972276677, guid: 3271eb74f6481e045a498226ebeb1e09, type: 3}
   bookShelf:
   - {fileID: 6416318263874515059, guid: e387aa1b53512af4bae4eb0ae47f4210, type: 3}

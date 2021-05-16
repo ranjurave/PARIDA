@@ -108,16 +108,6 @@ public class MenuManager : MonoBehaviour {
         FurnitureButtonAdd(oDB.tvs);
         FurnitureButtonEnable();
     }
-
-    public void FocusFireplaceSelection() {
-        InputManager.Instance.editPanelOn = false;
-        TurnOffAll();
-        panelOpenOrder.Add(furnitureSelectionPanel);
-        panelOpenOrder.Last<GameObject>().SetActive(true);
-        FurnitureButtonAdd(oDB.firePlace);
-        FurnitureButtonEnable();
-    }
-
     public void FocusBookShelfSelection() {
         InputManager.Instance.editPanelOn = false;
         TurnOffAll();
@@ -126,7 +116,6 @@ public class MenuManager : MonoBehaviour {
         FurnitureButtonAdd(oDB.bookShelf);
         FurnitureButtonEnable();
     }
-
     public void FocusCoffeetableSelection() {
         InputManager.Instance.editPanelOn = false;
         TurnOffAll();

@@ -4,8 +4,6 @@ public enum TextureSet {
     TV1,
     TV2,
     TV3,
-    FIREPLACE1,
-    FIREPLACE2,
     BOOKSHELF1,
     BOOKSHELF2,
     BOOKSHELF3,
