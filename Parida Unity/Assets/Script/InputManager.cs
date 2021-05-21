@@ -49,11 +49,11 @@ public class InputManager : MonoBehaviour {
         canPlaceObject = false;
         canGrabObject = false;
         focusObjectPlaced = false;
+        editPanelOn = false;
     }
 
     void Update() {
         if (editPanelOn) {
-
             CrosshairCalculation();
             crosshair.SetActive(canPlaceObject);
             TextureButtonActive();

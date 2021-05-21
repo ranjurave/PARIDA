@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using TMPro;
+using System.Collections;
 
 public class MenuManager : MonoBehaviour {
     public GameObject styleSelectionPanel;
@@ -138,6 +139,7 @@ public class MenuManager : MonoBehaviour {
         TurnOffAll();
         panelOpenOrder.Add(onScreenUIPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
+        StartCoroutine(waitThenLoad());
         InputManager.Instance.editPanelOn = true;
     }
 
@@ -216,7 +218,11 @@ public class MenuManager : MonoBehaviour {
         panelOpenOrder.Last<GameObject>().SetActive(true);
         InputManager.Instance.crosshair.SetActive(true);
         InputManager.Instance.viewModePanelOn = false;
+        StartCoroutine(waitThenLoad());
         InputManager.Instance.editPanelOn = true;
+    }
+    private IEnumerator waitThenLoad() {
+        yield return new WaitForSeconds(1.0f);
     }
     public void UnderDevOkButton() {
         underDevPanel.SetActive(false);
@@ -288,11 +294,11 @@ public class MenuManager : MonoBehaviour {
             go.GetComponent<MaterialToApply>().toChangeObject = InputManager.Instance.activeGameObject;
         }
     }
-    //private void OnGUI() {
-    //    ObjectPropertySet activeObject = InputManager.Instance.activeGameObject;
-    //    GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
-    //    myRectStyle.fontSize = 40;
-    //    myRectStyle.normal.textColor = Color.red;
-    //    GUI.Box(new Rect(new Vector2(50, 200), new Vector2(200, 100)), panelOpenOrder.Count.ToString(), myRectStyle);
-    //}
+    private void OnGUI() {
+        ObjectPropertySet activeObject = InputManager.Instance.activeGameObject;
+        GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
+        myRectStyle.fontSize = 40;
+        myRectStyle.normal.textColor = Color.red;
+        GUI.Box(new Rect(new Vector2(50, 200), new Vector2(200, 100)), InputManager.Instance.editPanelOn.ToString(), myRectStyle);
+    }
 }
