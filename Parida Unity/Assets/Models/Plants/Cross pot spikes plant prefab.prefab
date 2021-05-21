@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0020000003, y: -0.0009999201, z: 0}
-  m_LocalScale: {x: 0.045, y: 0.045, z: 0.045}
+  m_LocalPosition: {x: 0, y: 0.001, z: 0}
+  m_LocalScale: {x: 0.064719, y: 0.064719, z: 0.064719}
   m_Children: []
   m_Father: {fileID: 400006}
   m_RootOrder: 3
@@ -107,8 +107,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.002, y: -0.001, z: 0}
-  m_LocalScale: {x: 0.045, y: 0.045, z: 0.045}
+  m_LocalPosition: {x: 0, y: 0.001000002, z: 0}
+  m_LocalScale: {x: 0.064719, y: 0.064719, z: 0.064719}
   m_Children: []
   m_Father: {fileID: 400006}
   m_RootOrder: 2
@@ -188,8 +188,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0020000003, y: -0.0009999201, z: 0}
-  m_LocalScale: {x: 0.045, y: 0.045, z: 0.045}
+  m_LocalPosition: {x: 0, y: 0.001000002, z: 0}
+  m_LocalScale: {x: 0.064719, y: 0.064719, z: 0.064719}
   m_Children: []
   m_Father: {fileID: 400006}
   m_RootOrder: 1
@@ -307,8 +307,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.2565897, y: 0.6270634, z: 0.25835732}
-  m_Center: {x: -0.0022313893, y: 0.31180364, z: -0.0030870587}
+  m_Size: {x: 0.2565897, y: 0.88585573, z: 0.25835732}
+  m_Center: {x: -0.0022313893, y: 0.4411998, z: -0.0030870587}
 --- !u!1 &436802959736647379
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,8 +335,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 436802959736647379}
   m_LocalRotation: {x: -0, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.007, y: 0.30896568, z: -0.004}
-  m_LocalScale: {x: 0.20240673, y: 0.62279, z: 0.22576137}
+  m_LocalPosition: {x: 0, y: 0.44678, z: 0}
+  m_LocalScale: {x: 0.29110137, y: 0.8956965, z: 0.32469}
   m_Children: []
   m_Father: {fileID: 400006}
   m_RootOrder: 0

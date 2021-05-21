@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 2304428058214786779}
   - component: {fileID: 6769950227894511166}
   m_Layer: 0
-  m_Name: rrrtt
+  m_Name: Hilight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

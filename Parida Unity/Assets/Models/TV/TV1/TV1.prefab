@@ -154,6 +154,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TV and StandGhost
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e707ae02339fe6442a96a28acb3ba73c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e707ae02339fe6442a96a28acb3ba73c, type: 3}
 --- !u!4 &8468852303335073820 stripped
