@@ -17,7 +17,7 @@ public class MaterialToApply : MonoBehaviour {
     void Start() {
         btn.onClick.AddListener(AssignMaterial);
     }
-
+    //TODO Tv hilite material is not working.
     void AssignMaterial() {
         List<MeshFilter> meshObjects = toChangeObject.transform.GetComponentsInChildren<MeshFilter>().ToList();
         meshObjects.RemoveAt(0); // not to apply material for the selection hilight mesh

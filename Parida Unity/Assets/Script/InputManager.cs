@@ -38,8 +38,7 @@ public class InputManager : MonoBehaviour {
             im_instance = value;
         }
     }
-    //TODO recalculate floor
-    //TODO can be deleted
+
     public void Awake() {
         if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite)) {
             Permission.RequestUserPermission(Permission.ExternalStorageWrite);
@@ -68,7 +67,7 @@ public class InputManager : MonoBehaviour {
 
             touch = Input.GetTouch(0);
             if (IsPointerOverUI(touch)) return;
-            //TODO pressing button sometimes moves objects in scene. Back buttons mainly.
+
             // On one finger touch
             //**************************
             if (Input.touchCount == 1) {
@@ -186,6 +185,7 @@ public class InputManager : MonoBehaviour {
         return false;
     }
 
+    //TODO texture button text colour change.
     void TextureButtonActive() {
         ObjectPropertySet activeObj = activeGameObject;
         if (canPlaceObject) {

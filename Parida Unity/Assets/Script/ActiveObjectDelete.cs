@@ -10,6 +10,7 @@ public class ActiveObjectDelete : MonoBehaviour {
         deleteButton.GetComponentInChildren<Text>().text = "Delete";
     }
 
+    //TODO button text colour change
     private void Update() {
         ObjectPropertySet activeObject = InputManager.Instance.activeGameObject;
         if (activeObject == null) {

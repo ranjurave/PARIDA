@@ -221,6 +221,7 @@ public class MenuManager : MonoBehaviour {
         StartCoroutine(waitThenLoad());
         InputManager.Instance.editPanelOn = true;
     }
+    //TODO to fix. Not delaying atm.
     private IEnumerator waitThenLoad() {
         yield return new WaitForSeconds(1.0f);
     }
@@ -294,11 +295,11 @@ public class MenuManager : MonoBehaviour {
             go.GetComponent<MaterialToApply>().toChangeObject = InputManager.Instance.activeGameObject;
         }
     }
-    private void OnGUI() {
-        ObjectPropertySet activeObject = InputManager.Instance.activeGameObject;
-        GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
-        myRectStyle.fontSize = 40;
-        myRectStyle.normal.textColor = Color.red;
-        GUI.Box(new Rect(new Vector2(50, 200), new Vector2(200, 100)), InputManager.Instance.editPanelOn.ToString(), myRectStyle);
-    }
+    //private void OnGUI() {
+    //    ObjectPropertySet activeObject = InputManager.Instance.activeGameObject;
+    //    GUIStyle myRectStyle = new GUIStyle(GUI.skin.textField);
+    //    myRectStyle.fontSize = 40;
+    //    myRectStyle.normal.textColor = Color.red;
+    //    GUI.Box(new Rect(new Vector2(50, 200), new Vector2(200, 100)), InputManager.Instance.editPanelOn.ToString(), myRectStyle);
+    //}
 }
