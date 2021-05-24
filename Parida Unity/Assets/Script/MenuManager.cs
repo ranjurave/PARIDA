@@ -139,8 +139,8 @@ public class MenuManager : MonoBehaviour {
         TurnOffAll();
         panelOpenOrder.Add(onScreenUIPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
-        StartCoroutine(waitThenLoad());
-        InputManager.Instance.editPanelOn = true;
+        StartCoroutine(DelayEditPanel());
+        //InputManager.Instance.editPanelOn = true;
     }
 
     public void FurnitureTextureChange() {
@@ -218,12 +218,12 @@ public class MenuManager : MonoBehaviour {
         panelOpenOrder.Last<GameObject>().SetActive(true);
         InputManager.Instance.crosshair.SetActive(true);
         InputManager.Instance.viewModePanelOn = false;
-        StartCoroutine(waitThenLoad());
-        InputManager.Instance.editPanelOn = true;
+        StartCoroutine(DelayEditPanel());
     }
     //TODO to fix. Not delaying atm.
-    private IEnumerator waitThenLoad() {
+    private IEnumerator DelayEditPanel() {
         yield return new WaitForSeconds(1.0f);
+        InputManager.Instance.editPanelOn = true;
     }
     public void UnderDevOkButton() {
         underDevPanel.SetActive(false);
