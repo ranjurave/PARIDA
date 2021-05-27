@@ -23,6 +23,7 @@ public class ActiveObjectDelete : MonoBehaviour {
     void DeleteGameObject() {
         ObjectPropertySet activeObject = InputManager.Instance.activeGameObject;
         Destroy(activeObject.gameObject);
+        GetComponent<AudioSource>().Play();
         deleteButton.interactable = false;
     }
 

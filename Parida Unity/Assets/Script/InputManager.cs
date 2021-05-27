@@ -75,6 +75,7 @@ public class InputManager : MonoBehaviour {
                 moveTouch = true;
                 if (Input.GetTouch(0).phase == TouchPhase.Began && canPlaceObject) {
                     ObjectPropertySet copy = Instantiate(selectedGameObject, crosshair.transform.position, crosshair.transform.rotation);
+                    GetComponent<AudioSource>().Play();
                     focusObjectPlaced = true;
                 }
             }
