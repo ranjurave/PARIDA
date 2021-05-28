@@ -169,8 +169,8 @@ public class InputManager : MonoBehaviour {
                 }
 
                 if (moveTouch) {
-                    var hitPose = hits[0].pose;
-                    activeGameObject.transform.position = hitPose.position;
+                    var touchPose = hits[0].pose;
+                    activeGameObject.transform.position = touchPose.position ;
                 }
                 return true;
             }
