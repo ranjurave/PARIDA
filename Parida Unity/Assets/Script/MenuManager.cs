@@ -52,8 +52,8 @@ public class MenuManager : MonoBehaviour {
         TurnOffAll();
         FirstPanel();
     }
-        
-    public void FirstPanel(){
+
+    public void FirstPanel() {
         panelOpenOrder.Clear();
         panelOpenOrder.Add(styleSelectionPanel);
         panelOpenOrder.Last<GameObject>().SetActive(true);
@@ -64,11 +64,13 @@ public class MenuManager : MonoBehaviour {
         underDevPanel.SetActive(true);
     }
     private void Update() {
-        if (InputManager.Instance.activeGameObject.texSet != TextureSet.NONE) {
-            textureChangeButton.interactable = true;
-        }
-        else {
-            textureChangeButton.interactable = false;
+        if (InputManager.Instance.activeGameObject) {
+            if (InputManager.Instance.activeGameObject.texSet != TextureSet.NONE) {
+                textureChangeButton.interactable = true;
+            }
+            else {
+                textureChangeButton.interactable = false;
+            }
         }
     }
 
@@ -202,7 +204,7 @@ public class MenuManager : MonoBehaviour {
         if (InputManager.Instance.activeGameObject) {
             InputManager.Instance.activeGameObject.transform.GetChild(0).gameObject.SetActive(false);
         }
-        else if(InputManager.Instance.previousActiveGameObject) {
+        else if (InputManager.Instance.previousActiveGameObject) {
             InputManager.Instance.previousActiveGameObject.transform.GetChild(0).gameObject.SetActive(false);
         }
         InputManager.Instance.crosshair.SetActive(false);
@@ -214,7 +216,7 @@ public class MenuManager : MonoBehaviour {
 
     public void EditModeOn() {
         TurnOffAll();
-        panelOpenOrder.RemoveAt(panelOpenOrder.Count-1);
+        panelOpenOrder.RemoveAt(panelOpenOrder.Count - 1);
         panelOpenOrder.Last<GameObject>().SetActive(true);
         InputManager.Instance.crosshair.SetActive(true);
         InputManager.Instance.viewModePanelOn = false;
@@ -243,7 +245,7 @@ public class MenuManager : MonoBehaviour {
     }
     public void BackButton() {
         TurnOffAll();
-        panelOpenOrder.RemoveAt(panelOpenOrder.Count-1);
+        panelOpenOrder.RemoveAt(panelOpenOrder.Count - 1);
         panelOpenOrder.Last<GameObject>().SetActive(true);
     }
     public void DescriptionBackButton() {
